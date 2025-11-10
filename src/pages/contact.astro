@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Portfolio</title>
+  </head>
+  <body>
+    <main class="min-h-screen w-full relative overflow-hidden">
+      <!-- Background gradient exactement comme la maquette -->
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, #e8c4ff 0%, #ffb8d6 20%, #ffe4b8 40%, #d4c4ff 60%, #f0c4ff 80%, #ffb8d6 100%);"></div>
+      
+      <!-- Home button top-left avec la flèche et Home exactement comme la maquette -->
+      <a href="/" class="absolute top-8 left-8 z-20 hover:opacity-80 transition-opacity">
+        <div class="flex items-center gap-1" style="color: #556b2f;">
+          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+            <path d="M15 10 L25 20 L15 30" stroke="#556b2f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span style="font-size: 2.5rem; font-family: 'Brush Script MT', cursive; margin-left: -10px;">Home</span>
+        </div>
+      </a>
+
+      <!-- Petites étoiles décoratives en haut à droite -->
+      <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="top: 12%; right: 12%; width: 4rem; opacity: 0.6;" />
+
+      <!-- Petites étoiles décoratives en bas à droite -->
+      <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="bottom: 15%; right: 18%; width: 5rem; opacity: 0.5;" />
+
+      <!-- Container principal -->
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="flex items-center gap-16" style="max-width: 90%; width: 1200px;">
+          
+          <!-- PARTIE GAUCHE : Titre, icônes, email et texte -->
+          <div class="flex flex-col gap-6" style="width: 400px;">
+            <!-- Titre Contacter-Moi -->
+            <h1 style="font-size: 3.5rem; font-family: 'Brush Script MT', cursive; color: #556b2f; line-height: 1; margin-bottom: 0.5rem;">
+              Contacter-Moi
+            </h1>
+            
+            <!-- Icônes sociales avec fond jaune -->
+            <div class="flex gap-3">
+              <a href="https://www.behance.net/" target="_blank" class="hover:scale-110 transition-transform">
+                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
+                  <img src="/behance.svg" alt="behance" class="w-7 h-7" />
+                </div>
+              </a>
+              <a href="https://www.linkedin.com/" target="_blank" class="hover:scale-110 transition-transform">
+                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
+                  <img src="/linkedin.svg" alt="linkedin" class="w-7 h-7" />
+                </div>
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" class="hover:scale-110 transition-transform">
+                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
+                  <img src="/instagram.svg" alt="instagram" class="w-7 h-7" />
+                </div>
+              </a>
+              <a href="https://www.pinterest.com/" target="_blank" class="hover:scale-110 transition-transform">
+                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
+                  <img src="/pinterest.svg" alt="pinterest" class="w-7 h-7" />
+                </div>
+              </a>
+              <a href="https://linktr.ee/" target="_blank" class="hover:scale-110 transition-transform">
+                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
+                  <img src="/linktree.svg" alt="linktree" class="w-7 h-7" />
+                </div>
+              </a>
+            </div>
+
+            <!-- Email souligné -->
+            <a href="mailto:maelie@addario.fr" class="underline hover:opacity-70 transition-opacity" style="font-size: 1.1rem; color: #556b2f; font-family: 'Courier New', monospace; text-decoration-thickness: 2px;">
+              maelie@addario.fr
+            </a>
+
+            <!-- Texte sur fond jaune -->
+            <div class="relative" style="margin-top: 1rem;">
+              <div class="bg-yellow-200 p-4 rounded-lg" style="max-width: 320px; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);">
+                <p style="color: #2d3748; font-size: 0.9rem; line-height: 1.4;">
+                  Je suis pratiquement partout. Alors, n'hésitez pas à choisir le mode de communication qui vous convient.
+                </p>
+              </div>
+              <!-- Fleur décorative sous le texte - vous ajouterez votre image -->
+              <!-- <img src="/fleur-jaune.webp" alt="flower" class="absolute" style="bottom: -40px; left: -20px; width: 80px;" /> -->
+            </div>
+          </div>
+
+          <!-- PARTIE DROITE : Formulaire sur enveloppe/papier -->
+          <div class="relative" style="transform: rotate(-1deg);">
+            <!-- Enveloppe grise en arrière-plan -->
+            <div class="absolute" style="width: 600px; height: 450px; background: #5a5a5a; border-radius: 12px; top: -20px; left: -30px; box-shadow: 10px 10px 30px rgba(0,0,0,0.3); z-index: 1;"></div>
+            
+            <!-- Fleur rose en haut de l'enveloppe - vous ajouterez votre image -->
+            <!-- <img src="/fleur-rose.webp" alt="flower" class="absolute" style="top: -40px; left: -20px; width: 100px; z-index: 3;" /> -->
+            
+            <!-- Papier blanc avec lignes de carnet -->
+            <div class="relative bg-white" style="width: 550px; padding: 2.5rem; border-radius: 8px; box-shadow: 6px 6px 20px rgba(0,0,0,0.2); z-index: 2; background-image: repeating-linear-gradient(transparent, transparent 34px, #e0e0e0 34px, #e0e0e0 35px);">
+              
+              <!-- Trombone -->
+              <div class="absolute" style="top: -15px; right: 80px; z-index: 3;">
+                <svg width="50" height="100" viewBox="0 0 50 100">
+                  <path d="M25 15 C25 10, 30 10, 30 15 L30 70 C30 85, 15 85, 15 70 L15 25" stroke="#b0b0b0" stroke-width="4" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+
+              <!-- Titre du formulaire -->
+              <h2 class="text-center mb-6" style="font-size: 1.8rem; font-family: 'Brush Script MT', cursive; color: #556b2f;">
+                Laissez un message rapide
+              </h2>
+
+              <!-- Formulaire -->
+              <form class="flex flex-col gap-5">
+                <!-- Input Email -->
+                <input 
+                  type="email" 
+                  placeholder="Votre email" 
+                  class="px-4 py-3 rounded-lg focus:outline-none"
+                  style="border: 2px solid #d8b4fe; background: #f3e8ff;"
+                  required
+                />
+                
+                <!-- Textarea Message -->
+                <textarea 
+                  placeholder="Message" 
+                  rows="5"
+                  class="px-4 py-3 rounded-lg focus:outline-none resize-none"
+                  style="border: 2px solid #d8b4fe; background: #f3e8ff;"
+                  required
+                ></textarea>
+
+                <!-- Texte et bouton avion -->
+                <div class="flex flex-col items-end gap-2 mt-2">
+                  <p class="text-right" style="font-size: 1rem; font-family: 'Brush Script MT', cursive; color: #556b2f; line-height: 1.3;">
+                    Pour envoyer votre message<br/>cliquer ici :
+                  </p>
+                  <button 
+                    type="submit"
+                    class="hover:scale-110 transition-transform"
+                  >
+                    <img src="/avionpapier.webp" alt="send" style="width: 100px;" />
+                  </button>
+                </div>
+              </form>
+
+              <!-- Fleur violette en bas à droite du papier - vous ajouterez votre image -->
+              <!-- <img src="/fleur-violette.webp" alt="flower" class="absolute" style="bottom: -30px; right: -30px; width: 90px; z-index: 3;" /> -->
+            </div>
+
+            <!-- Fleur jaune en bas à gauche de l'enveloppe - vous ajouterez votre image -->
+            <!-- <img src="/fleur-jaune2.webp" alt="flower" class="absolute" style="bottom: 20px; left: -60px; width: 85px; z-index: 3;" /> -->
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

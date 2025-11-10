@@ -13,8 +13,7 @@ body,
 }
 
 body {
-  @apply bg-paper bg-center bg-no-repeat bg-cover text-black;
-  background-image: var(--paper-bg);
+  @apply bg-center bg-no-repeat bg-cover text-black;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial;
 }
