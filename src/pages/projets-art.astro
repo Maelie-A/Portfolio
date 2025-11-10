@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projets d'ART — Portfolio</title>
+  </head>
+  <body>
+    <main class="min-h-screen w-full relative overflow-hidden" style="background: linear-gradient(180deg, #f4f4f4 0%, #e8f4e8 50%, #d4a57a 100%);">
+      
+      <!-- Home button top-left -->
+      <a href="/" class="absolute top-6 left-6 z-20 hover:opacity-80 transition-opacity">
+        <div class="flex items-center gap-1" style="color: #556b2f;">
+          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+            <path d="M15 10 L25 20 L15 30" stroke="#556b2f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #556b2f;">Home</span>
+        </div>
+      </a>
+
+      <!-- Contenu principal -->
+      <div class="relative z-10 flex flex-col items-center py-12 px-8">
+        
+        <!-- Section 1: Bannière avec titre -->
+        <div class="relative w-full max-w-5xl mb-12">
+          <img src="/art-hero.webp" alt="Projets d'Art" style="width: 100%; height: auto; display: block;" />
+        </div>
+
+        <!-- Section 2: Mes projets artistiques (texte + bande d'images) -->
+        <div class="w-full max-w-5xl mb-12">
+          <h2 class="title-font mb-4" style="font-size: 2.5rem; color: #000000; font-style: italic;">
+            Mes projets artistiques
+          </h2>
+          <p style="font-size: 0.9rem; color: #000000; line-height: 1.7; margin-bottom: 2rem; max-width: 800px;">
+            Collectionné concernant une part la vue sous le cachet de l'état et créer construit-là, figura le montrent mes tableaux : des détails et des supports classiques sont facilités dans la scolarité de vie comme ainsi que dans caractère leur tableau, en plein coeur d'une planète d'exposition aux concours à l'unanime du jury d'art, des plus jeunes, Regimanion, etc.
+          </p>
+          <p style="font-size: 0.9rem; color: #000000; line-height: 1.7; margin-bottom: 2rem; max-width: 800px;">
+            En complète, les années d'arts ainsi avec le caractère, L'ongle expert ravi et un artiste, l'original et raisonn qui la Séquidère. Ce catalogue offre d'eux quelques art-power personnellement et techniquement pleine et l'art les déco souvent bien réussie, et personnel mes facules, & ce notamment etc.
+          </p>
+          <p style="font-size: 0.9rem; color: #000000; line-height: 1.7; margin-bottom: 2rem; max-width: 800px;">
+            À cha leur regard, j'ai réellement a la malévolente de différente nos personnages et à mes étais communs, des autres différences du plaidant de tous caractère, texte, l'on nécessaires en d'élégues autour de l'algua, l'éveil des programmes et soignaix campanole de l'algua l'éveil.
+          </p>
+
+          <!-- Bouton Voir le portfolio complet -->
+          <button class="bg-yellow-300 hover:bg-yellow-400 transition-colors px-6 py-3 rounded-full shadow-lg" style="border: 2px solid #8b7355; font-size: 1rem; color: #000000; font-style: italic;">
+            Voir le portfolio complet
+          </button>
+
+          <!-- Bande d'images horizontale -->
+          <div class="flex gap-3 mt-8 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
+            <img src="/art-1.webp" alt="projet 1" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
+            <img src="/art-2.webp" alt="projet 2" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
+            <img src="/art-3.webp" alt="projet 3" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
+            <img src="/art-4.webp" alt="projet 4" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
+            <img src="/art-5.webp" alt="projet 5" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
+            <img src="/art-6.webp" alt="projet 6" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
+            <img src="/art-7.webp" alt="projet 7" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
+          </div>
+        </div>
+
+        <!-- Section 3: Carnet ouvert avec projets préférés -->
+        <div class="relative w-full max-w-5xl mb-12">
+          <img src="/carnet-projets-art.webp" alt="carnet projets" style="width: 100%; height: auto; display: block;" />
+        </div>
+
+        <!-- Section 4: Galerie de tableaux encadrés avec photo centrale -->
+        <div class="relative w-full max-w-6xl">
+          <img src="/galerie-projets-art.webp" alt="galerie" style="width: 100%; height: auto; display: block;" />
+        </div>
+
+      </div>
+    </main>
+  </body>
+</html>
