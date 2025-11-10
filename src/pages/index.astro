@@ -1,0 +1,89 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Menu</title>
+  </head>
+  <body>
+    <main class="min-h-screen w-full relative overflow-hidden">
+      <!-- Background (uses the file you provided at project root) -->
+      <div class="absolute inset-0 bg-center bg-no-repeat bg-cover" style="background-image: url('/fondmenu.webp')"></div>
+      <!-- optional subtle overlay on small screens to keep contrast -->
+      <div class="bg-overlay md:hidden"></div>
+
+      <!-- DESKTOP: absolute positioned elements (hidden on small screens) -->
+      <section class="hidden md:block">
+  <!-- star top-left: large and a bit rotated like the mockup -->
+  <img src="/etoile.webp" alt="star" class="absolute" style="left:6%; top:6%; width:22rem; transform: rotate(-6deg);" />
+  <!-- cursor near the star -->
+  <img src="/souri.webp" alt="cursor" class="absolute" style="left:18%; top:28%; width:6rem; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.25)); transform: rotate(8deg);" />
+
+        <!-- sd card left: centered vertically about 46% from top -->
+        <img src="/carte.webp" alt="sdcard" class="absolute" style="left:10%; top:46%; width:8.5rem;" />
+
+        <!-- folders cluster center-right: three folders positioned similar to mockup -->
+        <img src="/dossier.webp" alt="Projets_dART" class="desktop-folder absolute" style="left:58%; top:18%; width:5.5rem;" />
+        <img src="/dossier.webp" alt="Web_Design" class="desktop-folder absolute" style="left:68%; top:14%; width:4.5rem;" />
+        <img src="/dossier.webp" alt="Projets_Photos" class="desktop-folder absolute" style="left:62%; top:28%; width:5rem;" />
+
+        <!-- paper airplane right: lower-right area -->
+        <img src="/avionpapier.webp" alt="paper plane" class="absolute" style="right:8%; top:50%; width:12rem; transform: rotate(-8deg);" />
+
+        <!-- small decorative stars on right -->
+        <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="right:14%; top:10%; width:3.5rem;" />
+
+        <!-- center signature and social icons: aligned at about 68% from top -->
+        <div class="absolute" style="left:50%; transform:translateX(-50%); top:68%; display:flex; flex-direction:column; align-items:center; gap:0.6rem;">
+          <img src="/logo.webp" alt="logo" style="width:8.5rem; height:auto;" />
+          <div style="font-size:0.95rem;">maelie@addario.fr</div>
+          <div style="margin-top:0.6rem; display:flex; gap:0.6rem;">
+            <img src="/behance.svg" alt="behance" style="width:2rem; height:2rem;" />
+            <img src="/linkedin.svg" alt="linkedin" style="width:2rem; height:2rem;" />
+            <img src="/instagram.svg" alt="instagram" style="width:2rem; height:2rem;" />
+            <img src="/pinterest.svg" alt="pinterest" style="width:2rem; height:2rem;" />
+            <img src="/linktree.svg" alt="linktree" style="width:2rem; height:2rem;" />
+          </div>
+        </div>
+
+        <!-- dock at bottom center -->
+        <div class="absolute" style="left:50%; transform:translateX(-50%); bottom:3.5rem; width:86%; max-width:56rem;">
+          <img src="/macosdock.webp" alt="dock" style="width:100%; height:auto;" />
+        </div>
+      </section>
+
+      <!-- MOBILE: stacked layout (visible on small screens) -->
+      <section class="md:hidden flex flex-col items-center gap-8 py-12 px-6">
+  <img src="/etoile.webp" alt="star" class="w-56" />
+   <img src="/souri.webp" alt="cursor" class="w-16 -mt-6 drop-shadow-lg" />
+  <!-- cursor under star for mobile -->
+        <img src="/carte.webp" alt="sdcard" class="w-40" />
+
+        <div class="flex flex-col items-center gap-6 w-full max-w-sm">
+          <div class="flex justify-between w-full items-center">
+            <img src="/dossier.webp" alt="Projets d'ART" class="w-24" />
+            <img src="/dossier.webp" alt="Web Design" class="w-24" />
+          </div>
+          <img src="/dossier.webp" alt="Projets Photos" class="w-28" />
+        </div>
+
+        <img src="/avionpapier.webp" alt="paper plane" class="w-48" />
+
+        <div class="flex flex-col items-center gap-2 mt-6">
+          <img src="/logo.webp" alt="logo" class="w-40" />
+          <div class="text-base">maelie@addario.fr</div>
+          <div class="mt-3 flex gap-3">
+            <img src="/behance.svg" alt="behance" class="w-8 h-8" />
+            <img src="/linkedin.svg" alt="linkedin" class="w-8 h-8" />
+            <img src="/instagram.svg" alt="instagram" class="w-8 h-8" />
+            <img src="/pinterest.svg" alt="pinterest" class="w-8 h-8" />
+            <img src="/linktree.svg" alt="linktree" class="w-8 h-8" />
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
