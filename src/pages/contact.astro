@@ -11,7 +11,7 @@ import '../styles/global.css';
   <body>
     <main class="min-h-screen w-full relative overflow-hidden">
       <!-- Background gradient exactement comme la maquette -->
-      <div class="absolute inset-0" style="background: linear-gradient(135deg, #e8c4ff 0%, #ffb8d6 20%, #ffe4b8 40%, #d4c4ff 60%, #f0c4ff 80%, #ffb8d6 100%);"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, #C39FE5 0%, #ffffff 100%);"></div>
       
       <!-- Home button top-left avec la flèche et Home exactement comme la maquette -->
       <a href="/" class="absolute top-8 left-8 z-20 hover:opacity-80 transition-opacity">
@@ -86,12 +86,33 @@ import '../styles/global.css';
             </div>
           </div>
 
-          <!-- PARTIE DROITE : Formulaire sur enveloppe/papier -->
+          <!-- PARTIE DROITE : Formulaire sur enveloppe/papier (remplacé par vos images) -->
           <div class="relative" style="transform: rotate(-1deg);">
-            <!-- Enveloppe grise en arrière-plan -->
-            <div class="absolute" style="width: 600px; height: 450px; background: #5a5a5a; border-radius: 12px; top: -20px; left: -30px; box-shadow: 10px 10px 30px rgba(0,0,0,0.3); z-index: 1;"></div>
-            
-            <!-- Fleur rose en haut de l'enveloppe - vous ajouterez votre image -->
+            <!-- Remplacez les src ci-dessous par le chemin de vos images -->
+            <!-- Enveloppe en arrière-plan (image) -->
+            <img
+              src="/envelgrise.webp"
+              alt="enveloppe"
+              class="absolute"
+              style="width: 860px; height: 620px; top: -80px; left: -120px; border-radius: 12px; object-fit: cover; box-shadow: 10px 10px 30px rgba(0,0,0,0.3); z-index: 1;"
+            />
+
+            <!-- Fleur rose en haut de l'enveloppe -->
+            <img
+              src="/fleur-rose.webp"
+              alt="fleur rose"
+              class="absolute"
+              style="top: -40px; left: 20px; width: 100px; z-index: 2;"
+            />
+
+            <!-- Fleur décorative supplémentaire (optionnel) -->
+            <img
+              src="/fleur-jaune.webp"
+              alt="fleur jaune"
+              class="absolute"
+              style="bottom: 10px; right: -40px; width: 90px; z-index: 2;"
+            />
+          </div>
             <!-- <img src="/fleur-rose.webp" alt="flower" class="absolute" style="top: -40px; left: -20px; width: 100px; z-index: 3;" /> -->
             
             <!-- Papier blanc avec lignes de carnet -->
