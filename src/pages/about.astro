@@ -24,26 +24,31 @@ import '../styles/global.css';
       </a>
 
     <!-- Contenu principal -->
-    <div class="relative z-10 flex flex-col items-center gap-16 py-20 px-8">
-      <div class="w-full max-w-7xl" style="max-width:1600px;">
-        <img src="/aboutme.webp" alt="Carte de visite Maelie d'Addario" style="width:100%; height:auto; display:block; max-width:1600px;" />
-      </div>
-    </div>
+    <div class="relative z-10 flex flex-col items-center py-16 px-8" style="gap: 6rem;">
+      
+      <!-- Section 1: Carte de visite avec enveloppe et fleurs -->
+      <div class="relative" style="width: 100%; max-width: 900px;">
+        <!-- Carte de visite -->
+        <div class="relative" style="transform: rotate(-2deg);">
+            <img src="/aboutme.webp" alt="Carte de visite Maelie d'Addario" style="width:150%; max-width:none; display:block; margin-left:-25%; height:auto;" />
+        </div>
+        
 
-        <!-- Section 2: About Me avec photo -->
-        <div class="flex items-start gap-12 max-w-6xl">
+
+      <!-- Section 2: About Me avec photo -->
+      <div class="flex items-start gap-16 w-full" style="max-width: 1100px;">
           <!-- Texte About Me -->
           <div style="flex: 1;">
-            <h1 class="title-font mb-4" style="font-size: 4rem; color: #556b2f; line-height: 1;">
+            <h1 class="title-font" style="font-size: 5rem; color: #000000; line-height: 0.9; margin-bottom: 1.5rem; font-style: italic;">
               About me
             </h1>
-            <p class="mb-2 title-font" style="font-size: 1.2rem; color: #556b2f;">
+            <p class="title-font" style="font-size: 1.1rem; color: #000000; margin-bottom: 1rem;">
               Salut !
             </p>
-            <div style="color: #2d3748; font-size: 0.95rem; line-height: 1.6;">
+            <div style="color: #000000; font-size: 0.9rem; line-height: 1.7;">
               <p class="mb-3">
                 Je suis Maelie d'Addario,<br/>
-                Étudiante en BUT MMI (Métiers du Multimédia et de l'Internet) en 3e année à Toulon.
+                étudiante en cultures en création en tendance et les idées en images.
               </p>
               <p class="mb-3">
                 Entre art, design graphique, web et photographie, je cherche à créer des expériences visuelles à la fois esthétiques et en présentation et en réalisation.
@@ -52,53 +57,35 @@ import '../styles/global.css';
                 Créative, curieuse et toujours prête à apprendre, je suis passionnée par la création visuelle, que ce soit en design graphique ou en photographie.
               </p>
               <p>
-                Je code tout est en un langage mystique, à croire mes collations, je cherche à transformer des données et à rendre des projets à la fois esthétiques et fonctionnels.
+                Je code tout est un langage universel, à travers mes créations, je cherche à transformer l'imagination en visuel et à rendre des projets à la fois esthétiques et fonctionnels.
               </p>
             </div>
-            <p class="mt-6 title-font" style="font-size: 1.3rem; color: #556b2f;">
+            <p class="mt-6 title-font" style="font-size: 1.2rem; color: #000000; font-style: italic;">
               XOXO, Maelie
             </p>
           </div>
 
-          <!-- Photo avec post-it et étoiles -->
-          <div class="relative" style="flex: 0 0 350px;">
-            <!-- Photo -->
-            <div class="relative bg-white p-3 shadow-xl" style="transform: rotate(2deg);">
-              <img src="/photo-maelie.webp" alt="Photo de Maelie" style="width: 100%; height: auto; display: block;" />
+          <!-- Photo avec polaroid -->
+        <div class="relative" style="flex: 0 0 420px; max-width: 420px;">
+            <!-- GIF ajouté -->
+            <div>
+                <img src="/aboutme.gif" alt="GIF décoratif" style="width:100%; max-width:420px; height:auto; display:block; margin:0 auto;" />
             </div>
-            
-            <!-- Post-it vert -->
-            <div class="absolute bg-green-200 p-3 shadow-lg" style="bottom: -40px; right: -30px; width: 120px; transform: rotate(-8deg);">
-              <p style="font-size: 0.7rem; color: #2d3748; text-align: center;">
-                ✨ Créative & Passionnée
-              </p>
-            </div>
+        </div>
 
             <!-- Étoiles décoratives -->
-            <img src="/petitesetoiles.webp" alt="étoiles" class="absolute" style="top: -20px; right: -40px; width: 60px;" />
+            <img src="/petitesetoiles.webp" alt="étoiles" class="absolute" style="top: -30px; right: -50px; width: 70px; opacity: 0.6;" />
           </div>
         </div>
 
-        <!-- Section 3: Formations et Expériences -->
-        <div class="relative max-w-6xl w-full">
-          <!-- Fond de carnet avec spirales -->
-          <div class="relative bg-white rounded-lg p-8 shadow-2xl" style="border: 3px solid #8b7355;">
-            <!-- Spirales à gauche -->
-            <div class="absolute left-4 top-0 bottom-0 flex flex-col justify-around">
-              <div class="w-8 h-8 rounded-full border-4 border-gray-400"></div>
-              <div class="w-8 h-8 rounded-full border-4 border-gray-400"></div>
-              <div class="w-8 h-8 rounded-full border-4 border-gray-400"></div>
-              <div class="w-8 h-8 rounded-full border-4 border-gray-400"></div>
-            </div>
-
-            <!-- Bandes de couleur en haut -->
-            <div class="absolute top-0 left-0 right-0 flex" style="height: 30px;">
-              <div style="flex: 1; background: #e8d4ff;"></div>
-              <div style="flex: 1; background: #d4f4dd;"></div>
-            </div>
-
-            <!-- Contenu du carnet -->
-            <div class="flex gap-8 mt-8 ml-12">
+        <!-- Section 3: Formations et Expériences (Carnet) -->
+        <div class="relative w-full" style="max-width: 1000px;">
+          <div class="relative">
+            <!-- Image du carnet -->
+            <img src="/carnet-about.webp" alt="carnet" style="width: 100%; height: auto; display: block;" />
+            
+            <!-- Contenu superposé sur le carnet -->
+            <div class="absolute inset-0 flex gap-12" style="padding: 5rem 4rem 4rem 5rem;">
               <!-- Colonne Formations -->
               <div style="flex: 1;">
                 <h2 class="title-font mb-4" style="font-size: 2rem; color: #556b2f;">
@@ -164,64 +151,13 @@ import '../styles/global.css';
             </div>
 
             <!-- Trèfle décoratif -->
-            <img src="/fleur-jaune.webp" alt="trèfle" class="absolute" style="bottom: -30px; right: 40px; width: 80px;" />
+            <img src="/carte-visite.webp" alt="trèfle" class="absolute" style="bottom: -30px; right: 40px; width: 80px;" />
             
-            <!-- Post-it violet -->
-            <div class="absolute bg-purple-200 p-3 shadow-lg" style="bottom: -20px; right: -40px; width: 140px; transform: rotate(5deg);">
-              <p style="font-size: 0.75rem; color: #2d3748; font-style: italic;">
-                En constante évolution !
-              </p>
-            </div>
-
-            <!-- Pince -->
-            <img src="/petitesetoiles.webp" alt="pince" class="absolute" style="bottom: -40px; right: 120px; width: 60px; transform: rotate(-15deg);" />
-          </div>
-        </div>
+           
 
         <!-- Section 4: Mes outils (plateaux avec icônes) -->
-        <div class="flex items-center gap-12 max-w-4xl">
-          <!-- Plateaux d'icônes -->
-          <div class="relative">
-            <!-- Plateau supérieur -->
-            <div class="bg-gray-300 rounded-2xl p-6 mb-4 shadow-lg" style="width: 280px; border: 3px solid #6b6b6b;">
-              <div class="grid grid-cols-3 gap-4">
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/behance.svg" alt="Photoshop" style="width: 40px; height: 40px;" />
-                </div>
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/linkedin.svg" alt="Illustrator" style="width: 40px; height: 40px;" />
-                </div>
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/instagram.svg" alt="InDesign" style="width: 40px; height: 40px;" />
-                </div>
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/pinterest.svg" alt="Premiere" style="width: 40px; height: 40px;" />
-                </div>
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/linktree.svg" alt="WordPress" style="width: 40px; height: 40px;" />
-                </div>
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/behance.svg" alt="Figma" style="width: 40px; height: 40px;" />
-                </div>
-              </div>
-            </div>
-
-            <!-- Plateau inférieur -->
-            <div class="bg-gray-300 rounded-2xl p-6 shadow-lg" style="width: 280px; border: 3px solid #6b6b6b;">
-              <div class="grid grid-cols-3 gap-4">
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/linkedin.svg" alt="LinkedIn" style="width: 40px; height: 40px;" />
-                </div>
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/behance.svg" alt="Canva" style="width: 40px; height: 40px;" />
-                </div>
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/instagram.svg" alt="Instagram" style="width: 40px; height: 40px;" />
-                </div>
-                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
-                  <img src="/pinterest.svg" alt="Pinterest" style="width: 40px; height: 40px;" />
-                </div>
-              </div>
+            <div>
+                <img src="/boite-aboutme.webp" alt="boîte" style="width:100%; height:auto; display:block; border-radius:12px;" />
             </div>
 
             <!-- Étoiles décoratives -->
