@@ -1,0 +1,297 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me — Portfolio</title>
+  </head>
+  <body>
+    <main class="min-h-screen w-full relative overflow-hidden">
+      <!-- Background gradient -->
+      <div class="absolute inset-0" style="background: linear-gradient(180deg, #e8d4ff 0%, #f0e8ff 50%, #e8f4ff 100%);"></div>
+      
+      <!-- Home button top-left -->
+      <a href="/" class="absolute top-8 left-8 z-20 hover:opacity-80 transition-opacity">
+        <div class="flex items-center gap-1" style="color: #556b2f;">
+          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+            <path d="M15 10 L25 20 L15 30" stroke="#556b2f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #556b2f;">Home</span>
+        </div>
+      </a>
+
+      <!-- Contenu principal -->
+      <div class="relative z-10 flex flex-col items-center gap-16 py-20 px-8">
+        
+        <!-- Section 1: Carte de visite avec enveloppe -->
+        <div class="relative" style="margin-top: 2rem;">
+          <!-- Enveloppe et cartes empilées -->
+          <div class="relative" style="width: 500px; height: 350px;">
+            <!-- Carte marron en arrière-plan -->
+            <div class="absolute" style="width: 480px; height: 300px; background: #d4a574; border-radius: 8px; top: 40px; left: 10px; transform: rotate(-2deg); box-shadow: 4px 4px 12px rgba(0,0,0,0.2);"></div>
+            
+            <!-- Papier blanc -->
+            <div class="absolute" style="width: 460px; height: 280px; background: white; border-radius: 8px; top: 50px; left: 20px; transform: rotate(1deg); box-shadow: 4px 4px 12px rgba(0,0,0,0.15);"></div>
+            
+            <!-- Enveloppe grise avec carte de visite -->
+            <div class="absolute" style="width: 450px; height: 250px; background: #5a5a5a; border-radius: 8px; top: 20px; left: 25px; transform: rotate(-1deg); box-shadow: 6px 6px 20px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
+              <!-- Ici vous ajouterez votre image de carte de visite -->
+              <div class="bg-gray-700 rounded" style="width: 350px; height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-style: italic;">
+                <!-- Remplacer par votre image -->
+                <img src="/carte-visite.webp" alt="Carte de visite Maelie d'Addario" style="width: 100%; height: 100%; object-fit: contain;" />
+              </div>
+            </div>
+
+            <!-- Fleurs décoratives -->
+            <img src="/fleur-violette.webp" alt="fleur" class="absolute" style="top: -20px; left: -40px; width: 100px; z-index: 10;" />
+            <img src="/fleur-violette.webp" alt="fleur" class="absolute" style="bottom: -30px; right: -30px; width: 90px; z-index: 10;" />
+          </div>
+        </div>
+
+        <!-- Section 2: About Me avec photo -->
+        <div class="flex items-start gap-12 max-w-6xl">
+          <!-- Texte About Me -->
+          <div style="flex: 1;">
+            <h1 class="title-font mb-4" style="font-size: 4rem; color: #556b2f; line-height: 1;">
+              About me
+            </h1>
+            <p class="mb-2 title-font" style="font-size: 1.2rem; color: #556b2f;">
+              Salut !
+            </p>
+            <div style="color: #2d3748; font-size: 0.95rem; line-height: 1.6;">
+              <p class="mb-3">
+                Je suis Maelie d'Addario,<br/>
+                Étudiante en BUT MMI (Métiers du Multimédia et de l'Internet) en 3e année à Toulon.
+              </p>
+              <p class="mb-3">
+                Entre art, design graphique, web et photographie, je cherche à créer des expériences visuelles à la fois esthétiques et en présentation et en réalisation.
+              </p>
+              <p class="mb-3">
+                Créative, curieuse et toujours prête à apprendre, je suis passionnée par la création visuelle, que ce soit en design graphique ou en photographie.
+              </p>
+              <p>
+                Je code tout est en un langage mystique, à croire mes collations, je cherche à transformer des données et à rendre des projets à la fois esthétiques et fonctionnels.
+              </p>
+            </div>
+            <p class="mt-6 title-font" style="font-size: 1.3rem; color: #556b2f;">
+              XOXO, Maelie
+            </p>
+          </div>
+
+          <!-- Photo avec post-it et étoiles -->
+          <div class="relative" style="flex: 0 0 350px;">
+            <!-- Photo -->
+            <div class="relative bg-white p-3 shadow-xl" style="transform: rotate(2deg);">
+              <img src="/photo-maelie.webp" alt="Photo de Maelie" style="width: 100%; height: auto; display: block;" />
+            </div>
+            
+            <!-- Post-it vert -->
+            <div class="absolute bg-green-200 p-3 shadow-lg" style="bottom: -40px; right: -30px; width: 120px; transform: rotate(-8deg);">
+              <p style="font-size: 0.7rem; color: #2d3748; text-align: center;">
+                ✨ Créative & Passionnée
+              </p>
+            </div>
+
+            <!-- Étoiles décoratives -->
+            <img src="/petitesetoiles.webp" alt="étoiles" class="absolute" style="top: -20px; right: -40px; width: 60px;" />
+          </div>
+        </div>
+
+        <!-- Section 3: Formations et Expériences -->
+        <div class="relative max-w-6xl w-full">
+          <!-- Fond de carnet avec spirales -->
+          <div class="relative bg-white rounded-lg p-8 shadow-2xl" style="border: 3px solid #8b7355;">
+            <!-- Spirales à gauche -->
+            <div class="absolute left-4 top-0 bottom-0 flex flex-col justify-around">
+              <div class="w-8 h-8 rounded-full border-4 border-gray-400"></div>
+              <div class="w-8 h-8 rounded-full border-4 border-gray-400"></div>
+              <div class="w-8 h-8 rounded-full border-4 border-gray-400"></div>
+              <div class="w-8 h-8 rounded-full border-4 border-gray-400"></div>
+            </div>
+
+            <!-- Bandes de couleur en haut -->
+            <div class="absolute top-0 left-0 right-0 flex" style="height: 30px;">
+              <div style="flex: 1; background: #e8d4ff;"></div>
+              <div style="flex: 1; background: #d4f4dd;"></div>
+            </div>
+
+            <!-- Contenu du carnet -->
+            <div class="flex gap-8 mt-8 ml-12">
+              <!-- Colonne Formations -->
+              <div style="flex: 1;">
+                <h2 class="title-font mb-4" style="font-size: 2rem; color: #556b2f;">
+                  Formations
+                </h2>
+                <div class="space-y-3" style="font-size: 0.9rem; color: #2d3748;">
+                  <div>
+                    <p class="font-bold">BUT MMI - 3e Année</p>
+                    <p class="text-sm italic">2025 - Aujourd'hui</p>
+                    <p class="text-sm">Parcours Création Numérique et UX/UI Design</p>
+                  </div>
+                  <div>
+                    <p class="font-bold">BUT MMI - 1re Année</p>
+                    <p class="text-sm italic">2024 - 2025</p>
+                    <p class="text-sm">Métiers du Multimédia et de l'Internet</p>
+                  </div>
+                  <div>
+                    <p class="font-bold">Baccalauréat Général</p>
+                    <p class="text-sm italic">2024</p>
+                    <p class="text-sm">3 spécialités en ART, numérique et sciences informatique</p>
+                  </div>
+                </div>
+
+                <h2 class="title-font mb-4 mt-8" style="font-size: 2rem; color: #556b2f;">
+                  Expériences
+                </h2>
+                <div class="space-y-2" style="font-size: 0.85rem; color: #2d3748;">
+                  <p>• Regional références graphistes, sport d'épaules, organisations Visual et créatif</p>
+                  <p>• Éditer, Adobe Suite (Photoshop, Illustrator, Canva)</p>
+                  <p>• Tournage, Vidéo, Montages (FCPX/DaVinci)</p>
+                  <p>• Dev web, HTML, CSS, JavaScript, React, Astro</p>
+                  <p>• graphique, Photo de Page, Communication Visuelle</p>
+                </div>
+              </div>
+
+              <!-- Colonne Expérience Professionnelle -->
+              <div style="flex: 1;">
+                <h2 class="title-font mb-4" style="font-size: 2rem; color: #556b2f;">
+                  Expérience<br/>Professionnelle
+                </h2>
+                <div class="space-y-3" style="font-size: 0.9rem; color: #2d3748;">
+                  <div>
+                    <p class="font-bold">Cameraman</p>
+                    <p class="text-sm">→ Tournage CSG</p>
+                    <p class="text-sm italic">2024</p>
+                    <p class="text-sm">Projet de tournage CSG Bref, à la JSc</p>
+                    <p class="text-sm">du groupe INPOLI</p>
+                  </div>
+                  <div>
+                    <p class="font-bold">Stage en Mac</p>
+                    <p class="text-sm">→ (Maison des Jeunes et de la Culture)</p>
+                    <p class="text-sm italic">2020</p>
+                  </div>
+                  <div>
+                    <p class="font-bold">Animation et montage</p>
+                    <p class="text-sm">→ Radio RCV 99.5 FM</p>
+                    <p class="text-sm italic">2017-2020</p>
+                    <p class="text-sm">Émission "Les babines en l'air" à la radio</p>
+                    <p class="text-sm">RCV (Radio Carnoules)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trèfle décoratif -->
+            <img src="/fleur-jaune.webp" alt="trèfle" class="absolute" style="bottom: -30px; right: 40px; width: 80px;" />
+            
+            <!-- Post-it violet -->
+            <div class="absolute bg-purple-200 p-3 shadow-lg" style="bottom: -20px; right: -40px; width: 140px; transform: rotate(5deg);">
+              <p style="font-size: 0.75rem; color: #2d3748; font-style: italic;">
+                En constante évolution !
+              </p>
+            </div>
+
+            <!-- Pince -->
+            <img src="/petitesetoiles.webp" alt="pince" class="absolute" style="bottom: -40px; right: 120px; width: 60px; transform: rotate(-15deg);" />
+          </div>
+        </div>
+
+        <!-- Section 4: Mes outils (plateaux avec icônes) -->
+        <div class="flex items-center gap-12 max-w-4xl">
+          <!-- Plateaux d'icônes -->
+          <div class="relative">
+            <!-- Plateau supérieur -->
+            <div class="bg-gray-300 rounded-2xl p-6 mb-4 shadow-lg" style="width: 280px; border: 3px solid #6b6b6b;">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/behance.svg" alt="Photoshop" style="width: 40px; height: 40px;" />
+                </div>
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/linkedin.svg" alt="Illustrator" style="width: 40px; height: 40px;" />
+                </div>
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/instagram.svg" alt="InDesign" style="width: 40px; height: 40px;" />
+                </div>
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/pinterest.svg" alt="Premiere" style="width: 40px; height: 40px;" />
+                </div>
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/linktree.svg" alt="WordPress" style="width: 40px; height: 40px;" />
+                </div>
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/behance.svg" alt="Figma" style="width: 40px; height: 40px;" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Plateau inférieur -->
+            <div class="bg-gray-300 rounded-2xl p-6 shadow-lg" style="width: 280px; border: 3px solid #6b6b6b;">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/linkedin.svg" alt="LinkedIn" style="width: 40px; height: 40px;" />
+                </div>
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/behance.svg" alt="Canva" style="width: 40px; height: 40px;" />
+                </div>
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/instagram.svg" alt="Instagram" style="width: 40px; height: 40px;" />
+                </div>
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center shadow">
+                  <img src="/pinterest.svg" alt="Pinterest" style="width: 40px; height: 40px;" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Étoiles décoratives -->
+            <img src="/petitesetoiles.webp" alt="étoiles" class="absolute" style="bottom: -30px; left: -40px; width: 70px;" />
+          </div>
+
+          <!-- Bouton Contacter-Moi avec avion -->
+          <a href="/contact" class="group relative">
+            <div class="bg-purple-200 rounded-full px-8 py-4 shadow-lg hover:scale-105 transition-transform" style="border: 2px solid #9b7fb5;">
+              <span class="title-font" style="font-size: 1.5rem; color: #556b2f;">
+                Contacter-Moi
+              </span>
+            </div>
+            <img src="/avionpapier.webp" alt="avion" class="absolute" style="top: -20px; right: -60px; width: 100px; transform: rotate(-15deg);" />
+          </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-16 text-center">
+          <p class="title-font mb-4" style="font-size: 1.2rem; color: #556b2f; font-style: italic;">
+            "Une image vaut mille mots" - Confucius
+          </p>
+          <div class="flex justify-center gap-4 mb-4">
+            <a href="mailto:maelie@addario.fr" class="hover:opacity-70">
+              <img src="/behance.svg" alt="email" style="width: 32px; height: 32px;" />
+            </a>
+            <a href="https://www.behance.net/" target="_blank" class="hover:opacity-70">
+              <img src="/behance.svg" alt="behance" style="width: 32px; height: 32px;" />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="hover:opacity-70">
+              <img src="/linkedin.svg" alt="linkedin" style="width: 32px; height: 32px;" />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="hover:opacity-70">
+              <img src="/instagram.svg" alt="instagram" style="width: 32px; height: 32px;" />
+            </a>
+            <a href="https://www.pinterest.com/" target="_blank" class="hover:opacity-70">
+              <img src="/pinterest.svg" alt="pinterest" style="width: 32px; height: 32px;" />
+            </a>
+            <a href="https://linktr.ee/" target="_blank" class="hover:opacity-70">
+              <img src="/linktree.svg" alt="linktree" style="width: 32px; height: 32px;" />
+            </a>
+          </div>
+          <img src="/logo.webp" alt="logo" class="mx-auto" style="width: 120px; height: auto;" />
+          <p style="font-size: 0.85rem; color: #556b2f; margin-top: 0.5rem;">
+            Portfolio Maelie d'ADDARIO 2025
+          </p>
+        </div>
+
+      </div>
+    </main>
+  </body>
+</html>

@@ -15,43 +15,53 @@ import '../styles/global.css';
       <!-- optional subtle overlay on small screens to keep contrast -->
       <div class="bg-overlay md:hidden"></div>
 
+      <!-- Custom cursor that follows the mouse (hidden on mobile) -->
+      <img 
+        id="custom-cursor" 
+        src="/souri.webp" 
+        alt="cursor" 
+        class="hidden md:block fixed pointer-events-none z-50" 
+        style="width:5rem; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.25)); transform: rotate(8deg); transition: transform 0.1s ease-out;"
+      />
+
       <!-- DESKTOP: absolute positioned elements (hidden on small screens) -->
       <section class="hidden md:block">
-  <!-- star top-left: large and a bit rotated like the mockup -->
-  <img src="/etoile.webp" alt="star" class="absolute" style="left:6%; top:6%; width:22rem; transform: rotate(-6deg);" />
-  <!-- cursor near the star -->
-  <img src="/souri.webp" alt="cursor" class="absolute" style="left:18%; top:28%; width:6rem; filter: drop-shadow(0 8px 8px rgba(0,0,0,0.25)); transform: rotate(8deg);" />
+  <!-- star top-left: large and a bit rotated like the mockup - clickable link to about page -->
+  <a href="/about" class="draggable absolute hover:scale-110 transition-transform" style="left:6%; top:6%; width:22rem; transform: rotate(-6deg); cursor: move;">
+    <img src="/etoile.webp" alt="star" style="width:100%; pointer-events: none;" />
+  </a>
+  <!-- cursor near the star - REMOVED because we use the custom cursor now -->
 
         <!-- sd card left: centered vertically about 46% from top -->
-        <img src="/carte.webp" alt="sdcard" class="absolute" style="left:10%; top:46%; width:8.5rem;" />
+        <img src="/carte.webp" alt="sdcard" class="draggable absolute" style="left:10%; top:46%; width:8.5rem; cursor: move;" />
 
         <!-- folders cluster center-right: three folders positioned similar to mockup -->
-        <div class="absolute" style="left:58%; top:18%; display:flex; flex-direction:column; align-items:center; gap:0.25rem;">
-          <img src="/dossier.webp" alt="Projets_dART" class="desktop-folder" style="width:5.5rem;" />
-          <span style="font-size:0.75rem; text-align:center;">Projets d'ART</span>
+        <div class="draggable absolute" style="left:58%; top:18%; display:flex; flex-direction:column; align-items:center; gap:0.25rem; cursor: move;">
+          <img src="/dossier.webp" alt="Projets_dART" class="desktop-folder" style="width:5.5rem; pointer-events: none;" />
+          <span style="font-size:0.75rem; text-align:center; pointer-events: none;">Projets d'ART</span>
         </div>
-        <div class="absolute" style="left:68%; top:14%; display:flex; flex-direction:column; align-items:center; gap:0.25rem;">
-          <img src="/dossier.webp" alt="Web_Design" class="desktop-folder" style="width:4.5rem;" />
-          <span style="font-size:0.7rem; text-align:center;">Web Design</span>
+        <div class="draggable absolute" style="left:68%; top:14%; display:flex; flex-direction:column; align-items:center; gap:0.25rem; cursor: move;">
+          <img src="/dossier.webp" alt="Web_Design" class="desktop-folder" style="width:4.5rem; pointer-events: none;" />
+          <span style="font-size:0.7rem; text-align:center; pointer-events: none;">Web Design</span>
         </div>
-        <div class="absolute" style="left:62%; top:28%; display:flex; flex-direction:column; align-items:center; gap:0.25rem;">
-          <img src="/dossier.webp" alt="Projets_Photos" class="desktop-folder" style="width:5rem;" />
-          <span style="font-size:0.75rem; text-align:center;">Projets Photos</span>
+        <div class="draggable absolute" style="left:62%; top:28%; display:flex; flex-direction:column; align-items:center; gap:0.25rem; cursor: move;">
+          <img src="/dossier.webp" alt="Projets_Photos" class="desktop-folder" style="width:5rem; pointer-events: none;" />
+          <span style="font-size:0.75rem; text-align:center; pointer-events: none;">Projets Photos</span>
         </div>
 
         <!-- paper airplane right: lower-right area -->
-        <a href="/contact" class="absolute hover:scale-110 transition-transform" style="right:8%; top:50%; width:12rem; transform: rotate(-8deg);">
-          <img src="/avionpapier.webp" alt="paper plane" style="width:100%;" />
+        <a href="/contact" class="draggable absolute hover:scale-110 transition-transform" style="right:8%; top:50%; width:12rem; transform: rotate(-8deg); cursor: move;">
+          <img src="/avionpapier.webp" alt="paper plane" style="width:100%; pointer-events: none;" />
         </a>
 
         <!-- small decorative stars on right -->
-        <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="right:14%; top:10%; width:3.5rem;" />
+        <img src="/petitesetoiles.webp" alt="stars" class="draggable absolute" style="right:14%; top:10%; width:3.5rem; cursor: move;" />
 
         <!-- center signature and social icons: aligned at about 68% from top -->
-        <div class="absolute" style="left:50%; transform:translateX(-50%); top:68%; display:flex; flex-direction:column; align-items:center; gap:0.6rem;">
-          <img src="/logo.webp" alt="logo" style="width:8.5rem; height:auto;" />
-          <div style="font-size:0.95rem;">maelie@addario.fr</div>
-          <div style="margin-top:0.6rem; display:flex; gap:0.6rem;">
+        <div class="draggable absolute" style="left:50%; transform:translateX(-50%); top:68%; display:flex; flex-direction:column; align-items:center; gap:0.6rem; cursor: move;">
+          <img src="/logo.webp" alt="logo" style="width:8.5rem; height:auto; pointer-events: none;" />
+          <div style="font-size:0.95rem; pointer-events: none;">maelie@addario.fr</div>
+          <div style="margin-top:0.6rem; display:flex; gap:0.6rem; pointer-events: none;">
             <img src="/behance.svg" alt="behance" style="width:2rem; height:2rem;" />
             <img src="/linkedin.svg" alt="linkedin" style="width:2rem; height:2rem;" />
             <img src="/instagram.svg" alt="instagram" style="width:2rem; height:2rem;" />
@@ -61,14 +71,16 @@ import '../styles/global.css';
         </div>
 
         <!-- dock at bottom center -->
-        <div class="absolute" style="left:50%; transform:translateX(-50%); bottom:3.5rem; width:86%; max-width:56rem;">
-          <img src="/macosdock.webp" alt="dock" style="width:100%; height:auto;" />
+        <div class="draggable absolute" style="left:50%; transform:translateX(-50%); bottom:3.5rem; width:86%; max-width:56rem; cursor: move;">
+          <img src="/macosdock.webp" alt="dock" style="width:100%; height:auto; pointer-events: none;" />
         </div>
       </section>
 
       <!-- MOBILE: stacked layout (visible on small screens) -->
       <section class="md:hidden flex flex-col items-center gap-8 py-12 px-6">
-  <img src="/etoile.webp" alt="star" class="w-56" />
+  <a href="/about" class="hover:scale-110 transition-transform">
+    <img src="/etoile.webp" alt="star" class="w-56" />
+  </a>
    <img src="/souri.webp" alt="cursor" class="w-16 -mt-6 drop-shadow-lg" />
   <!-- cursor under star for mobile -->
         <img src="/carte.webp" alt="sdcard" class="w-40" />
@@ -107,5 +119,98 @@ import '../styles/global.css';
         </div>
       </section>
     </main>
+
+    <script>
+      // Script pour faire suivre l'image souri.webp au curseur de la souris
+      const customCursor = document.getElementById('custom-cursor');
+      
+      if (customCursor) {
+        // Cacher le curseur par défaut sur le body
+        document.body.style.cursor = 'none';
+        
+        // Position initiale au centre de l'écran
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        
+        // Suivre le mouvement de la souris
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          
+          // Positionner l'image avec un léger décalage pour que le curseur soit au bon endroit
+          customCursor.style.left = (mouseX - 40) + 'px'; // -40 pour centrer (moitié de 5rem)
+          customCursor.style.top = (mouseY - 40) + 'px';
+        });
+        
+        // Afficher le curseur quand la souris entre dans la page
+        document.addEventListener('mouseenter', () => {
+          customCursor.style.display = 'block';
+        });
+        
+        // Cacher le curseur quand la souris sort de la page
+        document.addEventListener('mouseleave', () => {
+          customCursor.style.display = 'none';
+        });
+      }
+
+      // Script pour rendre les éléments draggables (déplaçables)
+      const draggables = document.querySelectorAll('.draggable');
+      let currentDraggable = null;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      draggables.forEach(draggable => {
+        draggable.addEventListener('mousedown', (e) => {
+          // Ne pas activer le drag si on clique sur un lien (pour permettre la navigation)
+          if (e.target.tagName === 'A' || e.target.closest('a')) {
+            return;
+          }
+          
+          e.preventDefault();
+          currentDraggable = draggable;
+          
+          // Calculer l'offset par rapport à la position de la souris
+          const rect = draggable.getBoundingClientRect();
+          offsetX = e.clientX - rect.left;
+          offsetY = e.clientY - rect.top;
+          
+          // Passer en z-index élevé pendant le drag
+          draggable.style.zIndex = '1000';
+          draggable.style.transition = 'none'; // Désactiver les transitions pendant le drag
+        });
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (currentDraggable) {
+          e.preventDefault();
+          
+          // Calculer la nouvelle position
+          const newLeft = e.clientX - offsetX;
+          const newTop = e.clientY - offsetY;
+          
+          // Appliquer la nouvelle position
+          currentDraggable.style.left = newLeft + 'px';
+          currentDraggable.style.top = newTop + 'px';
+          currentDraggable.style.right = 'auto';
+          currentDraggable.style.bottom = 'auto';
+          currentDraggable.style.transform = currentDraggable.style.transform.replace(/translate[XY]\([^)]*\)/g, '');
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        if (currentDraggable) {
+          currentDraggable.style.zIndex = '';
+          currentDraggable.style.transition = ''; // Réactiver les transitions
+          currentDraggable = null;
+        }
+      });
+
+      // Double-clic pour réinitialiser la position (optionnel)
+      draggables.forEach(draggable => {
+        draggable.addEventListener('dblclick', () => {
+          location.reload(); // Recharge la page pour réinitialiser les positions
+        });
+      });
+    </script>
   </body>
 </html>
