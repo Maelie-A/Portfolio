@@ -24,155 +24,138 @@ import '../styles/global.css';
       </a>
 
       <!-- Petites étoiles décoratives en haut à droite -->
-      <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="top: 12%; right: 12%; width: 4rem; opacity: 0.6;" />
+      <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="top: 10%; right: 18%; width: 3.5rem; opacity: 0.5; z-index: 10;" />
 
       <!-- Petites étoiles décoratives en bas à droite -->
-      <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="bottom: 15%; right: 18%; width: 5rem; opacity: 0.5;" />
+      <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="bottom: 10%; right: 10%; width: 4rem; opacity: 0.5; z-index: 10;" />
 
       <!-- Container principal -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="flex items-center gap-16" style="max-width: 90%; width: 1200px;">
-          
+      <div class="absolute inset-0 flex items-center justify-between" style="padding: 0 5% 0 6%;">
+        
           <!-- PARTIE GAUCHE : Titre, icônes, email et texte -->
-          <div class="flex flex-col gap-6" style="width: 400px;">
+          <div class="relative flex flex-col" style="gap: 1.2rem; max-width: 420px;">
+            <!-- Cercle flou jaune en arrière-plan -->
+            <div class="absolute" style="background: #FBCD0E; border-radius: 50%; filter: blur(60px); opacity: 0.65; width: 500px; height: 500px; top: 50%; left: 10%; transform: translate(-50%, -50%); z-index: 0;"></div>
+            
             <!-- Titre Contacter-Moi -->
-            <h1 class="title-font" style="font-size: 3.5rem; color: #556b2f; line-height: 1; margin-bottom: 0.5rem;">
+            <h1 class="title-font relative z-10" style="font-size: 4.8rem; color: #000000; line-height: 0.9; font-style: italic;">
               Contacter-Moi
             </h1>
             
-            <!-- Icônes sociales avec fond jaune -->
-            <div class="flex gap-3">
+            <!-- Icônes sociales -->
+            <div class="relative z-10 flex" style="gap: 0.8rem;">
               <a href="https://www.behance.net/" target="_blank" class="hover:scale-110 transition-transform">
-                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
-                  <img src="/behance.svg" alt="behance" class="w-7 h-7" />
-                </div>
+                <img src="/behance.svg" alt="behance" style="width: 2.8rem; height: 2.8rem;" />
               </a>
               <a href="https://www.linkedin.com/" target="_blank" class="hover:scale-110 transition-transform">
-                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
-                  <img src="/linkedin.svg" alt="linkedin" class="w-7 h-7" />
-                </div>
+                <img src="/linkedin.svg" alt="linkedin" style="width: 2.8rem; height: 2.8rem;" />
               </a>
               <a href="https://www.instagram.com/" target="_blank" class="hover:scale-110 transition-transform">
-                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
-                  <img src="/instagram.svg" alt="instagram" class="w-7 h-7" />
-                </div>
+                <img src="/instagram.svg" alt="instagram" style="width: 2.8rem; height: 2.8rem;" />
               </a>
               <a href="https://www.pinterest.com/" target="_blank" class="hover:scale-110 transition-transform">
-                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
-                  <img src="/pinterest.svg" alt="pinterest" class="w-7 h-7" />
-                </div>
+                <img src="/pinterest.svg" alt="pinterest" style="width: 2.8rem; height: 2.8rem;" />
               </a>
               <a href="https://linktr.ee/" target="_blank" class="hover:scale-110 transition-transform">
-                <div class="w-12 h-12 bg-yellow-300 rounded-lg flex items-center justify-center border-2 border-gray-800">
-                  <img src="/linktree.svg" alt="linktree" class="w-7 h-7" />
-                </div>
+                <img src="/linktree.svg" alt="linktree" style="width: 2.8rem; height: 2.8rem;" />
               </a>
             </div>
 
             <!-- Email souligné -->
-            <a href="mailto:maelie@addario.fr" class="underline hover:opacity-70 transition-opacity" style="font-size: 1.1rem; color: #556b2f; font-family: 'Courier New', monospace; text-decoration-thickness: 2px;">
+            <a href="mailto:maelie@addario.fr" class="relative z-10 underline hover:opacity-70 transition-opacity" style="font-size: 1rem; color: #000000; font-family: 'Courier New', monospace; text-decoration-thickness: 2px;">
               maelie@addario.fr
             </a>
 
-            <!-- Texte sur fond jaune -->
-            <div class="relative" style="margin-top: 1rem;">
-              <div class="bg-yellow-200 p-4 rounded-lg" style="max-width: 320px; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);">
-                <p style="color: #2d3748; font-size: 0.9rem; line-height: 1.4;">
-                  Je suis pratiquement partout. Alors, n'hésitez pas à choisir le mode de communication qui vous convient.
-                </p>
-              </div>
-              <!-- Fleur décorative sous le texte - vous ajouterez votre image -->
-              <!-- <img src="/fleur-jaune.webp" alt="flower" class="absolute" style="bottom: -40px; left: -20px; width: 80px;" /> -->
+            <!-- Texte -->
+            <div class="relative z-10">
+              <p style="color: #000000; font-size: 0.95rem; line-height: 1.5;">
+                Je suis pratiquement partout. Alors, n'hésitez pas à choisir le mode de communication qui vous convient.
+              </p>
             </div>
           </div>
 
-          <!-- PARTIE DROITE : Formulaire sur enveloppe/papier (remplacé par vos images) -->
-          <div class="relative" style="transform: rotate(-1deg);">
-            <!-- Remplacez les src ci-dessous par le chemin de vos images -->
-            <!-- Enveloppe en arrière-plan (image) -->
+          <!-- PARTIE DROITE : Formulaire sur enveloppe/papier -->
+          <div class="relative" style="transform: rotate(-3deg);">
+            
+            <!-- Enveloppe en arrière-plan -->
             <img
               src="/envelgrise.webp"
               alt="enveloppe"
               class="absolute"
-              style="width: 860px; height: 620px; top: -80px; left: -120px; border-radius: 12px; object-fit: cover; box-shadow: 10px 10px 30px rgba(0,0,0,0.3); z-index: 1;"
+              style="width: 700px; height: auto; top: -80px; left: -100px; object-fit: contain; z-index: 1;"
             />
 
-            <!-- Fleur rose en haut de l'enveloppe -->
+            <!-- Fleur rose en haut -->
             <img
               src="/fleur-rose.webp"
               alt="fleur rose"
               class="absolute"
-              style="top: -40px; left: 20px; width: 100px; z-index: 2;"
+              style="top: -65px; left: 20px; width: 110px; z-index: 4;"
             />
 
-            <!-- Fleur décorative supplémentaire (optionnel) -->
+            <!-- Fleur violette en bas droite -->
+            <img
+              src="/fleur-violette.webp"
+              alt="fleur violette"
+              class="absolute"
+              style="bottom: 15px; right: -50px; width: 110px; z-index: 4;"
+            />
+
+            <!-- Fleur jaune en bas gauche -->
             <img
               src="/fleur-jaune.webp"
               alt="fleur jaune"
               class="absolute"
-              style="bottom: 10px; right: -40px; width: 90px; z-index: 2;"
+              style="bottom: -15px; left: 30px; width: 100px; z-index: 4;"
             />
-          </div>
-            <!-- <img src="/fleur-rose.webp" alt="flower" class="absolute" style="top: -40px; left: -20px; width: 100px; z-index: 3;" /> -->
             
-            <!-- Papier blanc avec lignes de carnet -->
-            <div class="relative bg-white" style="width: 550px; padding: 2.5rem; border-radius: 8px; box-shadow: 6px 6px 20px rgba(0,0,0,0.2); z-index: 2; background-image: repeating-linear-gradient(transparent, transparent 34px, #e0e0e0 34px, #e0e0e0 35px);">
+            <!-- Papier avec formulaire -->
+            <div class="relative" style="width: 500px; z-index: 2;">
+              <img src="/papier.webp" alt="papier" style="width: 100%; height: auto; display: block;" />
               
-              <!-- Trombone -->
-              <div class="absolute" style="top: -15px; right: 80px; z-index: 3;">
-                <svg width="50" height="100" viewBox="0 0 50 100">
-                  <path d="M25 15 C25 10, 30 10, 30 15 L30 70 C30 85, 15 85, 15 70 L15 25" stroke="#b0b0b0" stroke-width="4" fill="none" stroke-linecap="round"/>
-                </svg>
+              <div class="absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; max-width: 420px;">
+                <!-- Titre du formulaire -->
+                <h2 class="text-center title-font" style="font-size: 1.6rem; color: #000000; font-style: italic; margin-bottom: 1.2rem;">
+                  Laissez un message rapide
+                </h2>
+
+                <!-- Formulaire -->
+                <form class="flex flex-col" style="gap: 1rem;">
+                  <!-- Input Email -->
+                  <input 
+                    type="email" 
+                    placeholder="Votre email" 
+                    class="px-3 py-2 rounded-lg focus:outline-none"
+                    style="border: 2px solid #c8a2e0; background: #f3e8ff; font-size: 0.9rem;"
+                    required
+                  />
+                  
+                  <!-- Textarea Message -->
+                  <textarea 
+                    placeholder="Message" 
+                    rows="3"
+                    class="px-3 py-2 rounded-lg focus:outline-none resize-none"
+                    style="border: 2px solid #c8a2e0; background: #f3e8ff; font-size: 0.9rem;"
+                    required
+                  ></textarea>
+
+                  <!-- Texte et bouton avion -->
+                  <div class="flex flex-col items-end" style="gap: 0.3rem; margin-top: 0.5rem;">
+                    <p class="text-right title-font" style="font-size: 0.85rem; color: #000000; line-height: 1.2; font-style: italic;">
+                      Pour envoyer votre message<br/>cliquer ici :
+                    </p>
+                    <button 
+                      type="submit"
+                      class="hover:scale-110 transition-transform"
+                    >
+                      <img src="/avionpapier.webp" alt="send" style="width: 100px;" />
+                    </button>
+                  </div>
+                </form>
               </div>
-
-              <!-- Titre du formulaire -->
-              <h2 class="text-center mb-6 title-font" style="font-size: 1.8rem; color: #556b2f;">
-                Laissez un message rapide
-              </h2>
-
-              <!-- Formulaire -->
-              <form class="flex flex-col gap-5">
-                <!-- Input Email -->
-                <input 
-                  type="email" 
-                  placeholder="Votre email" 
-                  class="px-4 py-3 rounded-lg focus:outline-none"
-                  style="border: 2px solid #d8b4fe; background: #f3e8ff;"
-                  required
-                />
-                
-                <!-- Textarea Message -->
-                <textarea 
-                  placeholder="Message" 
-                  rows="5"
-                  class="px-4 py-3 rounded-lg focus:outline-none resize-none"
-                  style="border: 2px solid #d8b4fe; background: #f3e8ff;"
-                  required
-                ></textarea>
-
-                <!-- Texte et bouton avion -->
-                <div class="flex flex-col items-end gap-2 mt-2">
-                  <p class="text-right title-font" style="font-size: 1rem; color: #556b2f; line-height: 1.3;">
-                    Pour envoyer votre message<br/>cliquer ici :
-                  </p>
-                  <button 
-                    type="submit"
-                    class="hover:scale-110 transition-transform"
-                  >
-                    <img src="/avionpapier.webp" alt="send" style="width: 100px;" />
-                  </button>
-                </div>
-              </form>
-
-              <!-- Fleur violette en bas à droite du papier - vous ajouterez votre image -->
-              <!-- <img src="/fleur-violette.webp" alt="flower" class="absolute" style="bottom: -30px; right: -30px; width: 90px; z-index: 3;" /> -->
             </div>
 
-            <!-- Fleur jaune en bas à gauche de l'enveloppe - vous ajouterez votre image -->
-            <!-- <img src="/fleur-jaune2.webp" alt="flower" class="absolute" style="bottom: 20px; left: -60px; width: 85px; z-index: 3;" /> -->
           </div>
-
-        </div>
       </div>
     </main>
   </body>

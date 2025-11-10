@@ -41,3 +41,33 @@ body {
 .signature {
   font-family: "Kapakana", "Brush Script MT", cursive;
 }
+
+/* Effet hover sur les icônes sociales */
+.social-icon,
+.social-icon-mobile {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover,
+.social-icon-mobile:hover {
+  transform: scale(1.3);
+}
+
+.social-icon::before,
+.social-icon-mobile::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.social-icon:hover::before,
+.social-icon-mobile:hover::before {
+  opacity: 1;
+}
