@@ -30,125 +30,93 @@ import '../styles/global.css';
       <img src="/petitesetoiles.webp" alt="stars" class="absolute" style="bottom: 10%; right: 10%; width: 4rem; opacity: 0.5; z-index: 10;" />
 
       <!-- Container principal -->
-      <div class="absolute inset-0 flex items-center justify-between" style="padding: 0 5% 0 6%;">
+      <div class="absolute inset-0 flex items-center justify-between" style="padding: 0 8% 0 10%;">
         
           <!-- PARTIE GAUCHE : Titre, icônes, email et texte -->
-          <div class="relative flex flex-col" style="gap: 1.2rem; max-width: 420px;">
+          <div class="relative flex flex-col" style="gap: 1rem; max-width: 380px;">
             <!-- Cercle flou jaune en arrière-plan -->
-            <div class="absolute" style="background: #FBCD0E; border-radius: 50%; filter: blur(60px); opacity: 0.65; width: 500px; height: 500px; top: 50%; left: 10%; transform: translate(-50%, -50%); z-index: 0;"></div>
+            <div class="absolute" style="background: #FBCD0E; border-radius: 50%; filter: blur(70px); opacity: 0.6; width: 480px; height: 480px; top: 45%; left: 12%; transform: translate(-50%, -50%); z-index: 0;"></div>
             
             <!-- Titre Contacter-Moi -->
-            <h1 class="title-font relative z-10" style="font-size: 4.8rem; color: #000000; line-height: 0.9; font-style: italic;">
+            <h1 class="title-font relative z-10" style="font-size: 4.2rem; color: #000000; line-height: 0.85; font-style: italic; margin-bottom: 0.5rem;">
               Contacter-Moi
             </h1>
             
             <!-- Icônes sociales -->
-            <div class="relative z-10 flex" style="gap: 0.8rem;">
+            <div class="relative z-10 flex" style="gap: 0.7rem;">
               <a href="https://www.behance.net/" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/behance.svg" alt="behance" style="width: 2.8rem; height: 2.8rem;" />
+                <img src="/behance.svg" alt="behance" style="width: 2.5rem; height: 2.5rem;" />
               </a>
               <a href="https://www.linkedin.com/" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/linkedin.svg" alt="linkedin" style="width: 2.8rem; height: 2.8rem;" />
+                <img src="/linkedin.svg" alt="linkedin" style="width: 2.5rem; height: 2.5rem;" />
               </a>
               <a href="https://www.instagram.com/" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/instagram.svg" alt="instagram" style="width: 2.8rem; height: 2.8rem;" />
+                <img src="/instagram.svg" alt="instagram" style="width: 2.5rem; height: 2.5rem;" />
               </a>
               <a href="https://www.pinterest.com/" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/pinterest.svg" alt="pinterest" style="width: 2.8rem; height: 2.8rem;" />
+                <img src="/pinterest.svg" alt="pinterest" style="width: 2.5rem; height: 2.5rem;" />
               </a>
               <a href="https://linktr.ee/" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/linktree.svg" alt="linktree" style="width: 2.8rem; height: 2.8rem;" />
+                <img src="/linktree.svg" alt="linktree" style="width: 2.5rem; height: 2.5rem;" />
               </a>
             </div>
 
             <!-- Email souligné -->
-            <a href="mailto:maelie@addario.fr" class="relative z-10 underline hover:opacity-70 transition-opacity" style="font-size: 1rem; color: #000000; font-family: 'Courier New', monospace; text-decoration-thickness: 2px;">
+            <a href="mailto:maelie@addario.fr" class="relative z-10 underline hover:opacity-70 transition-opacity" style="font-size: 0.95rem; color: #000000; font-family: 'Courier New', monospace; text-decoration-thickness: 2px; margin-top: 0.3rem;">
               maelie@addario.fr
             </a>
 
             <!-- Texte -->
-            <div class="relative z-10">
-              <p style="color: #000000; font-size: 0.95rem; line-height: 1.5;">
+            <div class="relative z-10" style="margin-top: 0.5rem;">
+              <p style="color: #000000; font-size: 0.88rem; line-height: 1.5; max-width: 340px;">
                 Je suis pratiquement partout. Alors, n'hésitez pas à choisir le mode de communication qui vous convient.
               </p>
             </div>
           </div>
 
-          <!-- PARTIE DROITE : Formulaire sur enveloppe/papier -->
-          <div class="relative" style="transform: rotate(-3deg);">
-            
-            <!-- Enveloppe en arrière-plan -->
-            <img
-              src="/envelgrise.webp"
-              alt="enveloppe"
-              class="absolute"
-              style="width: 700px; height: auto; top: -80px; left: -100px; object-fit: contain; z-index: 1;"
-            />
-
-            <!-- Fleur rose en haut -->
-            <img
-              src="/fleur-rose.webp"
-              alt="fleur rose"
-              class="absolute"
-              style="top: -65px; left: 20px; width: 110px; z-index: 4;"
-            />
-
-            <!-- Fleur violette en bas droite -->
-            <img
-              src="/fleur-violette.webp"
-              alt="fleur violette"
-              class="absolute"
-              style="bottom: 15px; right: -50px; width: 110px; z-index: 4;"
-            />
-
-            <!-- Fleur jaune en bas gauche -->
-            <img
-              src="/fleur-jaune.webp"
-              alt="fleur jaune"
-              class="absolute"
-              style="bottom: -15px; left: 30px; width: 100px; z-index: 4;"
-            />
+          <!-- PARTIE DROITE : Formulaire -->
+          <div class="relative" style="transform: rotate(-2.5deg);">
             
             <!-- Papier avec formulaire -->
-            <div class="relative" style="width: 500px; z-index: 2;">
-              <img src="/papier.webp" alt="papier" style="width: 100%; height: auto; display: block;" />
+            <div class="relative" style="width: 1000px; z-index: 2;">
+              <img src="/formulaire-contact.webp" alt="papier formulaire" style="width: 100%; height: auto; display: block; transform: translateX(80px);" />
               
-              <div class="absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; max-width: 420px;">
+              <div class="absolute" style="top: 40%; left: 50%; transform: translate(-50%, -50%); width: 82%; max-width: 450px;">
                 <!-- Titre du formulaire -->
-                <h2 class="text-center title-font" style="font-size: 1.6rem; color: #000000; font-style: italic; margin-bottom: 1.2rem;">
+                <h2 class="text-center title-font" style="font-size: 1.7rem; color: #000000; font-style: italic; margin-bottom: 1.5rem;">
                   Laissez un message rapide
                 </h2>
 
                 <!-- Formulaire -->
-                <form class="flex flex-col" style="gap: 1rem;">
+                <form class="flex flex-col" style="gap: 1.2rem;">
                   <!-- Input Email -->
                   <input 
                     type="email" 
                     placeholder="Votre email" 
-                    class="px-3 py-2 rounded-lg focus:outline-none"
-                    style="border: 2px solid #c8a2e0; background: #f3e8ff; font-size: 0.9rem;"
+                    class="px-4 py-2.5 rounded-lg focus:outline-none"
+                    style="border: 2px solid #c8a2e0; background: #f3e8ff; font-size: 0.95rem;"
                     required
                   />
                   
                   <!-- Textarea Message -->
                   <textarea 
                     placeholder="Message" 
-                    rows="3"
-                    class="px-3 py-2 rounded-lg focus:outline-none resize-none"
-                    style="border: 2px solid #c8a2e0; background: #f3e8ff; font-size: 0.9rem;"
+                    rows="4"
+                    class="px-4 py-2.5 rounded-lg focus:outline-none resize-none"
+                    style="border: 2px solid #c8a2e0; background: #f3e8ff; font-size: 0.95rem;"
                     required
                   ></textarea>
 
                   <!-- Texte et bouton avion -->
-                  <div class="flex flex-col items-end" style="gap: 0.3rem; margin-top: 0.5rem;">
-                    <p class="text-right title-font" style="font-size: 0.85rem; color: #000000; line-height: 1.2; font-style: italic;">
+                  <div class="flex flex-col items-end" style="gap: 0.4rem; margin-top: 0.5rem;">
+                    <p class="text-right title-font" style="font-size: 0.9rem; color: #000000; line-height: 1.2; font-style: italic;">
                       Pour envoyer votre message<br/>cliquer ici :
                     </p>
                     <button 
                       type="submit"
                       class="hover:scale-110 transition-transform"
                     >
-                      <img src="/avionpapier.webp" alt="send" style="width: 100px;" />
+                      <img src="/avionpapier.webp" alt="send" style="width: 110px;" />
                     </button>
                   </div>
                 </form>
@@ -157,6 +125,49 @@ import '../styles/global.css';
 
           </div>
       </div>
+
+      <!-- Footer -->
+      <footer class="relative z-20 py-8 px-8">
+        <div class="flex flex-col items-center gap-4">
+          <!-- Nœud décoratif -->
+          <img src="/noeud.webp" alt="nœud" style="width: 80px; height: auto; opacity: 0.8;" />
+          
+          <!-- Citation -->
+          <p class="title-font text-center" style="font-size: 1.2rem; color: #000000; font-style: italic; max-width: 600px;">
+            "Une image vaut mille mots" Confucius
+          </p>
+          
+          <!-- Icônes sociales -->
+          <div class="flex gap-4">
+            <a href="mailto:maelie@addario.fr" class="hover:scale-110 transition-transform">
+              <img src="/email-icon.svg" alt="email" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.behance.net/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/behance.svg" alt="behance" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/linkedin.svg" alt="linkedin" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/instagram.svg" alt="instagram" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.pinterest.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/pinterest.svg" alt="pinterest" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://linktr.ee/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/linktree.svg" alt="linktree" style="width: 40px; height: 40px;" />
+            </a>
+          </div>
+          
+          <!-- Logo -->
+          <img src="/logo.webp" alt="Maelie Addario logo" style="width: 130px; height: auto; margin-top: 0.5rem;" />
+          
+          <!-- Texte Portfolio -->
+          <p style="font-size: 0.85rem; color: #000000;">
+            Portfolio-Maëlie ADDARIO-2025
+          </p>
+        </div>
+      </footer>
     </main>
   </body>
 </html>
