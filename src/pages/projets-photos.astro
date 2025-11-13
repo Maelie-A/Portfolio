@@ -63,32 +63,32 @@ import '../styles/global.css';
           </h3>
 
           <!-- Bande de polaroids horizontale -->
-          <div class="flex gap-6 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
-            <div class="flex flex-col items-center gap-2">
-              <img src="/polaroid-1.webp" alt="Le jardin de la mémoire" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Le jardin de la mémoire</p>
-              <p style="font-size: 0.7rem; text-align: center;">Musée Martin Lausse</p>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <img src="/polaroid-2.webp" alt="Photo profil" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Photo profil</p>
-              <p style="font-size: 0.7rem; text-align: center;">Sur la pleine de vue avec</p>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <img src="/polaroid-3.webp" alt="Villargue recel" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Villargue recel</p>
-              <p style="font-size: 0.7rem; text-align: center;">Barcelona avec petit marchoise</p>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <img src="/polaroid-4.webp" alt="Fleurs à colombor" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Fleurs à colombor</p>
-              <p style="font-size: 0.7rem; text-align: center;">Musée Maëlis ADDARIO</p>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <img src="/polaroid-5.webp" alt="Borgne marseille" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Borgne marseille</p>
-              <p style="font-size: 0.7rem; text-align: center;">Dans L'étoilette Pleine une vile</p>
-            </div>
+          <div class="flex gap-8 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
+            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('jardin')">
+              <img src="/polaroid-1.webp" alt="Le jardin de la mémoire" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
+              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Le jardin de la mémoire</p>
+              <p style="font-size: 1rem; text-align: center;">Musée Martin Lausse</p>
+            </button>
+            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('profil')">
+              <img src="/polaroid-2.webp" alt="Photo profil" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
+              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Photo profil</p>
+              <p style="font-size: 1rem; text-align: center;">Sur la pleine de vue avec</p>
+            </button>
+            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('villargue')">
+              <img src="/polaroid-3.webp" alt="Villargue recel" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
+              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Villargue recel</p>
+              <p style="font-size: 1rem; text-align: center;">Barcelona avec petit marchoise</p>
+            </button>
+            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('fleurs')">
+              <img src="/polaroid-4.webp" alt="Fleurs à colombor" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
+              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Fleurs à colombor</p>
+              <p style="font-size: 1rem; text-align: center;">Musée Maëlis ADDARIO</p>
+            </button>
+            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('marseille')">
+              <img src="/polaroid-5.webp" alt="Borgne marseille" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
+              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Borgne marseille</p>
+              <p style="font-size: 1rem; text-align: center;">Dans L'étoilette Pleine une vile</p>
+            </button>
           </div>
         </div>
 
@@ -110,6 +110,15 @@ import '../styles/global.css';
           <img src="/appareil-photo.gif" alt="appareil photo animé" style="width: 300px; height: auto; flex-shrink: 0;" />
         </div>
 
+      </div>
+
+      <!-- Modal pour afficher les détails des projets -->
+      <div id="projectModal" class="hidden fixed inset-0 z-50 flex items-center justify-center" style="background: rgba(0, 0, 0, 0.8);">
+        <div class="relative bg-white rounded-lg p-8 max-w-4xl max-h-[90vh] overflow-y-auto" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <button onclick="closeModal()" class="absolute top-4 right-4 text-4xl hover:opacity-70 transition-opacity" style="color: #000000;">&times;</button>
+          
+          <div id="modalContent"></div>
+        </div>
       </div>
 
       <!-- Footer -->
@@ -154,11 +163,81 @@ import '../styles/global.css';
           </p>
           
           <!-- Liens mentions légales et politique de confidentialité -->
-          <div class="flex gap-4 mt-3">
-            <a href="/mentions-legales" class="hover:underline transition-all" style="font-size: 0.8rem; color: #000000;">
-              Mentions légales
-            </a>
-            <span style="color: #000000;">•</span>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      const projectData = {
+        jardin: {
+          title: "Le jardin de la mémoire",
+          subtitle: "Musée Martin Lausse",
+          description: "Une exploration photographique de la mémoire et du temps à travers les jardins du Musée Martin Lausse. Ce projet capture l'essence des souvenirs figés dans la nature, où chaque plante, chaque pierre raconte une histoire.",
+          images: ["/polaroid-1.webp", "/polaroid-1.webp", "/polaroid-1.webp"]
+        },
+        profil: {
+          title: "Photo profil",
+          subtitle: "Sur la pleine de vue avec",
+          description: "Série de portraits photographiques réalisés en plein air, capturant l'authenticité et l'émotion des personnes dans leur environnement naturel. Jeu de lumière et de perspectives pour révéler la personnalité de chaque sujet.",
+          images: ["/polaroid-2.webp", "/polaroid-2.webp", "/polaroid-2.webp"]
+        },
+        villargue: {
+          title: "Villargue recel",
+          subtitle: "Barcelona avec petit marchoise",
+          description: "Reportage photographique des marchés de Barcelone, immortalisant la vie quotidienne, les couleurs vibrantes et l'atmosphère unique des petits commerces. Un voyage visuel au cœur de la culture catalane.",
+          images: ["/polaroid-3.webp", "/polaroid-3.webp", "/polaroid-3.webp"]
+        },
+        fleurs: {
+          title: "Fleurs à colombor",
+          subtitle: "Musée Maëlis ADDARIO",
+          description: "Collection photographique centrée sur la beauté des fleurs et leur symbolisme. Chaque cliché révèle les détails délicats, les textures et les nuances de couleurs qui rendent chaque fleur unique.",
+          images: ["/polaroid-4.webp", "/polaroid-4.webp", "/polaroid-4.webp"]
+        },
+        marseille: {
+          title: "Borgne marseille",
+          subtitle: "Dans L'étoilette Pleine une vile",
+          description: "Exploration urbaine de Marseille à travers un regard photographique unique. Ce projet documente la vie dans les quartiers, les ruelles cachées et l'âme authentique de la cité phocéenne.",
+          images: ["/polaroid-5.webp", "/polaroid-5.webp", "/polaroid-5.webp"]
+        }
+      };
+
+      function openModal(projectId) {
+        const modal = document.getElementById('projectModal');
+        const content = document.getElementById('modalContent');
+        const project = projectData[projectId];
+
+        content.innerHTML = `
+          <h2 class="title-font mb-2" style="font-size: 2.5rem; color: #000000; font-style: italic;">${project.title}</h2>
+          <p class="mb-6" style="font-size: 1.2rem; color: #666;">${project.subtitle}</p>
+          
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            ${project.images.map(img => `
+              <img src="${img}" alt="${project.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+            `).join('')}
+          </div>
+          
+          <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">${project.description}</p>
+        `;
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('projectModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Fermer le modal en cliquant en dehors du contenu
+      document.getElementById('projectModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>     <span style="color: #000000;">•</span>
             <a href="/politique-confidentialite" class="hover:underline transition-all" style="font-size: 0.8rem; color: #000000;">
               Politique de confidentialité
             </a>
