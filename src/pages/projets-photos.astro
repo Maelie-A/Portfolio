@@ -1,0 +1,159 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Images brutes & Montées — Portfolio</title>
+  </head>
+  <body>
+    <main class="min-h-screen w-full relative overflow-hidden" style="background: linear-gradient(180deg, #f4d4e8 0%, #e8d4f4 50%, #d4e8f4 100%);">
+      
+      <!-- Home button top-left -->
+      <a href="/" class="absolute top-6 left-6 z-20 hover:opacity-80 transition-opacity">
+        <div class="flex items-center gap-1" style="color: #000000;">
+          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+            <path d="M15 10 L25 20 L15 30" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #000000;">Home</span>
+        </div>
+      </a>
+
+      <!-- Contenu principal -->
+      <div class="relative z-10 flex flex-col items-center py-12 px-8">
+        
+        <!-- Section 1: Carte SD avec titre -->
+        <div  class="relative w-full mb-7" style="width:80vw; max-width:80vw; margin-left: calc(50% - 60.5vw); margin-right: calc(50% - 47.5vw); margin-top: -5rem;">
+          <img src="/photo-hero.webp" alt="Carte SD Images brutes & montées" style="width: 100%; height: auto; display: block;" />
+        </div>
+
+        <!-- Section 2: Images brutes y montées (texte + description) -->
+        <div class="w-full max-w-5xl mb-12">
+          <h2 class="title-font mb-6" style="font-size: 2.8rem; color: #000000; font-style: italic; text-align: center;">
+            Images brutes y montées
+          </h2>
+          
+          <div style="font-size: 0.9rem; color: #000000; line-height: 1.8; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <p class="mb-4">
+              Cette page regroupe mes projets d'arte et ma passion photographique réalisés.
+            </p>
+            <p class="mb-4">
+              Images Brutes comprend mes voyages et reportages ainsi avec Photos via dans : Montreal Justifie l'impression avec Photos (Barcelona, Justification de l'impression son archive, Représentez les scènes Personnel Photographe), et plus présent photographiée dans mon Vida, avec leur accès photos prises avec l'Aide, dans ces scène photographies ont vie dans la revue avec ou des actions Photographe.
+            </p>
+            <p class="mb-4">
+              Photos avec pour les mettre diablements, photos naturelles portraits vocaler de l'TON, dans leur accor photographies avec vie photos vue les des détails décor, composition, l'évole.
+            </p>
+            <p class="mb-4">
+              À travers ces catalogues, je cherche à raconter des histoires, capter des moments et à faire passer des émotions. Des portraits intimes aux paysages grandioses, chaque Photographe raconte sa propre narrativ Photographic & le décor, l'évole des personnages.
+            </p>
+          </div>
+
+          <!-- Bouton Mon Profprok -->
+          <div class="flex justify-center mb-8">
+            <button class="bg-pink-300 hover:bg-pink-400 transition-colors px-8 py-3 rounded-full shadow-lg" style="border: 2px solid #d4a57a; font-size: 1.1rem; color: #000000; font-style: italic;">
+              Mon Profprok
+            </button>
+          </div>
+
+          <!-- Section: Explorez les projets en cliquant sur les polaroids -->
+          <h3 class="title-font text-center mb-8" style="font-size: 2rem; color: #000000; font-style: italic;">
+            Explorez les projets en cliquant sur les polaroids.
+          </h3>
+
+          <!-- Bande de polaroids horizontale -->
+          <div class="flex gap-6 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
+            <div class="flex flex-col items-center gap-2">
+              <img src="/polaroid-1.webp" alt="Le jardin de la mémoire" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Le jardin de la mémoire</p>
+              <p style="font-size: 0.7rem; text-align: center;">Musée Martin Lausse</p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <img src="/polaroid-2.webp" alt="Photo profil" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Photo profil</p>
+              <p style="font-size: 0.7rem; text-align: center;">Sur la pleine de vue avec</p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <img src="/polaroid-3.webp" alt="Villargue recel" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Villargue recel</p>
+              <p style="font-size: 0.7rem; text-align: center;">Barcelona avec petit marchoise</p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <img src="/polaroid-4.webp" alt="Fleurs à colombor" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Fleurs à colombor</p>
+              <p style="font-size: 0.7rem; text-align: center;">Musée Maëlis ADDARIO</p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <img src="/polaroid-5.webp" alt="Borgne marseille" style="width: 160px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+              <p class="title-font" style="font-size: 0.85rem; text-align: center; font-style: italic;">Borgne marseille</p>
+              <p style="font-size: 0.7rem; text-align: center;">Dans L'étoilette Pleine une vile</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Carnet ouvert "Barcelone & memories" -->
+         <div class="relative w-full mb-12" style="max-width: 90rem;">
+          <img src="/carnet-photo.webp" alt="carnet projets" style="width: 100%; height: auto; display: block;" />
+        </div>
+
+          <!-- Section 4: Galerie photo encadrés avec photo centrale (full-bleed) -->
+        <div class="relative w-full mb-12" style="max-width: 90rem;">
+          <div style="width:100vw; max-width:100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);">
+            <img src="/photos-barcelone.webp" alt="galerie" style="width:100%; height:auto; display:block;" />
+          </div>
+        </div>
+
+        <!-- Section 4: Galerie de photos sur appareil photo rose -->
+        <div class="relative w-full max-w-6xl mb-12 flex items-center gap-8">
+          <img src="/portugal.webp" alt="appareil photo galerie" style="width: 100%; height: auto; display: block; flex: 1; margin-left: calc(50% - 50vw); margin-right: auto; margin-top: -10rem;" />
+          <img src="/appareil-photo.gif" alt="appareil photo animé" style="width: 300px; height: auto; flex-shrink: 0;" />
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="relative z-20 py-8 px-8">
+        <div class="flex flex-col items-center gap-4">
+          <!-- Nœud décoratif -->
+          <img src="/noeud.webp" alt="nœud" style="width: 80px; height: auto; opacity: 0.8;" />
+          
+          <!-- Citation -->
+          <p class="title-font text-center" style="font-size: 1.2rem; color: #000000; font-style: italic; max-width: 600px;">
+            "Une image vaut mille mots" Confucius
+          </p>
+          
+          <!-- Icônes sociales -->
+          <div class="flex gap-4">
+            <a href="mailto:maelie@addario.fr" class="hover:scale-110 transition-transform">
+              <img src="/email-icon.svg" alt="email" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.behance.net/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/behance.svg" alt="behance" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/linkedin.svg" alt="linkedin" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/instagram.svg" alt="instagram" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.pinterest.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/pinterest.svg" alt="pinterest" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://linktr.ee/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/linktree.svg" alt="linktree" style="width: 40px; height: 40px;" />
+            </a>
+          </div>
+          
+          <!-- Logo -->
+          <img src="/logo.webp" alt="Maelie Addario logo" style="width: 130px; height: auto; margin-top: 0.5rem;" />
+          
+          <!-- Texte Portfolio -->
+          <p style="font-size: 0.85rem; color: #000000;">
+            Portfolio-Maëlie ADDARIO-2025
+          </p>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
