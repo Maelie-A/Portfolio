@@ -25,48 +25,58 @@ import '../styles/global.css';
       <div class="relative z-10 flex flex-col items-center py-12 px-8">
         
         <!-- Section 1: Bannière avec titre -->
-        <div class="relative w-full max-w-5xl mb-12">
+        <div class="relative w-full mb-7" style="width:90vw; max-width:90vw; margin-left: calc(50% - 47.5vw); margin-right: calc(50% - 47.5vw); margin-top: -3rem;">
           <img src="/art-hero.webp" alt="Projets d'Art" style="width: 100%; height: auto; display: block;" />
         </div>
 
         <!-- Section 2: Mes projets artistiques (texte + bande d'images) -->
         <div class="w-full max-w-5xl mb-12">
           <h2 class="title-font mb-4" style="font-size: 2.5rem; color: #000000; font-style: italic;">
-            Mes projets artistiques
+        Mes projets artistiques
           </h2>
           <p style="font-size: 0.9rem; color: #000000; line-height: 1.7; margin-bottom: 2rem; max-width: 800px;">
-            Collectionné concernant une part la vue sous le cachet de l'état et créer construit-là, figura le montrent mes tableaux : des détails et des supports classiques sont facilités dans la scolarité de vie comme ainsi que dans caractère leur tableau, en plein coeur d'une planète d'exposition aux concours à l'unanime du jury d'art, des plus jeunes, Regimanion, etc.
+        Collectionné concernant une part la vue sous le cachet de l'état et créer construit-là, figura le montrent mes tableaux : des détails et des supports classiques sont facilités dans la scolarité de vie comme ainsi que dans caractère leur tableau, en plein coeur d'une planète d'exposition aux concours à l'unanime du jury d'art, des plus jeunes, Regimanion, etc.
           </p>
           <p style="font-size: 0.9rem; color: #000000; line-height: 1.7; margin-bottom: 2rem; max-width: 800px;">
-            En complète, les années d'arts ainsi avec le caractère, L'ongle expert ravi et un artiste, l'original et raisonn qui la Séquidère. Ce catalogue offre d'eux quelques art-power personnellement et techniquement pleine et l'art les déco souvent bien réussie, et personnel mes facules, & ce notamment etc.
+        En complète, les années d'arts ainsi avec le caractère, L'ongle expert ravi et un artiste, l'original et raisonn qui la Séquidère. Ce catalogue offre d'eux quelques art-power personnellement et techniquement pleine et l'art les déco souvent bien réussie, et personnel mes facules, & ce notamment etc.
           </p>
           <p style="font-size: 0.9rem; color: #000000; line-height: 1.7; margin-bottom: 2rem; max-width: 800px;">
-            À cha leur regard, j'ai réellement a la malévolente de différente nos personnages et à mes étais communs, des autres différences du plaidant de tous caractère, texte, l'on nécessaires en d'élégues autour de l'algua, l'éveil des programmes et soignaix campanole de l'algua l'éveil.
+        À cha leur regard, j'ai réellement a la malévolente de différente nos personnages et à mes étais communs, des autres différences du plaidant de tous caractère, texte, l'on nécessaires en d'élégues autour de l'algua, l'éveil des programmes et soignaix campanole de l'algua l'éveil.
           </p>
 
           <!-- Bouton Voir le portfolio complet -->
           <button class="bg-yellow-300 hover:bg-yellow-400 transition-colors px-6 py-3 rounded-full shadow-lg" style="border: 2px solid #8b7355; font-size: 1rem; color: #000000; font-style: italic;">
-            Voir le portfolio complet
+        Voir le portfolio complet
           </button>
+        </div>
 
-          <!-- Bande d'images horizontale -->
-          <div class="flex gap-3 mt-8 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
-            <img src="/polaroid-1.webp" alt="projet 1" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
-            <img src="/polaroid-2.webp" alt="projet 2" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
-            <img src="/polaroid-3.webp" alt="projet 3" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
-            <img src="/polaroid-4.webp" alt="projet 4" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
-            <img src="/polaroid-5.webp" alt="projet 5" style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" />
-             </div>
+        <!-- Banniere pleine largeur (full-bleed) -->
+        <div class="w-full mb-12">
+          <div style="width:100vw; max-width:100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);">
+        <video
+          src="/banniere-art.mov"
+          autoplay
+          controls
+          playsinline
+          muted
+          loop
+          style="width:100%; height:auto; display:block;"
+        >
+          Votre navigateur ne prend pas en charge la lecture de la vidéo. <a href="/projets-art.mov">Télécharger la vidéo</a>
+        </video>
+          </div>
         </div>
 
         <!-- Section 3: Carnet ouvert avec projets préférés -->
-        <div class="relative w-full max-w-5xl mb-12">
+        <div class="relative w-full mb-12" style="max-width: 90rem;">
           <img src="/carnet-art.webp" alt="carnet projets" style="width: 100%; height: auto; display: block;" />
         </div>
 
-        <!-- Section 4: Galerie de tableaux encadrés avec photo centrale -->
-        <div class="relative w-full max-w-6xl mb-12">
-          <img src="/gallerie-art.webp" alt="galerie" style="width: 100%; height: auto; display: block;" />
+        <!-- Section 4: Galerie de tableaux encadrés avec photo centrale (full-bleed) -->
+        <div class="w-full mb-12">
+          <div style="width:100vw; max-width:100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);">
+        <img src="/gallerie-art.webp" alt="galerie" style="width:100%; height:auto; display:block;" />
+          </div>
         </div>
 
       </div>
