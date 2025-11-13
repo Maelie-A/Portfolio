@@ -1,0 +1,230 @@
+---
+import '../../styles/global.css';
+import PocketBase from 'pocketbase';
+
+const { id } = Astro.params;
+const pb = new PocketBase('http://127.0.0.1:8090');
+
+// Récupérer le projet spécifique
+let projet: any = null;
+let error = null;
+
+try {
+  projet = await pb.collection('Projets').getOne(id as string);
+  console.log('Projet récupéré:', projet);
+} catch (err) {
+  console.error('Erreur lors de la récupération du projet:', err);
+  error = err;
+}
+
+// Fonction pour obtenir l'URL complète d'une image
+function getImageUrl(record: any, filename: string) {
+  if (!filename) return '';
+  return `http://127.0.0.1:8090/api/files/${record.collectionId}/${record.id}/${filename}`;
+}
+
+// Si le projet n'existe pas, rediriger vers la page design-graphique
+if (!projet) {
+  return Astro.redirect('/design-graphique');
+}
+
+// Récupérer toutes les images de la galerie
+const galerieImages = projet.gallerie_images || [];
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{projet.Nom_projet} — Portfolio</title>
+  </head>
+  <body>
+    <main class="min-h-screen w-full relative overflow-hidden" style="background: linear-gradient(180deg, #f4bebe 0%, #f4d4d4 50%, #e8bebe 100%);">
+      
+      <!-- Bouton retour -->
+      <a href="/design-graphique" class="absolute top-6 left-6 z-20 hover:opacity-80 transition-opacity">
+        <div class="flex items-center gap-1" style="color: #000000;">
+          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+            <path d="M15 10 L25 20 L15 30" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #000000;">Retour</span>
+        </div>
+      </a>
+
+      <!-- Contenu principal -->
+      <div class="relative z-10 flex flex-col items-center py-16 px-8">
+        
+        <!-- Titre du projet -->
+        <h1 class="title-font text-center mb-8" style="font-size: 4rem; color: #000000; font-style: italic;">
+          {projet.Nom_projet}
+        </h1>
+
+        <!-- Slogan si disponible -->
+        {projet.Slogan && (
+          <p class="text-center mb-12" style="font-size: 1.5rem; color: #333; font-style: italic; max-width: 700px;">
+            "{projet.Slogan}"
+          </p>
+        )}
+
+        <!-- Section avec CD ouvert et fermé -->
+        <div class="flex gap-12 mb-12 items-center justify-center">
+          {projet.cd_ferme && (
+            <div class="flex flex-col items-center gap-3">
+              <img 
+                src={getImageUrl(projet, projet.cd_ferme)} 
+                alt={`${projet.Nom_projet} - CD fermé`} 
+                style="width: 300px; height: 300px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);" 
+              />
+              <p style="font-size: 1rem; color: #000;">CD Fermé</p>
+            </div>
+          )}
+          
+          {projet.cd_ouvert && (
+            <div class="flex flex-col items-center gap-3">
+              <img 
+                src={getImageUrl(projet, projet.cd_ouvert)} 
+                alt={`${projet.Nom_projet} - CD ouvert`} 
+                style="width: 300px; height: 300px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);" 
+              />
+              <p style="font-size: 1rem; color: #000;">CD Ouvert</p>
+            </div>
+          )}
+        </div>
+
+        <!-- Description complète -->
+        {projet.description_complete && (
+          <div class="w-full max-w-4xl mb-12 bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
+            <h2 class="title-font mb-4" style="font-size: 2rem; color: #000000; font-style: italic;">
+              À propos du projet
+            </h2>
+            <div style="font-size: 1.1rem; color: #333; line-height: 1.8; white-space: pre-line;">
+              {projet.description_complete}
+            </div>
+          </div>
+        )}
+
+        <!-- Description courte si pas de description complète -->
+        {!projet.description_complete && projet.description_courte && (
+          <div class="w-full max-w-4xl mb-12 bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
+            <p style="font-size: 1.1rem; color: #333; line-height: 1.8;">
+              {projet.description_courte}
+            </p>
+          </div>
+        )}
+
+        <!-- Technologies utilisées -->
+        {projet.Technologies && projet.Technologies.length > 0 && (
+          <div class="w-full max-w-4xl mb-12">
+            <h3 class="title-font text-center mb-6" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+              Technologies utilisées
+            </h3>
+            <div class="flex flex-wrap gap-3 justify-center">
+              {projet.Technologies.map((tech: string) => (
+                <span class="px-6 py-2 bg-white bg-opacity-90 rounded-full shadow-md" style="font-size: 1rem; color: #333;">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Galerie d'images -->
+        {galerieImages.length > 0 && (
+          <div class="w-full max-w-5xl mb-12">
+            <h3 class="title-font text-center mb-8" style="font-size: 2rem; color: #000000; font-style: italic;">
+              Galerie
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {galerieImages.map((image: string) => (
+                <img 
+                  src={getImageUrl(projet, image)} 
+                  alt={`${projet.Nom_projet} - Image galerie`}
+                  style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer;"
+                  class="hover:scale-105 transition-transform"
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Liens (Figma, Siteweb, etc.) -->
+        {projet.Lien_figma_siteweb_autre && (
+          <div class="mb-12">
+            <a 
+              href={projet.Lien_figma_siteweb_autre} 
+              target="_blank"
+              class="px-8 py-3 bg-white bg-opacity-90 rounded-full shadow-lg hover:scale-105 transition-transform"
+              style="font-size: 1.1rem; color: #000; text-decoration: none; display: inline-block;"
+            >
+              🔗 Voir le projet en ligne
+            </a>
+          </div>
+        )}
+
+        <!-- Tag du projet -->
+        {projet.tag && (
+          <div class="mb-8">
+            <span class="px-6 py-2 bg-purple-200 rounded-full" style="font-size: 0.9rem; color: #666;">
+              #{projet.tag}
+            </span>
+          </div>
+        )}
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="relative z-20 py-12 px-8" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, #C39FE5 100%);">
+        <div class="flex flex-col items-center gap-3">
+          <!-- Nœud décoratif -->
+          <img src="/noeud.webp" alt="nœud" style="width: 240px; height: auto; opacity: 0.9;" />
+          
+          <!-- Citation -->
+          <p class="title-font text-center" style="font-size: 2rem; color: #000000; font-style: italic; max-width: 650px; margin-bottom: 0.5rem;">
+            "Une image vaut mille mots" Confucius
+          </p>
+          
+          <!-- Icônes sociales -->
+          <div class="flex gap-3 mb-2">
+            <a href="mailto:maelie@addario.fr" class="hover:scale-110 transition-transform">
+              <img src="/mail.svg" alt="email" style="width: 50px; height: 50px;" />
+            </a>
+            <a href="https://www.behance.net/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/behance.svg" alt="behance" style="width: 50px; height: 50px;" />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/linkedin.svg" alt="linkedin" style="width: 50px; height: 50px;" />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/instagram.svg" alt="instagram" style="width: 50px; height: 50px;" />
+            </a>
+            <a href="https://www.pinterest.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/pinterest.svg" alt="pinterest" style="width: 50px; height: 50px;" />
+            </a>
+            <a href="https://linktr.ee/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/linktree.svg" alt="linktree" style="width: 50px; height: 50px;" />
+            </a>
+          </div>
+          
+          <!-- Logo -->
+          <img src="/logo.webp" alt="Maelie Addario logo" style="width: 150px; height: auto; margin-top: 0.3rem; margin-bottom: 0.3rem;" />
+          
+          <!-- Texte Portfolio -->
+          <p style="font-size: 0.9rem; color: #000000;">
+            Portfolio-Maëlie ADDARIO-2025
+          </p>
+          
+          <!-- Liens mentions légales et politique de confidentialité -->
+          <div class="flex gap-4 mt-3">
+            <a href="/mentions-legales" class="hover:underline transition-all" style="font-size: 0.8rem; color: #000000;">
+              Mentions légales
+            </a>
+            <span style="color: #000000;">•</span>
+            <a href="/politique-confidentialite" class="hover:underline transition-all" style="font-size: 0.8rem; color: #000000;">
+              Politique de confidentialité
+            </a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
