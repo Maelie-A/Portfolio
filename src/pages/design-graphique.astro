@@ -1,0 +1,137 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Graphique — Portfolio</title>
+  </head>
+  <body>
+    <main class="min-h-screen w-full relative overflow-hidden" style="background: linear-gradient(180deg, #f4bebe 0%, #f4d4d4 50%, #e8bebe 100%);">
+      
+      <!-- Home button top-left -->
+      <a href="/" class="absolute top-6 left-6 z-20 hover:opacity-80 transition-opacity">
+        <div class="flex items-center gap-1" style="color: #000000;">
+          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+            <path d="M15 10 L25 20 L15 30" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #000000;">Home</span>
+        </div>
+      </a>
+
+      <!-- Contenu principal -->
+      <div class="relative z-10 flex flex-col items-center py-12 px-8">
+        
+        <!-- Section 1: Hero avec fenêtre navigateur "Design Graphique" -->
+        <div class="relative w-full mb-7" style="width:80vw; max-width:80vw; margin-left: calc(50% - 60.5vw); margin-right: calc(50% - 47.5vw); margin-top: -5rem;">
+          <img src="/design-hero.webp" alt="Design Graphique" style="width: 100%; height: auto; display: block;" />
+        </div>
+
+        <!-- Section 2: Design Graphique (texte + description avec fenêtre Eco Denim) -->
+        <div class="w-full max-w-6xl mb-12 flex gap-12 items-start">
+          <!-- Colonne gauche: texte -->
+          <div style="flex: 1;">
+            <h2 class="title-font mb-6" style="font-size: 2.8rem; color: #000000; font-style: italic;">
+              Design Graphique
+            </h2>
+            
+            <div style="font-size: 0.9rem; color: #000000; line-height: 1.8; max-width: 600px;">
+              <p class="mb-4">
+                Design graphique regroupe mes projets liés au graphisme, affiches, direction artistique, identité visuelle, création de logos, affichess, flyers et maquettes.
+              </p>
+              <p class="mb-4">
+                J'aime jouer sur les formes, les couleurs et les typographies pour donner vie à des idées et à l'équipe visellement un.
+              </p>
+              <p class="mb-4">
+                Je créer ou mettre en avant leurs projets coup de cœur, que je présenterai ent un graphique dans les réalisons suivantes.
+              </p>
+              <p class="mb-4">
+                À chaque projet, j'apporte une approche créative et à l'art caractère et personnalité, pour donner aux visuels caractère et l'identité, je cherche aussi à aller au-delà du simple aspect esthétique et sens.
+              </p>
+            </div>
+          </div>
+
+          <!-- Colonne droite: fenêtre avec Eco Denim -->
+          <div style="flex: 0 0 450px;">
+            <img src="/design.gif" alt="Eco Denim" style="width: 100%; height: auto; display: block; box-shadow: 0 8px 20px rgba(0,0,0,0.15);" />
+          </div>
+        </div>
+
+        <!-- Section 3: Explorez les projets en cliquant sur les pochettes -->
+        <div class="w-full max-w-5xl mb-12">
+          <h3 class="title-font text-center mb-8" style="font-size: 2rem; color: #000000; font-style: italic;">
+            Explorez les projets en cliquant sur les pochettes.
+          </h3>
+
+          <!-- Bande de pochettes CD horizontale -->
+          <div class="flex gap-6 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
+            <div class="flex flex-col items-center gap-2">
+              <img src="/cd-ecodenim.webp" alt="Eco Denim" style="width: 180px; height: 180px; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
+              <p class="title-font" style="font-size: 0.9rem; text-align: center; font-style: italic;">Eco Denim</p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <img src="/cd-faclink.webp" alt="Fac Link" style="width: 180px; height: 180px; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
+              <p class="title-font" style="font-size: 0.9rem; text-align: center; font-style: italic;">Fac Link</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Projet bonus (affiches inclinées) -->
+        <div class="w-full max-w-5xl mb-12">
+          <h3 class="title-font text-center mb-8" style="font-size: 2.5rem; color: #000000; font-style: italic;">
+            Projet bonus...
+          </h3>
+          <div class="flex justify-center">
+            <img src="/affiches-bonus.webp" alt="Affiches projet bonus" style="width: 100%; max-width: 600px; height: auto; display: block;" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="relative z-20 py-8 px-8">
+        <div class="flex flex-col items-center gap-4">
+          <!-- Nœud décoratif -->
+          <img src="/noeud.webp" alt="nœud" style="width: 80px; height: auto; opacity: 0.8;" />
+          
+          <!-- Citation -->
+          <p class="title-font text-center" style="font-size: 1.2rem; color: #000000; font-style: italic; max-width: 600px;">
+            "Une image vaut mille mots" Confucius
+          </p>
+          
+          <!-- Icônes sociales -->
+          <div class="flex gap-4">
+            <a href="mailto:maelie@addario.fr" class="hover:scale-110 transition-transform">
+              <img src="/email-icon.svg" alt="email" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.behance.net/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/behance.svg" alt="behance" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/linkedin.svg" alt="linkedin" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/instagram.svg" alt="instagram" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://www.pinterest.com/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/pinterest.svg" alt="pinterest" style="width: 40px; height: 40px;" />
+            </a>
+            <a href="https://linktr.ee/" target="_blank" class="hover:scale-110 transition-transform">
+              <img src="/linktree.svg" alt="linktree" style="width: 40px; height: 40px;" />
+            </a>
+          </div>
+          
+          <!-- Logo -->
+          <img src="/logo.webp" alt="Maelie Addario logo" style="width: 130px; height: auto; margin-top: 0.5rem;" />
+          
+          <!-- Texte Portfolio -->
+          <p style="font-size: 0.85rem; color: #000000;">
+            Portfolio-Maëlie ADDARIO-2025
+          </p>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
