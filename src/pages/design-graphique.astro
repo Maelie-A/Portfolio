@@ -1,11 +1,12 @@
 ---
 import '../styles/global.css';
 import PocketBase from 'pocketbase';
+import ProjetCard from '../components/ProjetCard.astro';
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
 // Récupérer tous les projets
-let projets = [];
+let projets: any[] = [];
 try {
   projets = await pb.collection('Projets').getFullList({
     sort: '-created',
@@ -86,28 +87,33 @@ function getImageUrl(record: any, filename: string) {
           </h3>
 
           <!-- Bande de pochettes CD horizontale -->
-          <div class="flex gap-6 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
+          <div class="flex gap-8 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
             {projets.length > 0 ? (
               projets.map((projet) => (
-                <a href={`/projet/${projet.id}`} class="flex flex-col items-center gap-2 hover:scale-105 transition-transform cursor-pointer">
-                  <img 
-                    src={getImageUrl(projet, projet.cd_ferme)} 
-                    alt={projet.Nom_projet} 
-                    style="width: 220px; height: 220px; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" 
-                  />
-                  <p class="title-font" style="font-size: 1.1rem; text-align: center; font-style: italic;">{projet.Nom_projet}</p>
-                </a>
+                <ProjetCard
+                  id={projet.id}
+                  imageUrl={getImageUrl(projet, projet.cd_ferme)}
+                  titre={projet.Nom_projet}
+                  collectionId={projet.collectionId}
+                  recordId={projet.id}
+                />
               ))
             ) : (
-              <div class="flex gap-6">
-                <div class="flex flex-col items-center gap-2">
-                  <img src="/cd-ecodenim.webp" alt="Eco Denim" style="width: 220px; height: 220px; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
-                  <p class="title-font" style="font-size: 1.1rem; text-align: center; font-style: italic;">Eco Denim</p>
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                  <img src="/cd-faclink.webp" alt="Fac Link" style="width: 220px; height: 220px; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
-                  <p class="title-font" style="font-size: 1.1rem; text-align: center; font-style: italic;">Fac Link</p>
-                </div>
+              <div class="flex gap-8">
+                <ProjetCard
+                  id="demo1"
+                  imageUrl="/cd-ecodenim.webp"
+                  titre="Eco Denim"
+                  collectionId="demo"
+                  recordId="demo1"
+                />
+                <ProjetCard
+                  id="demo2"
+                  imageUrl="/cd-faclink.webp"
+                  titre="Fac Link"
+                  collectionId="demo"
+                  recordId="demo2"
+                />
               </div>
             )}
           </div>

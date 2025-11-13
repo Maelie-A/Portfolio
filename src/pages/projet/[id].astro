@@ -2,20 +2,29 @@
 import '../../styles/global.css';
 import PocketBase from 'pocketbase';
 
-const { id } = Astro.params;
-const pb = new PocketBase('http://127.0.0.1:8090');
-
-// Récupérer le projet spécifique
-let projet: any = null;
-let error = null;
-
-try {
-  projet = await pb.collection('Projets').getOne(id as string);
-  console.log('Projet récupéré:', projet);
-} catch (err) {
-  console.error('Erreur lors de la récupération du projet:', err);
-  error = err;
+// Fonction requise pour générer les routes statiques
+export async function getStaticPaths() {
+  const pb = new PocketBase('http://127.0.0.1:8090');
+  
+  try {
+    const projets = await pb.collection('Projets').getFullList({
+      sort: '-created',
+    });
+    
+    console.log('Génération des routes pour', projets.length, 'projets');
+    
+    return projets.map((projet: any) => ({
+      params: { id: projet.id },
+      props: { projet },
+    }));
+  } catch (error) {
+    console.error('Erreur lors de la récupération des projets:', error);
+    return [];
+  }
 }
+
+// Récupérer le projet depuis les props
+const { projet } = Astro.props;
 
 // Fonction pour obtenir l'URL complète d'une image
 function getImageUrl(record: any, filename: string) {
@@ -23,13 +32,8 @@ function getImageUrl(record: any, filename: string) {
   return `http://127.0.0.1:8090/api/files/${record.collectionId}/${record.id}/${filename}`;
 }
 
-// Si le projet n'existe pas, rediriger vers la page design-graphique
-if (!projet) {
-  return Astro.redirect('/design-graphique');
-}
-
 // Récupérer toutes les images de la galerie
-const galerieImages = projet.gallerie_images || [];
+const galerieImages = projet?.gallerie_images || [];
 ---
 
 <html lang="fr">
@@ -37,6 +41,35 @@ const galerieImages = projet.gallerie_images || [];
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{projet.Nom_projet} — Portfolio</title>
+    <style>
+      /* Styles pour le contenu HTML des descriptions */
+      .projet-content p {
+        margin-bottom: 1.2rem;
+      }
+      .projet-content ul {
+        list-style: disc;
+        margin-left: 1.5rem;
+        margin-bottom: 1.2rem;
+      }
+      .projet-content li {
+        margin-bottom: 0.8rem;
+        line-height: 1.8;
+      }
+      .projet-content strong {
+        font-weight: 600;
+        color: #000;
+      }
+      .projet-content em {
+        font-style: italic;
+      }
+      .projet-content a {
+        color: #8b5cf6;
+        text-decoration: underline;
+      }
+      .projet-content a:hover {
+        opacity: 0.8;
+      }
+    </style>
   </head>
   <body>
     <main class="min-h-screen w-full relative overflow-hidden" style="background: linear-gradient(180deg, #f4bebe 0%, #f4d4d4 50%, #e8bebe 100%);">
@@ -91,24 +124,25 @@ const galerieImages = projet.gallerie_images || [];
           )}
         </div>
 
-        <!-- Description complète -->
-        {projet.description_complete && (
-          <div class="w-full max-w-4xl mb-12 bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
-            <h2 class="title-font mb-4" style="font-size: 2rem; color: #000000; font-style: italic;">
-              À propos du projet
+        <!-- Description courte -->
+        {projet.description_courte && (
+          <div class="w-full max-w-4xl mb-8 bg-white bg-opacity-90 rounded-lg p-8 shadow-lg">
+            <h2 class="title-font mb-4" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+              Présentation
             </h2>
-            <div style="font-size: 1.1rem; color: #333; line-height: 1.8; white-space: pre-line;">
-              {projet.description_complete}
-            </div>
+            <p style="font-size: 1.05rem; color: #444; line-height: 1.8; white-space: pre-line;">
+              {projet.description_courte}
+            </p>
           </div>
         )}
 
-        <!-- Description courte si pas de description complète -->
-        {!projet.description_complete && projet.description_courte && (
-          <div class="w-full max-w-4xl mb-12 bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
-            <p style="font-size: 1.1rem; color: #333; line-height: 1.8;">
-              {projet.description_courte}
-            </p>
+        <!-- Description complète -->
+        {projet.description_complete && (
+          <div class="w-full max-w-4xl mb-12 bg-white bg-opacity-95 rounded-lg p-8 shadow-lg">
+            <h2 class="title-font mb-6" style="font-size: 2rem; color: #000000; font-style: italic;">
+              Détails du projet
+            </h2>
+            <div class="projet-content" style="font-size: 1.05rem; color: #333; line-height: 1.8;" set:html={projet.description_complete} />
           </div>
         )}
 
