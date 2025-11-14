@@ -1,11 +1,9 @@
 ---
 import '../../styles/global.css';
-import PocketBase from 'pocketbase';
+import pb from '../../utils/pb';
 
 // Fonction requise pour générer les routes statiques
 export async function getStaticPaths() {
-  const pb = new PocketBase('http://127.0.0.1:8090');
-  
   try {
     const projets = await pb.collection('Projets').getFullList({
       sort: '-created',
@@ -29,7 +27,7 @@ const { projet } = Astro.props;
 // Fonction pour obtenir l'URL complète d'une image
 function getImageUrl(record: any, filename: string) {
   if (!filename) return '';
-  return `http://127.0.0.1:8090/api/files/${record.collectionId}/${record.id}/${filename}`;
+  return `${pb.baseUrl}/api/files/${record.collectionId}/${record.id}/${filename}`;
 }
 
 // Récupérer toutes les images de la galerie

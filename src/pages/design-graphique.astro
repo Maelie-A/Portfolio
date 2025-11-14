@@ -17,7 +17,7 @@ try {
 // Fonction pour obtenir l'URL complète d'une image
 function getImageUrl(record: any, filename: string) {
   if (!filename) return '/cd-ecodenim.webp'; // Image par défaut
-  return `http://127.0.0.1:8090/api/files/${record.collectionId}/${record.id}/${filename}`;
+  return `${pb.baseUrl}/api/files/${record.collectionId}/${record.id}/${filename}`;
 }
 ---
 
