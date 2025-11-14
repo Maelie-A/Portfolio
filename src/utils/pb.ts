@@ -7,7 +7,7 @@ if (import.meta.env.MODE === "development") {
   path = "http://localhost:8090"; // localhost = machine de dev
 } else {
   // En production, utiliser l'URL HTTPS de PocketBase
-  path = "https://portfolio.maelie-addario.fr/_";
+  path = "https://portfolio.maelie-addario.fr";
 }
 
 const pb = new PocketBase(path) as TypedPocketBase;
