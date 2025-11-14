@@ -2,27 +2,29 @@
 import '../../styles/global.css';
 import pb from '../../utils/pb';
 
-// Fonction requise pour générer les routes statiques
-export async function getStaticPaths() {
-  try {
-    const projets = await pb.collection('Projets').getFullList({
-      sort: '-created',
-    });
-    
-    console.log('Génération des routes pour', projets.length, 'projets');
-    
-    return projets.map((projet: any) => ({
-      params: { id: projet.id },
-      props: { projet },
-    }));
-  } catch (error) {
-    console.error('Erreur lors de la récupération des projets:', error);
-    return [];
+// Récupérer l'ID du projet depuis les params de l'URL
+const { id } = Astro.params;
+
+// Récupérer le projet depuis PocketBase
+let projet: any = null;
+let errorMessage = '';
+
+try {
+  if (id) {
+    projet = await pb.collection('Projets').getOne(id);
+    console.log('Projet récupéré:', projet?.Nom_projet);
+  } else {
+    errorMessage = 'ID du projet manquant';
   }
+} catch (error: any) {
+  console.error('Erreur lors de la récupération du projet:', error);
+  errorMessage = error.message || 'Projet introuvable';
 }
 
-// Récupérer le projet depuis les props
-const { projet } = Astro.props;
+// Si le projet n'existe pas, rediriger ou afficher une erreur
+if (!projet) {
+  return Astro.redirect('/design-graphique');
+}
 
 // Fonction pour obtenir l'URL complète d'une image
 function getImageUrl(record: any, filename: string) {
