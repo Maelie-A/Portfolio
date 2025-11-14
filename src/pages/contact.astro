@@ -130,102 +130,96 @@ import '../styles/global.css';
       </div>
     </main>
 
-    <script is:inline>
-      // Import PocketBase depuis CDN
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/pocketbase@0.21.5/dist/pocketbase.umd.js';
-      script.onload = function() {
-        const pb = new PocketBase('http://127.0.0.1:8090');
+    <script>
+      import pb from '../utils/pb';
 
-        // Gestion du formulaire
-        const form = document.getElementById('contactForm');
-        const statusMessage = document.getElementById('statusMessage');
-        const submitBtn = document.getElementById('submitBtn');
+      // Gestion du formulaire
+      const form = document.getElementById('contactForm') as HTMLFormElement;
+      const statusMessage = document.getElementById('statusMessage') as HTMLElement;
+      const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
 
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-          const emailInput = document.getElementById('emailInput');
-          const messageInput = document.getElementById('messageInput');
+        const emailInput = document.getElementById('emailInput') as HTMLInputElement;
+        const messageInput = document.getElementById('messageInput') as HTMLTextAreaElement;
 
-          const email = emailInput.value.trim();
-          const message = messageInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
 
-          if (!email || !message) {
-            showMessage('Veuillez remplir tous les champs', 'error');
-            return;
-          }
-
-          // Désactiver le bouton pendant l'envoi
-          submitBtn.disabled = true;
-          submitBtn.style.opacity = '0.5';
-
-          try {
-            console.log('Tentative d\'envoi vers PocketBase...');
-            console.log('URL:', pb.baseUrl);
-            console.log('Collection: Message');
-            console.log('Données:', { mail: email, Message: message });
-
-            // Essayer de créer directement sans authentification
-            const record = await pb.collection('Message').create({
-              mail: email,
-              Message: message
-            });
-
-            console.log('✅ Message enregistré avec succès:', record);
-            showMessage('Message envoyé avec succès ! ✈️', 'success');
-            
-            // Réinitialiser le formulaire
-            form.reset();
-          } catch (error) {
-            console.error('❌ Erreur complète:', error);
-            console.error('❌ Status:', error.status);
-            console.error('❌ Response:', error.response);
-            console.error('❌ Data:', error.data);
-            
-            // Message d'erreur plus détaillé
-            let errorMsg = 'Erreur: ';
-            if (error.status === 404) {
-              errorMsg = 'Collection "Message" introuvable. Vérifiez le nom dans PocketBase.';
-            } else if (error.status === 403) {
-              errorMsg = 'Accès refusé. Vérifiez les règles API de la collection.';
-            } else if (error.data) {
-              errorMsg += JSON.stringify(error.data);
-            } else {
-              errorMsg += error.message || 'Erreur inconnue';
-            }
-            
-            showMessage(errorMsg, 'error');
-          } finally {
-            // Réactiver le bouton
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '1';
-          }
-        });
-
-        function showMessage(text, type) {
-          statusMessage.textContent = text;
-          statusMessage.className = 'text-center px-4 py-2 rounded-lg text-sm';
-          
-          if (type === 'success') {
-            statusMessage.style.background = '#d4edda';
-            statusMessage.style.color = '#155724';
-            statusMessage.style.border = '1px solid #c3e6cb';
-          } else {
-            statusMessage.style.background = '#f8d7da';
-            statusMessage.style.color = '#721c24';
-            statusMessage.style.border = '1px solid #f5c6cb';
-          }
-          
-          statusMessage.classList.remove('hidden');
-
-          // Masquer le message après 8 secondes pour laisser le temps de lire
-          setTimeout(() => {
-            statusMessage.classList.add('hidden');
-          }, 8000);
+        if (!email || !message) {
+          showMessage('Veuillez remplir tous les champs', 'error');
+          return;
         }
-      };
-      document.head.appendChild(script);
+
+        // Désactiver le bouton pendant l'envoi
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.5';
+
+        try {
+          console.log('Tentative d\'envoi vers PocketBase...');
+          console.log('URL:', pb.baseUrl);
+          console.log('Collection: Message');
+          console.log('Données:', { mail: email, Message: message });
+
+          // Essayer de créer directement sans authentification
+          const record = await pb.collection('Message').create({
+            mail: email,
+            Message: message
+          });
+
+          console.log('✅ Message enregistré avec succès:', record);
+          showMessage('Message envoyé avec succès ! ✈️', 'success');
+          
+          // Réinitialiser le formulaire
+          form.reset();
+        } catch (error: any) {
+          console.error('❌ Erreur complète:', error);
+          console.error('❌ Status:', error.status);
+          console.error('❌ Response:', error.response);
+          console.error('❌ Data:', error.data);
+          
+          // Message d'erreur plus détaillé
+          let errorMsg = 'Erreur: ';
+          if (error.status === 404) {
+            errorMsg = 'Collection "Message" introuvable. Vérifiez le nom dans PocketBase.';
+          } else if (error.status === 403) {
+            errorMsg = 'Accès refusé. Vérifiez les règles API de la collection.';
+          } else if (error.data) {
+            errorMsg += JSON.stringify(error.data);
+          } else {
+            errorMsg += error.message || 'Erreur inconnue';
+          }
+          
+          showMessage(errorMsg, 'error');
+        } finally {
+          // Réactiver le bouton
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        }
+      });
+
+      function showMessage(text: string, type: 'success' | 'error') {
+        statusMessage.textContent = text;
+        statusMessage.className = 'text-center px-4 py-2 rounded-lg text-sm';
+        
+        if (type === 'success') {
+          statusMessage.style.background = '#d4edda';
+          statusMessage.style.color = '#155724';
+          statusMessage.style.border = '1px solid #c3e6cb';
+        } else {
+          statusMessage.style.background = '#f8d7da';
+          statusMessage.style.color = '#721c24';
+          statusMessage.style.border = '1px solid #f5c6cb';
+        }
+        
+        statusMessage.classList.remove('hidden');
+
+        // Masquer le message après 8 secondes pour laisser le temps de lire
+        setTimeout(() => {
+          statusMessage.classList.add('hidden');
+        }, 8000);
+      }
     </script>
   </body>
 </html>
