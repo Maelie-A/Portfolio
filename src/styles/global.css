@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Police Kapakana pour les titres */
-@import url("https://fonts.googleapis.com/css2?family=Kapakana:wght@300..400&display=swap");
+/* Police Kapakana pour les titres - Chargée via <link> dans le <head> */
 
 :root {
   --paper-bg: url("/assets/bg-paper.jpg");
