@@ -21,8 +21,8 @@ const getImageUrl = (record: ProjetsPhotosResponse, filename?: string) =>
 const photoProjects = projetsPhotos.map((record) => ({
   id: record.id,
   title: record.Nom_Photo || 'Projet photo',
-  subtitle: record.mini_description || '',
-  description: record.mini_description || '',
+  miniDescription: record.mini_description || '',
+  nature: record.nature || '',
   technologies: record.technologie || [],
   polaroid: getImageUrl(record, record.Polaroid),
   gallery: (record.Gallerie_photo || []).map((filename) =>
@@ -111,26 +111,33 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
                   class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform"
                   onclick={`openModal('${project.id}')`}
                 >
-                  {project.polaroid ? (
-                    <img
-                      src={project.polaroid}
-                      alt={project.title}
-                      style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);"
-                    />
-                  ) : (
+                  <div
+                    style="width: 260px; height: 320px; padding: 1.2rem 1.2rem 2.5rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; position: relative;"
+                  >
+                    {project.polaroid ? (
+                      <img
+                        src={project.polaroid}
+                        alt={project.title}
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 6px 12px rgba(0,0,0,0.3);"
+                      />
+                    ) : (
+                      <div
+                        class="flex items-center justify-center"
+                        style="width: 100%; height: 100%; background: rgba(0,0,0,0.05); border-radius: 8px; border: 2px dashed rgba(0,0,0,0.2);"
+                      >
+                        <span style="font-size: 1rem; color: #666;">En cours</span>
+                      </div>
+                    )}
                     <div
-                      class="flex items-center justify-center"
-                      style="width: 260px; height: 320px; background: rgba(0,0,0,0.05); border-radius: 8px; border: 2px dashed rgba(0,0,0,0.2);"
-                    >
-                      <span style="font-size: 1rem; color: #666;">En cours</span>
-                    </div>
-                  )}
+                      style="position: absolute; bottom: 0.8rem; left: 50%; transform: translateX(-50%); width: 60%; height: 0.3rem; background: rgba(0,0,0,0.12); border-radius: 999px;"
+                    ></div>
+                  </div>
                   <p class="title-font" style="font-size: 1.6rem; text-align: center; font-style: italic;">
                     {project.title}
                   </p>
-                  {project.subtitle && (
+                  {project.miniDescription && (
                     <p style="font-size: 0.95rem; text-align: center; color: #4b4b4b; line-height: 1.4;">
-                      {project.subtitle}
+                      {project.miniDescription}
                     </p>
                   )}
                 </button>
@@ -236,7 +243,20 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
           <h2 class="title-font mb-2" style="font-size: 2.5rem; color: #000000; font-style: italic;">${
             project.title
           }</h2>
-          ${project.subtitle ? `<p class="mb-4" style="font-size: 1.2rem; color: #666;">${project.subtitle}</p>` : ''}
+          ${
+            project.nature
+              ? `<span class="inline-flex items-center px-4 py-2 mb-4 rounded-full" style="font-size: 0.95rem; background: #fce7f3; color: #a21caf;">
+                  ${project.nature}
+                </span>`
+              : ''
+          }
+          ${
+            project.miniDescription
+              ? `<p class="mb-6" style="font-size: 1.15rem; color: #444; line-height: 1.7;">
+                  ${project.miniDescription}
+                </p>`
+              : ''
+          }
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             ${
               gallery.length
@@ -252,11 +272,6 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
                 : ''
             }
           </div>
-          ${
-            project.description
-              ? `<p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">${project.description}</p>`
-              : ''
-          }
           ${
             technologies.length
               ? `<div class="flex flex-wrap gap-3">${technologies
