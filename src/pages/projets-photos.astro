@@ -21,7 +21,7 @@ const getImageUrl = (record: ProjetsPhotosResponse, filename?: string) =>
 const photoProjects = projetsPhotos.map((record) => ({
   id: record.id,
   title: record.Nom_Photo || 'Projet photo',
-  subtitle: record.nature || '',
+  subtitle: record.mini_description || '',
   description: record.mini_description || '',
   technologies: record.technologie || [],
   polaroid: getImageUrl(record, record.Polaroid),
@@ -125,9 +125,13 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
                       <span style="font-size: 1rem; color: #666;">En cours</span>
                     </div>
                   )}
-                  <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">{project.title}</p>
+                  <p class="title-font" style="font-size: 1.6rem; text-align: center; font-style: italic;">
+                    {project.title}
+                  </p>
                   {project.subtitle && (
-                    <p style="font-size: 1rem; text-align: center;">{project.subtitle}</p>
+                    <p style="font-size: 0.95rem; text-align: center; color: #4b4b4b; line-height: 1.4;">
+                      {project.subtitle}
+                    </p>
                   )}
                 </button>
               ))}
