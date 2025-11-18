@@ -7,6 +7,7 @@ import type PocketBase from "pocketbase";
 export enum Collections {
   Message = "Message",
   Projets = "Projets",
+  ProjetsPhotos = "Projets_photos",
 }
 
 // Alias types for improved usability
@@ -51,10 +52,21 @@ export type ProjetsRecord = {
   Lien_figma_siteweb_autre?: string;
 };
 
+export type ProjetsPhotosRecord = {
+  Polaroid?: string;
+  Nom_Photo?: string;
+  mini_description?: string;
+  technologie?: ("Photoshop" | "Illustrator" | "Figma" | "Indesign" | "Procreate" | "Première Pro" | "After Effects" | "Autre")[];
+  nature?: string;
+  Gallerie_photo?: string[];
+};
+
 // Response types include system fields and match responses from the PocketBase API
 export type MessageResponse<Texpand = unknown> = Required<MessageRecord> &
   BaseSystemFields<Texpand>;
 export type ProjetsResponse<Texpand = unknown> = Required<ProjetsRecord> &
+  BaseSystemFields<Texpand>;
+export type ProjetsPhotosResponse<Texpand = unknown> = Required<ProjetsPhotosRecord> &
   BaseSystemFields<Texpand>;
 
 // Types containing all Records and Responses, useful for creating typing helper functions
@@ -62,11 +74,13 @@ export type ProjetsResponse<Texpand = unknown> = Required<ProjetsRecord> &
 export type CollectionRecords = {
   Message: MessageRecord;
   Projets: ProjetsRecord;
+  Projets_photos: ProjetsPhotosRecord;
 };
 
 export type CollectionResponses = {
   Message: MessageResponse;
   Projets: ProjetsResponse;
+  Projets_photos: ProjetsPhotosResponse;
 };
 
 // Type for usage with type asserted PocketBase instance
@@ -75,4 +89,5 @@ export type CollectionResponses = {
 export type TypedPocketBase = PocketBase & {
   collection(idOrName: "Message"): any;
   collection(idOrName: "Projets"): any;
+  collection(idOrName: "Projets_photos"): any;
 };
