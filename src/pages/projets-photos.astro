@@ -1,5 +1,40 @@
 ---
 import '../styles/global.css';
+import pb from '../utils/pb';
+import type { ProjetsPhotosResponse } from '../pocketbase-types';
+
+let projetsPhotos: ProjetsPhotosResponse[] = [];
+
+try {
+  projetsPhotos = (await pb.collection('Projets_photos').getFullList({
+    sort: '-created',
+  })) as ProjetsPhotosResponse[];
+} catch (error) {
+  console.error('PocketBase Projets_photos fetch failed', error);
+}
+
+const getImageUrl = (record: ProjetsPhotosResponse, filename?: string) =>
+  filename
+    ? `${pb.baseUrl}/api/files/${record.collectionId}/${record.id}/${filename}`
+    : '';
+
+const photoProjects = projetsPhotos.map((record) => ({
+  id: record.id,
+  title: record.Nom_Photo || 'Projet photo',
+  subtitle: record.nature || '',
+  description: record.mini_description || '',
+  technologies: record.technologie || [],
+  polaroid: getImageUrl(record, record.Polaroid),
+  gallery: (record.Gallerie_photo || []).map((filename) =>
+    getImageUrl(record, filename)
+  ),
+}));
+
+const serializedProjects = JSON.stringify(photoProjects).replace(
+  /</g,
+  '\\u003c'
+);
+const hasDynamicProjects = photoProjects.length > 0;
 ---
 
 <html lang="fr">
@@ -68,33 +103,40 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
           </h3>
 
           <!-- Bande de polaroids horizontale -->
-          <div class="flex gap-8 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
-            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('jardin')">
-              <img src="/polaroid-1.webp" alt="Le jardin de la mémoire" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
-              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Le jardin de la mémoire</p>
-              <p style="font-size: 1rem; text-align: center;">Musée Martin Lausse</p>
-            </button>
-            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('profil')">
-              <img src="/polaroid-2.webp" alt="Photo profil" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
-              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Photo profil</p>
-              <p style="font-size: 1rem; text-align: center;">Sur la pleine de vue avec</p>
-            </button>
-            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('villargue')">
-              <img src="/polaroid-3.webp" alt="Villargue recel" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
-              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Villargue recel</p>
-              <p style="font-size: 1rem; text-align: center;">Barcelona avec petit marchoise</p>
-            </button>
-            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('fleurs')">
-              <img src="/polaroid-4.webp" alt="Fleurs à colombor" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
-              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Fleurs à colombor</p>
-              <p style="font-size: 1rem; text-align: center;">Musée Maëlis ADDARIO</p>
-            </button>
-            <button class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onclick="openModal('marseille')">
-              <img src="/polaroid-5.webp" alt="Borgne marseille" style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);" />
-              <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">Borgne marseille</p>
-              <p style="font-size: 1rem; text-align: center;">Dans L'étoilette Pleine une vile</p>
-            </button>
-          </div>
+          {hasDynamicProjects ? (
+            <div class="flex gap-8 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
+              {photoProjects.map((project) => (
+                <button
+                  type="button"
+                  class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform"
+                  onclick={`openModal('${project.id}')`}
+                >
+                  {project.polaroid ? (
+                    <img
+                      src={project.polaroid}
+                      alt={project.title}
+                      style="width: 260px; height: auto; object-fit: cover; border-radius: 8px; flex-shrink: 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3);"
+                    />
+                  ) : (
+                    <div
+                      class="flex items-center justify-center"
+                      style="width: 260px; height: 320px; background: rgba(0,0,0,0.05); border-radius: 8px; border: 2px dashed rgba(0,0,0,0.2);"
+                    >
+                      <span style="font-size: 1rem; color: #666;">En cours</span>
+                    </div>
+                  )}
+                  <p class="title-font" style="font-size: 1.3rem; text-align: center; font-style: italic;">{project.title}</p>
+                  {project.subtitle && (
+                    <p style="font-size: 1rem; text-align: center;">{project.subtitle}</p>
+                  )}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p class="text-center" style="font-size: 1.1rem; color: #333;">
+              Les projets photos arrivent bientôt.
+            </p>
+          )}
         </div>
 
         <!-- Section 3: Carnet ouvert "Barcelone & memories" -->
@@ -118,7 +160,11 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
       </div>
 
       <!-- Modal pour afficher les détails des projets -->
-      <div id="projectModal" class="hidden fixed inset-0 z-50 flex items-center justify-center" style="background: rgba(0, 0, 0, 0.8);">
+      <div
+        id="projectModal"
+        class="fixed inset-0 z-50 flex items-center justify-center"
+        style="display: none; background: rgba(0, 0, 0, 0.8);"
+      >
         <div class="relative bg-white rounded-lg p-8 max-w-4xl max-h-[90vh] overflow-y-auto" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
           <button onclick="closeModal()" class="absolute top-4 right-4 text-4xl hover:opacity-70 transition-opacity" style="color: #000000;">&times;</button>
           
@@ -129,15 +175,10 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
       <!-- Footer -->
       <footer class="relative z-20 py-12 px-8" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, #C39FE5 100%);">
         <div class="flex flex-col items-center gap-3">
-          <!-- Nœud décoratif -->
           <img src="/noeud.webp" alt="nœud" style="width: 240px; height: auto; opacity: 0.9;" />
-          
-          <!-- Citation -->
           <p class="title-font text-center" style="font-size: 2rem; color: #000000; font-style: italic; max-width: 650px; margin-bottom: 0.5rem;">
             "Une image vaut mille mots" Confucius
           </p>
-          
-          <!-- Icônes sociales -->
           <div class="flex gap-3 mb-2">
             <a href="mailto:maelie@addario.fr" class="hover:scale-110 transition-transform">
               <img src="/mail.svg" alt="email" style="width: 50px; height: 50px;" />
@@ -158,91 +199,13 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
               <img src="/linktree.svg" alt="linktree" style="width: 50px; height: 50px;" />
             </a>
           </div>
-          
-          <!-- Logo -->
           <img src="/logo.webp" alt="Maelie Addario logo" style="width: 150px; height: auto; margin-top: 0.3rem; margin-bottom: 0.3rem;" />
-          
-          <!-- Texte Portfolio -->
-          <p style="font-size: 0.9rem; color: #000000;">
-            Portfolio-Maëlie ADDARIO-2025
-          </p>
-          
-          <!-- Liens mentions légales et politique de confidentialité -->
-        </div>
-      </footer>
-    </main>
-
-    <script>
-      const projectData = {
-        jardin: {
-          title: "Le jardin de la mémoire",
-          subtitle: "Musée Martin Lausse",
-          description: "Une exploration photographique de la mémoire et du temps à travers les jardins du Musée Martin Lausse. Ce projet capture l'essence des souvenirs figés dans la nature, où chaque plante, chaque pierre raconte une histoire.",
-          images: ["/polaroid-1.webp", "/polaroid-1.webp", "/polaroid-1.webp"]
-        },
-        profil: {
-          title: "Photo profil",
-          subtitle: "Sur la pleine de vue avec",
-          description: "Série de portraits photographiques réalisés en plein air, capturant l'authenticité et l'émotion des personnes dans leur environnement naturel. Jeu de lumière et de perspectives pour révéler la personnalité de chaque sujet.",
-          images: ["/polaroid-2.webp", "/polaroid-2.webp", "/polaroid-2.webp"]
-        },
-        villargue: {
-          title: "Villargue recel",
-          subtitle: "Barcelona avec petit marchoise",
-          description: "Reportage photographique des marchés de Barcelone, immortalisant la vie quotidienne, les couleurs vibrantes et l'atmosphère unique des petits commerces. Un voyage visuel au cœur de la culture catalane.",
-          images: ["/polaroid-3.webp", "/polaroid-3.webp", "/polaroid-3.webp"]
-        },
-        fleurs: {
-          title: "Fleurs à colombor",
-          subtitle: "Musée Maëlis ADDARIO",
-          description: "Collection photographique centrée sur la beauté des fleurs et leur symbolisme. Chaque cliché révèle les détails délicats, les textures et les nuances de couleurs qui rendent chaque fleur unique.",
-          images: ["/polaroid-4.webp", "/polaroid-4.webp", "/polaroid-4.webp"]
-        },
-        marseille: {
-          title: "Borgne marseille",
-          subtitle: "Dans L'étoilette Pleine une vile",
-          description: "Exploration urbaine de Marseille à travers un regard photographique unique. Ce projet documente la vie dans les quartiers, les ruelles cachées et l'âme authentique de la cité phocéenne.",
-          images: ["/polaroid-5.webp", "/polaroid-5.webp", "/polaroid-5.webp"]
-        }
-      };
-
-      function openModal(projectId) {
-        const modal = document.getElementById('projectModal');
-        const content = document.getElementById('modalContent');
-        const project = projectData[projectId];
-
-        content.innerHTML = `
-          <h2 class="title-font mb-2" style="font-size: 2.5rem; color: #000000; font-style: italic;">${project.title}</h2>
-          <p class="mb-6" style="font-size: 1.2rem; color: #666;">${project.subtitle}</p>
-          
-          <div class="grid grid-cols-3 gap-4 mb-6">
-            ${project.images.map(img => `
-              <img src="${img}" alt="${project.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-            `).join('')}
-          </div>
-          
-          <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">${project.description}</p>
-        `;
-
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        const modal = document.getElementById('projectModal');
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-      }
-
-      // Fermer le modal en cliquant en dehors du contenu
-      document.getElementById('projectModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-          closeModal();
-        }
-      });
-    </script>
-  </body>
-</html>     <span style="color: #000000;">•</span>
+          <p style="font-size: 0.9rem; color: #000000;">Portfolio-Maëlie ADDARIO-2025</p>
+          <div class="flex gap-4 mt-3">
+            <a href="/mentions-legales" class="hover:underline transition-all" style="font-size: 0.8rem; color: #000000;">
+              Mentions légales
+            </a>
+            <span style="color: #000000;">•</span>
             <a href="/politique-confidentialite" class="hover:underline transition-all" style="font-size: 0.8rem; color: #000000;">
               Politique de confidentialité
             </a>
@@ -250,5 +213,96 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
         </div>
       </footer>
     </main>
+
+    <script type="application/json" id="projects-data">{serializedProjects}</script>
+    <script>
+      const rawProjectNode = document.getElementById('projects-data');
+      const parsedProjects = rawProjectNode
+        ? JSON.parse(rawProjectNode.textContent || '[]')
+        : [];
+      const projectMap = parsedProjects.reduce((acc, item) => {
+        acc[item.id] = item;
+        return acc;
+      }, {});
+
+      function renderModal(project) {
+        const technologies = project.technologies || [];
+        const gallery = project.gallery || [];
+        return `
+          <h2 class="title-font mb-2" style="font-size: 2.5rem; color: #000000; font-style: italic;">${
+            project.title
+          }</h2>
+          ${project.subtitle ? `<p class="mb-4" style="font-size: 1.2rem; color: #666;">${project.subtitle}</p>` : ''}
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            ${
+              gallery.length
+                ? gallery
+                    .map(
+                      (img) => `
+                <img src="${img}" alt="${project.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+              `
+                    )
+                    .join('')
+                : project.polaroid
+                ? `<img src="${project.polaroid}" alt="${project.title}" style="width: 100%; height: 320px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />`
+                : ''
+            }
+          </div>
+          ${
+            project.description
+              ? `<p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">${project.description}</p>`
+              : ''
+          }
+          ${
+            technologies.length
+              ? `<div class="flex flex-wrap gap-3">${technologies
+                  .map(
+                    (tech) => `
+                <span class="px-4 py-2 bg-pink-100 rounded-full text-sm" style="color:#333;">${tech}</span>
+              `
+                  )
+                  .join('')}</div>`
+              : ''
+          }
+        `;
+      }
+
+      function openModal(projectId) {
+        const project = projectMap[projectId];
+        if (!project) {
+          console.warn('Projet photo introuvable', projectId);
+          return;
+        }
+
+        const modal = document.getElementById('projectModal');
+        const content = document.getElementById('modalContent');
+        if (!modal || !content) {
+          return;
+        }
+
+        content.innerHTML = renderModal(project);
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('projectModal');
+        if (!modal) {
+          return;
+        }
+
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      const modalElement = document.getElementById('projectModal');
+      if (modalElement) {
+        modalElement.addEventListener('click', function (event) {
+          if (event.target === this) {
+            closeModal();
+          }
+        });
+      }
+    </script>
   </body>
 </html>

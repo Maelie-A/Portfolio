@@ -56,7 +56,16 @@ export type ProjetsPhotosRecord = {
   Polaroid?: string;
   Nom_Photo?: string;
   mini_description?: string;
-  technologie?: ("Photoshop" | "Illustrator" | "Figma" | "Indesign" | "Procreate" | "Première Pro" | "After Effects" | "Autre")[];
+  technologie?: (
+    | "Photoshop"
+    | "Illustrator"
+    | "Figma"
+    | "Indesign"
+    | "Procreate"
+    | "Première Pro"
+    | "After Effects"
+    | "Autre"
+  )[];
   nature?: string;
   Gallerie_photo?: string[];
 };
@@ -66,8 +75,8 @@ export type MessageResponse<Texpand = unknown> = Required<MessageRecord> &
   BaseSystemFields<Texpand>;
 export type ProjetsResponse<Texpand = unknown> = Required<ProjetsRecord> &
   BaseSystemFields<Texpand>;
-export type ProjetsPhotosResponse<Texpand = unknown> = Required<ProjetsPhotosRecord> &
-  BaseSystemFields<Texpand>;
+export type ProjetsPhotosResponse<Texpand = unknown> =
+  Required<ProjetsPhotosRecord> & BaseSystemFields<Texpand>;
 
 // Types containing all Records and Responses, useful for creating typing helper functions
 
