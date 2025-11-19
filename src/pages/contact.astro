@@ -30,10 +30,10 @@ import '../styles/global.css';
      
 
       <!-- Container principal -->
-      <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 lg:gap-0 px-6 lg:px-[8%] py-12 lg:py-0 min-h-screen">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 px-6 lg:pl-[12%] lg:pr-0 py-12 lg:py-0 min-h-screen">
         
           <!-- PARTIE GAUCHE : Titre, icônes, email et texte -->
-          <div class="relative flex flex-col gap-4 w-full lg:max-w-sm z-10">
+          <div class="relative flex flex-col gap-4 w-full lg:max-w-md z-10">
             <div class="absolute hidden lg:block" style="background: #FBCD0E; border-radius: 50%; filter: blur(70px); opacity: 0.6; width: 480px; height: 480px; top: 45%; left: 12%; transform: translate(-50%, -50%); z-index: -1;"></div>
             
             <!-- Titre Contacter-Moi -->
@@ -74,27 +74,27 @@ import '../styles/global.css';
           </div>
 
           <!-- PARTIE DROITE : Formulaire -->
-          <div class="relative w-full lg:w-auto">
+          <div class="relative w-full lg:w-auto lg:flex-1 lg:flex lg:justify-end">
             
             <!-- Papier avec formulaire -->
-            <div class="relative w-full max-w-2xl mx-auto lg:mx-0 z-10">
-              <img src="/formulaire-contact.webp" alt="papier formulaire" class="w-full h-auto hidden md:block" />
+            <div class="relative w-full max-w-3xl lg:max-w-4xl mx-auto lg:mx-0 z-10">
+              <img src="/formulaire-contact.webp" alt="papier formulaire" class="w-full h-auto hidden md:block lg:ml-auto" />
               
-              <div class="md:absolute static md:top-[40%] md:left-1/2 md:transform md:translate-x-[-50%] md:translate-y-[-50%] w-full md:w-[82%] max-w-md p-6 md:p-0">
+              <div class="md:absolute static md:top-[30%] md:left-1/2 md:transform md:-translate-x-1/2 w-full md:w-[40%] max-w-md p-6 md:p-0">
                 <!-- Titre du formulaire -->
-                <h2 class="text-center title-font text-2xl md:text-3xl text-black italic mb-6">
+                <h2 class="text-center title-font text-3xl md:text-4xl text-black italic mb-5 md:mb-5" style="margin-left: 60px;">
                   Laissez un message rapide
                 </h2>
 
                 <!-- Formulaire -->
-                <form id="contactForm" class="flex flex-col gap-5">
+                <form id="contactForm" class="flex flex-col gap-3 md:gap-4">
                   <!-- Input Email -->
                   <input 
                     type="email" 
                     name="mail"
                     id="emailInput"
                     placeholder="Votre email" 
-                    class="px-4 py-2.5 rounded-lg focus:outline-none text-sm md:text-base"
+                    class="px-5 py-2 md:py-2.5 rounded-lg focus:outline-none text-base"
                     style="border: 2px solid #c8a2e0; background: #f3e8ff;"
                     required
                   />
@@ -104,8 +104,8 @@ import '../styles/global.css';
                     name="Message"
                     id="messageInput"
                     placeholder="Message" 
-                    rows="4"
-                    class="px-4 py-2.5 rounded-lg focus:outline-none resize-none text-sm md:text-base"
+                    rows="3"
+                    class="px-5 py-2 md:py-2.5 rounded-lg focus:outline-none resize-none text-base"
                     style="border: 2px solid #c8a2e0; background: #f3e8ff;"
                     required
                   ></textarea>
@@ -114,16 +114,16 @@ import '../styles/global.css';
                   <div id="statusMessage" class="hidden text-center px-4 py-2 rounded-lg text-sm"></div>
 
                   <!-- Texte et bouton avion -->
-                  <div class="flex flex-col items-end gap-2 mt-2">
-                    <p class="text-right title-font text-sm md:text-base text-black leading-tight italic">
-                      Pour envoyer votre message<br/>cliquer ici :
+                  <div class="flex flex-col items-end gap-2 mt-1">
+                    <p class="text-right title-font text-xl md:text-2xl text-black leading-tight italic" style="font-weight: 500;">
+                      Pour envoyer votre message, cliquez sur l'avion en papier :
                     </p>
                     <button 
                       type="submit"
                       id="submitBtn"
                       class="hover:scale-110 transition-transform"
                     >
-                      <img src="/avionpapier.webp" alt="send" class="w-20 md:w-28" />
+                          <img src="/avionpapier.webp" alt="send" class="w-16 md:w-40 ml-4" />
                     </button>
                   </div>
                 </form>
@@ -172,8 +172,8 @@ import '../styles/global.css';
             Message: message
           });
 
-          console.log('✅ Message enregistré avec succès:', record);
-          showMessage('Message envoyé avec succès ! ✈️', 'success');
+          console.log('Message enregistré avec succès:', record);
+          showMessage('Message envoyé avec succès !', 'success');
           
           // Réinitialiser le formulaire
           form.reset();
