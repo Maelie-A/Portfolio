@@ -107,11 +107,11 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
           <!-- Bande de polaroids horizontale -->
           {hasDynamicProjects ? (
             <div class="flex gap-6 md:gap-8 justify-center md:justify-start mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
-              {photoProjects.map((project) => (
+              {photoProjects.map((project, index) => (
                 <button
                   type="button"
-                  class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform flex-shrink-0 project-card"
-                  data-project-id={project.id}
+                  class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform flex-shrink-0"
+                  onclick={`window.openPhotoModal(${index})`}
                 >
                   <div
                     style="width: 280px; padding: 1.2rem 1.2rem 2.5rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; position: relative;"
@@ -177,9 +177,10 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
         id="projectModal"
         class="fixed inset-0 z-50 flex items-center justify-center p-4"
         style="display: none; background: rgba(0, 0, 0, 0.8);"
+        onclick="if(event.target === this) window.closePhotoModal()"
       >
         <div class="relative bg-white rounded-lg p-4 md:p-8 w-full max-w-4xl max-h-[90vh] overflow-y-auto" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-          <button onclick="closeModal()" class="absolute top-2 right-2 md:top-4 md:right-4 text-3xl md:text-4xl hover:opacity-70 transition-opacity" style="color: #000000;">&times;</button>
+          <button onclick="window.closePhotoModal()" class="absolute top-2 right-2 md:top-4 md:right-4 text-3xl md:text-4xl hover:opacity-70 transition-opacity" style="color: #000000;">&times;</button>
           
           <div id="modalContent"></div>
         </div>
@@ -229,137 +230,114 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
 
     <script type="application/json" id="projects-data">{serializedProjects}</script>
     <script is:inline>
-      // Attendre que le DOM soit chargé
-      document.addEventListener('DOMContentLoaded', function() {
-        const rawProjectNode = document.getElementById('projects-data');
-        const parsedProjects = rawProjectNode
-          ? JSON.parse(rawProjectNode.textContent || '[]')
-          : [];
-        const projectMap = parsedProjects.reduce((acc, item) => {
-          acc[item.id] = item;
-          return acc;
-        }, {});
+      // Variables globales
+      let allProjects = [];
 
-        function renderModal(project) {
-          const technologies = project.technologies || [];
-          const gallery = project.gallery || [];
-          return `
-            <h2 class="title-font mb-4" style="font-size: 2.5rem; color: #000000; font-style: italic;">${
-              project.title
-            }</h2>
-            
-            ${
-              project.nature
-                ? `<div class="mb-4">
-                    <span class="inline-flex items-center px-4 py-2 rounded-full" style="font-size: 0.95rem; background: #fce7f3; color: #a21caf; font-weight: 500;">
-                      ${project.nature}
-                    </span>
-                  </div>`
-                : ''
-            }
-            
-            ${
-              project.miniDescription
-                ? `<div class="mb-6">
-                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.5rem;">Description</h3>
-                    <p style="font-size: 1.05rem; color: #444; line-height: 1.7;">
-                      ${project.miniDescription}
-                    </p>
-                  </div>`
-                : ''
-            }
-            
-            ${
-              technologies.length
-                ? `<div class="mb-6">
-                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.75rem;">Technologies utilisées</h3>
-                    <div class="flex flex-wrap gap-3">
-                      ${technologies
-                        .map(
-                          (tech) => `
-                        <span class="px-4 py-2 bg-purple-100 rounded-full text-sm" style="color:#333; font-weight: 500;">${tech}</span>
-                      `
-                        )
-                        .join('')}
-                    </div>
-                  </div>`
-                : ''
-            }
-            
-            ${
-              gallery.length || project.polaroid
-                ? `<div class="mb-4">
-                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.75rem;">Galerie</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      ${
-                        gallery.length
-                          ? gallery
-                              .map(
-                                (img) => `
-                            <img src="${img}" alt="${project.title}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-                          `
-                              )
-                              .join('')
-                          : project.polaroid
-                          ? `<img src="${project.polaroid}" alt="${project.title}" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 0 auto;" />`
-                          : ''
-                      }
-                    </div>
-                  </div>`
-                : ''
-            }
+      // Charger les données au chargement de la page
+      window.addEventListener('DOMContentLoaded', function() {
+        const rawProjectNode = document.getElementById('projects-data');
+        if (rawProjectNode) {
+          allProjects = JSON.parse(rawProjectNode.textContent || '[]');
+          console.log('Projets chargés:', allProjects.length);
+        }
+      });
+
+      // Fonction pour ouvrir la modal
+      window.openPhotoModal = function(index) {
+        console.log('Ouverture modal pour projet', index);
+        const project = allProjects[index];
+        if (!project) {
+          console.error('Projet non trouvé à l\'index', index);
+          return;
+        }
+
+        const modal = document.getElementById('projectModal');
+        const content = document.getElementById('modalContent');
+        if (!modal || !content) {
+          console.error('Modal ou contenu non trouvé');
+          return;
+        }
+
+        // Générer le HTML de la modal
+        const technologies = project.technologies || [];
+        const gallery = project.gallery || [];
+        
+        let html = `
+          <h2 class="title-font mb-4" style="font-size: 2.5rem; color: #000000; font-style: italic;">${project.title}</h2>
+        `;
+
+        if (project.nature) {
+          html += `
+            <div class="mb-4">
+              <span class="inline-flex items-center px-4 py-2 rounded-full" style="font-size: 0.95rem; background: #fce7f3; color: #a21caf; font-weight: 500;">
+                ${project.nature}
+              </span>
+            </div>
           `;
         }
 
-        function openModal(projectId) {
-          const project = projectMap[projectId];
-          if (!project) {
-            console.warn('Projet photo introuvable', projectId);
-            return;
-          }
-
-          const modal = document.getElementById('projectModal');
-          const content = document.getElementById('modalContent');
-          if (!modal || !content) {
-            return;
-          }
-
-          content.innerHTML = renderModal(project);
-          modal.style.display = 'flex';
-          document.body.style.overflow = 'hidden';
+        if (project.miniDescription) {
+          html += `
+            <div class="mb-6">
+              <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.5rem;">Description</h3>
+              <p style="font-size: 1.05rem; color: #444; line-height: 1.7;">
+                ${project.miniDescription}
+              </p>
+            </div>
+          `;
         }
 
-        function closeModal() {
-          const modal = document.getElementById('projectModal');
-          if (!modal) {
-            return;
+        if (technologies.length > 0) {
+          html += `
+            <div class="mb-6">
+              <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.75rem;">Technologies utilisées</h3>
+              <div class="flex flex-wrap gap-3">
+                ${technologies.map(tech => `
+                  <span class="px-4 py-2 bg-purple-100 rounded-full text-sm" style="color:#333; font-weight: 500;">${tech}</span>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        if (gallery.length > 0 || project.polaroid) {
+          html += `
+            <div class="mb-4">
+              <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.75rem;">Galerie</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          `;
+
+          if (gallery.length > 0) {
+            gallery.forEach(img => {
+              html += `
+                <img src="${img}" alt="${project.title}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+              `;
+            });
+          } else if (project.polaroid) {
+            html += `
+              <img src="${project.polaroid}" alt="${project.title}" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 0 auto;" />
+            `;
           }
 
+          html += `
+              </div>
+            </div>
+          `;
+        }
+
+        content.innerHTML = html;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      };
+
+      // Fonction pour fermer la modal
+      window.closePhotoModal = function() {
+        const modal = document.getElementById('projectModal');
+        if (modal) {
           modal.style.display = 'none';
           document.body.style.overflow = 'auto';
         }
-
-        // Ajouter les event listeners aux polaroids
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach(card => {
-          card.addEventListener('click', function() {
-            const projectId = this.getAttribute('data-project-id');
-            if (projectId) {
-              openModal(projectId);
-            }
-          });
-        });
-
-        // Fermer la modal en cliquant en dehors
-        const modalElement = document.getElementById('projectModal');
-        if (modalElement) {
-          modalElement.addEventListener('click', function (event) {
-            if (event.target === this) {
-              closeModal();
-            }
-          });
-        }
-      });
+      };
     </script>
   </body>
 </html>
