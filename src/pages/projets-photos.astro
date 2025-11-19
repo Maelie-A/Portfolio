@@ -110,8 +110,8 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
               {photoProjects.map((project) => (
                 <button
                   type="button"
-                  class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform flex-shrink-0"
-                  onclick={`openModal('${project.id}')`}
+                  class="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform flex-shrink-0 project-card"
+                  data-project-id={project.id}
                 >
                   <div
                     style="width: 280px; padding: 1.2rem 1.2rem 2.5rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; position: relative;"
@@ -345,6 +345,19 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
           }
         });
       }
+
+      // Ajouter les event listeners aux polaroids
+      document.addEventListener('DOMContentLoaded', function() {
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+          card.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project-id');
+            if (projectId) {
+              openModal(projectId);
+            }
+          });
+        });
+      });
     </script>
   </body>
 </html>
