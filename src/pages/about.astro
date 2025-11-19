@@ -74,7 +74,7 @@ import '../styles/global.css';
         <div class="relative" style="flex: 0 0 420px; max-width: 420px;">
             <!-- GIF ajouté -->
             <div>
-                <img src="/aboutme.gif" alt="GIF décoratif" style="width:100%; max-width:420px; height:auto; display:block; margin:0 auto;" />
+          <img id="aboutGif" src="/aboutme.gif" alt="GIF décoratif" style="width:100%; max-width:420px; height:auto; display:block; margin:0 auto;" />
             </div>
         </div>
 
@@ -304,5 +304,20 @@ import '../styles/global.css';
         </div>
       </footer>
     </main>
+
+    <script is:inline>
+      // Script pour forcer la boucle du GIF
+      const gif = document.getElementById('aboutGif');
+      if (gif) {
+        gif.addEventListener('load', function() {
+          // Recharger le GIF toutes les 5 secondes (ajustez selon la durée de votre GIF)
+          setInterval(function() {
+            const src = gif.src;
+            gif.src = '';
+            gif.src = src + '?t=' + new Date().getTime();
+          }, 5000); // 5000ms = 5 secondes, changez selon la durée de votre GIF
+        });
+      }
+    </script>
   </body>
 </html>
