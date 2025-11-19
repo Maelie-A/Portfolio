@@ -14,9 +14,7 @@ import '../styles/global.css';
   <body>
     <main class="min-h-screen w-full relative overflow-hidden">
       <!-- Background (uses the file you provided at project root) -->
-      <div class="absolute inset-0 bg-center bg-no-repeat bg-cover" style="background-image: url('/fondmenu.webp')"></div>
-      <!-- optional subtle overlay on small screens to keep contrast -->
-      <div class="bg-overlay md:hidden"></div>
+      <div class="absolute inset-0 bg-center bg-no-repeat bg-cover pointer-events-none" style="background-image: url('/fondmenu.webp')"></div>
 
       <!-- Custom cursor that follows the mouse (hidden on mobile) -->
       <img 
@@ -92,55 +90,58 @@ import '../styles/global.css';
       </section>
 
       <!-- MOBILE: stacked layout (visible on small screens) -->
-      <section class="md:hidden flex flex-col items-center gap-8 py-12 px-6">
-  <a href="/about" class="hover:scale-110 transition-transform">
-    <img src="/etoile.webp" alt="star" class="w-56" />
-  </a>
-   <img src="/souri.webp" alt="cursor" class="w-16 -mt-6 drop-shadow-lg" />
-  <!-- cursor under star for mobile -->
-        <a href="/projets-photos" class="hover:scale-110 transition-transform">
-          <img src="/carte.webp" alt="sdcard" class="w-40" />
+      <section class="md:hidden relative z-10 flex flex-col items-center gap-12 py-16 px-6 min-h-screen justify-center">
+        <!-- Star: About Me -->
+        <a href="/about" class="hover:scale-105 active:scale-95 transition-transform touch-manipulation">
+          <img src="/etoile.webp" alt="star - About Me" class="w-48" />
+        </a>
+        
+        <!-- Cursor icon -->
+        <img src="/souri.webp" alt="cursor" class="w-14 -mt-8 drop-shadow-lg pointer-events-none" />
+        
+        <!-- SD Card: Photos -->
+        <a href="/projets-photos" class="hover:scale-105 active:scale-95 transition-transform touch-manipulation">
+          <img src="/carte.webp" alt="sdcard - Projets Photos" class="w-36" />
         </a>
 
-        <div class="flex flex-col items-center gap-6 w-full max-w-sm">
-          <div class="flex justify-between w-full items-center">
-            <a href="/projets-art" class="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-              <img src="/dossier.webp" alt="Projets d'ART" class="w-24" />
-              <span class="text-xs">Projets d'ART</span>
+        <!-- Folders: Projects -->
+        <div class="flex flex-col items-center gap-8 w-full max-w-sm mt-4">
+          <div class="flex justify-around w-full items-center gap-4">
+            <a href="/projets-art" class="flex flex-col items-center gap-2 hover:scale-105 active:scale-95 transition-transform flex-1 touch-manipulation">
+              <img src="/dossier.webp" alt="Projets d'ART" class="w-20" />
+              <span class="text-xs text-center leading-tight">Projets d'ART</span>
             </a>
-            <a href="/design-graphique" class="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-              <img src="/dossier.webp" alt="Design Graphique" class="w-24" />
-              <span class="text-xs">Design graphique</span>
+            <a href="/design-graphique" class="flex flex-col items-center gap-2 hover:scale-105 active:scale-95 transition-transform flex-1 touch-manipulation">
+              <img src="/dossier.webp" alt="Design Graphique" class="w-20" />
+              <span class="text-xs text-center leading-tight">Design<br/>graphique</span>
             </a>
           </div>
-          <a href="/projets-photos" class="flex flex-col items-center gap-1 hover:scale-110 transition-transform">
-            <img src="/dossier.webp" alt="Projets Photos" class="w-28" />
-            <span class="text-xs">Projets Photos</span>
-          </a>
         </div>
 
-        <a href="/contact" class="hover:scale-110 transition-transform">
-          <img src="/avionpapier.webp" alt="paper plane" class="w-48" />
+        <!-- Paper Plane: Contact -->
+        <a href="/contact" class="hover:scale-105 active:scale-95 transition-transform mt-4 touch-manipulation">
+          <img src="/avionpapier.webp" alt="paper plane - Contact" class="w-44" />
         </a>
 
-        <div class="flex flex-col items-center gap-2 mt-6">
-          <img src="/logo.webp" alt="logo" class="w-40" />
-          <div class="text-base">maelie@addario.fr</div>
-          <div class="mt-3 flex gap-3">
-            <a href="https://www.behance.net/MaelieAddarioMa_d" target="_blank" class="social-icon-mobile">
-              <img src="/behance.svg" alt="behance" class="w-8 h-8" />
+        <!-- Logo & Social Icons -->
+        <div class="flex flex-col items-center gap-3 mt-8">
+          <img src="/logo.webp" alt="Maëlie Addario logo" class="w-36 pointer-events-none" />
+          <div class="text-sm">maelie@addario.fr</div>
+          <div class="mt-4 flex gap-4 flex-wrap justify-center">
+            <a href="https://www.behance.net/MaelieAddarioMa_d" target="_blank" class="social-icon-mobile touch-manipulation">
+              <img src="/behance.svg" alt="behance" class="w-9 h-9" />
             </a>
-            <a href="https://www.linkedin.com/in/maëlie-addario-b66790336" target="_blank" class="social-icon-mobile">
-              <img src="/linkedin.svg" alt="linkedin" class="w-8 h-8" />
+            <a href="https://www.linkedin.com/in/maëlie-addario-b66790336" target="_blank" class="social-icon-mobile touch-manipulation">
+              <img src="/linkedin.svg" alt="linkedin" class="w-9 h-9" />
             </a>
-            <a href="https://www.instagram.com/ma_dart8" target="_blank" class="social-icon-mobile">
-              <img src="/instagram.svg" alt="instagram" class="w-8 h-8" />
+            <a href="https://www.instagram.com/ma_dart8" target="_blank" class="social-icon-mobile touch-manipulation">
+              <img src="/instagram.svg" alt="instagram" class="w-9 h-9" />
             </a>
-            <a href="https://fr.pinterest.com/Mamaeliea_d/" target="_blank" class="social-icon-mobile">
-              <img src="/pinterest.svg" alt="pinterest" class="w-8 h-8" />
+            <a href="https://fr.pinterest.com/Mamaeliea_d/" target="_blank" class="social-icon-mobile touch-manipulation">
+              <img src="/pinterest.svg" alt="pinterest" class="w-9 h-9" />
             </a>
-            <a href="https://linktr.ee/mamaeleea_d" target="_blank" class="social-icon-mobile">
-              <img src="/linktree.svg" alt="linktree" class="w-8 h-8" />
+            <a href="https://linktr.ee/mamaeleea_d" target="_blank" class="social-icon-mobile touch-manipulation">
+              <img src="/linktree.svg" alt="linktree" class="w-9 h-9" />
             </a>
           </div>
         </div>
