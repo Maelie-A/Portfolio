@@ -228,126 +228,118 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
     </main>
 
     <script type="application/json" id="projects-data">{serializedProjects}</script>
-    <script>
-      const rawProjectNode = document.getElementById('projects-data');
-      const parsedProjects = rawProjectNode
-        ? JSON.parse(rawProjectNode.textContent || '[]')
-        : [];
-      const projectMap = parsedProjects.reduce((acc, item) => {
-        acc[item.id] = item;
-        return acc;
-      }, {});
-
-      function renderModal(project) {
-        const technologies = project.technologies || [];
-        const gallery = project.gallery || [];
-        return `
-          <h2 class="title-font mb-4" style="font-size: 2.5rem; color: #000000; font-style: italic;">${
-            project.title
-          }</h2>
-          
-          ${
-            project.nature
-              ? `<div class="mb-4">
-                  <span class="inline-flex items-center px-4 py-2 rounded-full" style="font-size: 0.95rem; background: #fce7f3; color: #a21caf; font-weight: 500;">
-                    ${project.nature}
-                  </span>
-                </div>`
-              : ''
-          }
-          
-          ${
-            project.miniDescription
-              ? `<div class="mb-6">
-                  <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.5rem;">Description</h3>
-                  <p style="font-size: 1.05rem; color: #444; line-height: 1.7;">
-                    ${project.miniDescription}
-                  </p>
-                </div>`
-              : ''
-          }
-          
-          ${
-            technologies.length
-              ? `<div class="mb-6">
-                  <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.75rem;">Technologies utilisées</h3>
-                  <div class="flex flex-wrap gap-3">
-                    ${technologies
-                      .map(
-                        (tech) => `
-                      <span class="px-4 py-2 bg-purple-100 rounded-full text-sm" style="color:#333; font-weight: 500;">${tech}</span>
-                    `
-                      )
-                      .join('')}
-                  </div>
-                </div>`
-              : ''
-          }
-          
-          ${
-            gallery.length || project.polaroid
-              ? `<div class="mb-4">
-                  <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.75rem;">Galerie</h3>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    ${
-                      gallery.length
-                        ? gallery
-                            .map(
-                              (img) => `
-                          <img src="${img}" alt="${project.title}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
-                        `
-                            )
-                            .join('')
-                        : project.polaroid
-                        ? `<img src="${project.polaroid}" alt="${project.title}" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 0 auto;" />`
-                        : ''
-                    }
-                  </div>
-                </div>`
-              : ''
-          }
-        `;
-      }
-
-      function openModal(projectId) {
-        const project = projectMap[projectId];
-        if (!project) {
-          console.warn('Projet photo introuvable', projectId);
-          return;
-        }
-
-        const modal = document.getElementById('projectModal');
-        const content = document.getElementById('modalContent');
-        if (!modal || !content) {
-          return;
-        }
-
-        content.innerHTML = renderModal(project);
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        const modal = document.getElementById('projectModal');
-        if (!modal) {
-          return;
-        }
-
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
-
-      const modalElement = document.getElementById('projectModal');
-      if (modalElement) {
-        modalElement.addEventListener('click', function (event) {
-          if (event.target === this) {
-            closeModal();
-          }
-        });
-      }
-
-      // Ajouter les event listeners aux polaroids
+    <script is:inline>
+      // Attendre que le DOM soit chargé
       document.addEventListener('DOMContentLoaded', function() {
+        const rawProjectNode = document.getElementById('projects-data');
+        const parsedProjects = rawProjectNode
+          ? JSON.parse(rawProjectNode.textContent || '[]')
+          : [];
+        const projectMap = parsedProjects.reduce((acc, item) => {
+          acc[item.id] = item;
+          return acc;
+        }, {});
+
+        function renderModal(project) {
+          const technologies = project.technologies || [];
+          const gallery = project.gallery || [];
+          return `
+            <h2 class="title-font mb-4" style="font-size: 2.5rem; color: #000000; font-style: italic;">${
+              project.title
+            }</h2>
+            
+            ${
+              project.nature
+                ? `<div class="mb-4">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full" style="font-size: 0.95rem; background: #fce7f3; color: #a21caf; font-weight: 500;">
+                      ${project.nature}
+                    </span>
+                  </div>`
+                : ''
+            }
+            
+            ${
+              project.miniDescription
+                ? `<div class="mb-6">
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.5rem;">Description</h3>
+                    <p style="font-size: 1.05rem; color: #444; line-height: 1.7;">
+                      ${project.miniDescription}
+                    </p>
+                  </div>`
+                : ''
+            }
+            
+            ${
+              technologies.length
+                ? `<div class="mb-6">
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.75rem;">Technologies utilisées</h3>
+                    <div class="flex flex-wrap gap-3">
+                      ${technologies
+                        .map(
+                          (tech) => `
+                        <span class="px-4 py-2 bg-purple-100 rounded-full text-sm" style="color:#333; font-weight: 500;">${tech}</span>
+                      `
+                        )
+                        .join('')}
+                    </div>
+                  </div>`
+                : ''
+            }
+            
+            ${
+              gallery.length || project.polaroid
+                ? `<div class="mb-4">
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #000; margin-bottom: 0.75rem;">Galerie</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                      ${
+                        gallery.length
+                          ? gallery
+                              .map(
+                                (img) => `
+                            <img src="${img}" alt="${project.title}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+                          `
+                              )
+                              .join('')
+                          : project.polaroid
+                          ? `<img src="${project.polaroid}" alt="${project.title}" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 0 auto;" />`
+                          : ''
+                      }
+                    </div>
+                  </div>`
+                : ''
+            }
+          `;
+        }
+
+        function openModal(projectId) {
+          const project = projectMap[projectId];
+          if (!project) {
+            console.warn('Projet photo introuvable', projectId);
+            return;
+          }
+
+          const modal = document.getElementById('projectModal');
+          const content = document.getElementById('modalContent');
+          if (!modal || !content) {
+            return;
+          }
+
+          content.innerHTML = renderModal(project);
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+          const modal = document.getElementById('projectModal');
+          if (!modal) {
+            return;
+          }
+
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+
+        // Ajouter les event listeners aux polaroids
         const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach(card => {
           card.addEventListener('click', function() {
@@ -357,6 +349,16 @@ Cette page rassemble mes projets photo et mes expérimentations visuelles.      
             }
           });
         });
+
+        // Fermer la modal en cliquant en dehors
+        const modalElement = document.getElementById('projectModal');
+        if (modalElement) {
+          modalElement.addEventListener('click', function (event) {
+            if (event.target === this) {
+              closeModal();
+            }
+          });
+        }
       });
     </script>
   </body>
