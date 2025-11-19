@@ -29,13 +29,26 @@ const { id, imageUrl, titre, collectionId, recordId } = Astro.props;
 
   .image-container {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1;
     overflow: hidden;
     border-radius: 12px;
     background: linear-gradient(135deg, #BA393D 0%, #8B2428 50%, #5A1518 100%);
     box-shadow: 0 6px 20px rgba(186, 57, 61, 0.4);
     transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .image-container {
+      max-width: 280px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .image-container {
+      max-width: 240px;
+    }
   }
 
   .image-container:hover {

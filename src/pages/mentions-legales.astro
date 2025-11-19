@@ -15,26 +15,26 @@ import '../styles/global.css';
     <main class="min-h-screen w-full relative overflow-hidden" style="background: linear-gradient(180deg, #f4f4f4 0%, #e8e8f4 100%);">
       
       <!-- Home button top-left -->
-      <a href="/" class="fixed top-8 left-8 z-20 hover:opacity-80 transition-opacity">
+      <a href="/" class="fixed top-4 md:top-8 left-4 md:left-8 z-20 hover:opacity-80 transition-opacity">
         <div class="flex items-center gap-1" style="color: #000000;">
-          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+          <svg width="32" height="32" viewBox="0 0 40 40" class="md:w-10 md:h-10" style="transform: rotate(180deg);">
             <path d="M15 10 L25 20 L15 30" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #000000;">Home</span>
+          <span class="title-font text-2xl md:text-3xl lg:text-4xl" style="margin-left: -10px; color: #000000;">Home</span>
         </div>
       </a>
 
       <!-- Contenu principal -->
-      <div class="relative z-10 flex flex-col items-center py-20 px-8">
-        <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-12" style="background: rgba(255, 255, 255, 0.95);">
+      <div class="relative z-10 flex flex-col items-center py-12 md:py-20 px-4 md:px-8">
+        <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 md:p-12" style="background: rgba(255, 255, 255, 0.95);">
           
-          <h1 class="title-font mb-8" style="font-size: 3rem; color: #000000; font-style: italic; text-align: center;">
+          <h1 class="title-font mb-8 text-3xl md:text-4xl lg:text-5xl text-black italic text-center">
             Mentions Légales
           </h1>
 
-          <div style="font-size: 0.95rem; color: #000000; line-height: 1.8;">
+          <div class="text-sm md:text-base text-black leading-relaxed">
             
-            <h2 class="title-font mb-4 mt-8" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+            <h2 class="title-font mb-4 mt-8 text-xl md:text-2xl text-black italic">
               1. Éditeur du site
             </h2>
             <p class="mb-4">
@@ -46,7 +46,7 @@ import '../styles/global.css';
               <li><strong>Statut :</strong> Étudiante en BUT MMI (Métiers du Multimédia et de l'Internet)</li>
             </ul>
 
-            <h2 class="title-font mb-4 mt-8" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+            <h2 class="title-font mb-4 mt-8 text-xl md:text-2xl text-black italic">
               2. Hébergement
             </h2>
             <p class="mb-4">
@@ -58,7 +58,7 @@ import '../styles/global.css';
               <li><strong>Site web :</strong> [URL de l'hébergeur]</li>
             </ul>
 
-            <h2 class="title-font mb-4 mt-8" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+            <h2 class="title-font mb-4 mt-8 text-xl md:text-2xl text-black italic">
               3. Propriété intellectuelle
             </h2>
             <p class="mb-4">
@@ -68,7 +68,7 @@ import '../styles/global.css';
               Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans l'autorisation écrite préalable de l'éditeur.
             </p>
 
-            <h2 class="title-font mb-4 mt-8" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+            <h2 class="title-font mb-4 mt-8 text-xl md:text-2xl text-black italic">
               4. Responsabilité
             </h2>
             <p class="mb-4">
@@ -78,21 +78,21 @@ import '../styles/global.css';
               L'éditeur ne saurait être tenu responsable des dommages directs ou indirects qui pourraient résulter de l'accès au site ou de l'utilisation du site et de ses services.
             </p>
 
-            <h2 class="title-font mb-4 mt-8" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+            <h2 class="title-font mb-4 mt-8 text-xl md:text-2xl text-black italic">
               5. Liens hypertextes
             </h2>
             <p class="mb-4">
               Le site peut contenir des liens hypertextes vers d'autres sites. L'éditeur n'exerce aucun contrôle sur ces sites externes et décline toute responsabilité quant à leur contenu.
             </p>
 
-            <h2 class="title-font mb-4 mt-8" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+            <h2 class="title-font mb-4 mt-8 text-xl md:text-2xl text-black italic">
               6. Droit applicable
             </h2>
             <p class="mb-4">
               Les présentes mentions légales sont soumises au droit français. Tout litige relatif à l'utilisation du site sera de la compétence exclusive des tribunaux français.
             </p>
 
-            <h2 class="title-font mb-4 mt-8" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+            <h2 class="title-font mb-4 mt-8 text-xl md:text-2xl text-black italic">
               7. Contact
             </h2>
             <p class="mb-4">

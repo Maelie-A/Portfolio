@@ -75,62 +75,62 @@ const galerieImages = projet?.gallerie_images || [];
     <main class="min-h-screen w-full relative overflow-hidden" style="background: linear-gradient(180deg, #f4bebe 0%, #f4d4d4 50%, #e8bebe 100%);">
       
       <!-- Bouton retour -->
-      <a href="/design-graphique" class="absolute top-6 left-6 z-20 hover:opacity-80 transition-opacity">
+      <a href="/design-graphique" class="absolute top-4 md:top-6 left-4 md:left-6 z-20 hover:opacity-80 transition-opacity">
         <div class="flex items-center gap-1" style="color: #000000;">
-          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+          <svg width="32" height="32" viewBox="0 0 40 40" class="md:w-10 md:h-10" style="transform: rotate(180deg);">
             <path d="M15 10 L25 20 L15 30" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #000000;">Retour</span>
+          <span class="title-font text-2xl md:text-3xl lg:text-4xl" style="margin-left: -10px; color: #000000;">Retour</span>
         </div>
       </a>
 
       <!-- Contenu principal -->
-      <div class="relative z-10 flex flex-col items-center py-16 px-8">
+      <div class="relative z-10 flex flex-col items-center py-16 px-4 md:px-8">
         
         <!-- Titre du projet -->
-        <h1 class="title-font text-center mb-8" style="font-size: 4rem; color: #000000; font-style: italic;">
+        <h1 class="title-font text-center mb-8 text-4xl md:text-5xl lg:text-6xl text-black italic">
           {projet.Nom_projet}
         </h1>
 
         <!-- Slogan si disponible -->
         {projet.Slogan && (
-          <p class="text-center mb-12" style="font-size: 1.5rem; color: #333; font-style: italic; max-width: 700px;">
+          <p class="text-center mb-12 text-lg md:text-xl lg:text-2xl italic max-w-3xl" style="color: #333;">
             "{projet.Slogan}"
           </p>
         )}
 
         <!-- Section avec CD ouvert et fermé -->
-        <div class="flex gap-12 mb-12 items-center justify-center">
+        <div class="flex flex-col md:flex-row gap-8 lg:gap-12 mb-12 items-center justify-center w-full max-w-4xl">
           {projet.cd_ferme && (
-            <div class="flex flex-col items-center gap-3">
+            <div class="flex flex-col items-center gap-3 w-full md:w-auto">
               <img 
                 src={getImageUrl(projet, projet.cd_ferme)} 
                 alt={`${projet.Nom_projet} - CD fermé`} 
-                style="width: 300px; height: 300px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);" 
+                class="w-full max-w-xs md:max-w-sm h-auto object-cover rounded-lg shadow-lg"
               />
-              <p style="font-size: 1rem; color: #000;">CD Fermé</p>
+              <p class="text-base md:text-lg text-black">CD Fermé</p>
             </div>
           )}
           
           {projet.cd_ouvert && (
-            <div class="flex flex-col items-center gap-3">
+            <div class="flex flex-col items-center gap-3 w-full md:w-auto">
               <img 
                 src={getImageUrl(projet, projet.cd_ouvert)} 
                 alt={`${projet.Nom_projet} - CD ouvert`} 
-                style="width: 300px; height: 300px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);" 
+                class="w-full max-w-xs md:max-w-sm h-auto object-cover rounded-lg shadow-lg"
               />
-              <p style="font-size: 1rem; color: #000;">CD Ouvert</p>
+              <p class="text-base md:text-lg text-black">CD Ouvert</p>
             </div>
           )}
         </div>
 
         <!-- Description courte -->
         {projet.description_courte && (
-          <div class="w-full max-w-4xl mb-8 bg-white bg-opacity-90 rounded-lg p-8 shadow-lg">
-            <h2 class="title-font mb-4" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+          <div class="w-full max-w-4xl mb-8 bg-white bg-opacity-90 rounded-lg p-6 md:p-8 shadow-lg">
+            <h2 class="title-font mb-4 text-2xl md:text-3xl text-black italic">
               Présentation
             </h2>
-            <p style="font-size: 1.05rem; color: #444; line-height: 1.8; white-space: pre-line;">
+            <p class="text-sm md:text-base lg:text-lg leading-relaxed whitespace-pre-line" style="color: #444;">
               {projet.description_courte}
             </p>
           </div>
@@ -138,23 +138,23 @@ const galerieImages = projet?.gallerie_images || [];
 
         <!-- Description complète -->
         {projet.description_complete && (
-          <div class="w-full max-w-4xl mb-12 bg-white bg-opacity-95 rounded-lg p-8 shadow-lg">
-            <h2 class="title-font mb-6" style="font-size: 2rem; color: #000000; font-style: italic;">
+          <div class="w-full max-w-4xl mb-12 bg-white bg-opacity-95 rounded-lg p-6 md:p-8 shadow-lg">
+            <h2 class="title-font mb-6 text-2xl md:text-3xl text-black italic">
               Détails du projet
             </h2>
-            <div class="projet-content" style="font-size: 1.05rem; color: #333; line-height: 1.8;" set:html={projet.description_complete} />
+            <div class="projet-content text-sm md:text-base lg:text-lg leading-relaxed" style="color: #333;" set:html={projet.description_complete} />
           </div>
         )}
 
         <!-- Technologies utilisées -->
         {projet.Technologies && projet.Technologies.length > 0 && (
-          <div class="w-full max-w-4xl mb-12">
-            <h3 class="title-font text-center mb-6" style="font-size: 1.8rem; color: #000000; font-style: italic;">
+          <div class="w-full max-w-4xl mb-12 px-4">
+            <h3 class="title-font text-center mb-6 text-2xl md:text-3xl text-black italic">
               Technologies utilisées
             </h3>
             <div class="flex flex-wrap gap-3 justify-center">
               {projet.Technologies.map((tech: string) => (
-                <span class="px-6 py-2 bg-white bg-opacity-90 rounded-full shadow-md" style="font-size: 1rem; color: #333;">
+                <span class="px-4 md:px-6 py-2 bg-white bg-opacity-90 rounded-full shadow-md text-sm md:text-base" style="color: #333;">
                   {tech}
                 </span>
               ))}
@@ -164,17 +164,16 @@ const galerieImages = projet?.gallerie_images || [];
 
         <!-- Galerie d'images -->
         {galerieImages.length > 0 && (
-          <div class="w-full max-w-5xl mb-12">
-            <h3 class="title-font text-center mb-8" style="font-size: 2rem; color: #000000; font-style: italic;">
+          <div class="w-full max-w-5xl mb-12 px-4">
+            <h3 class="title-font text-center mb-8 text-2xl md:text-3xl text-black italic">
               Galerie
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {galerieImages.map((image: string) => (
                 <img 
                   src={getImageUrl(projet, image)} 
                   alt={`${projet.Nom_projet} - Image galerie`}
-                  style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer;"
-                  class="hover:scale-105 transition-transform"
+                  class="w-full h-48 md:h-64 object-cover rounded-lg shadow-md hover:scale-105 transition-transform cursor-pointer"
                 />
               ))}
             </div>
@@ -183,12 +182,12 @@ const galerieImages = projet?.gallerie_images || [];
 
         <!-- Liens (Figma, Siteweb, etc.) -->
         {projet.Lien_figma_siteweb_autre && (
-          <div class="mb-12">
+          <div class="mb-12 px-4">
             <a 
               href={projet.Lien_figma_siteweb_autre} 
               target="_blank"
-              class="px-8 py-3 bg-white bg-opacity-90 rounded-full shadow-lg hover:scale-105 transition-transform"
-              style="font-size: 1.1rem; color: #000; text-decoration: none; display: inline-block;"
+              class="px-6 md:px-8 py-3 bg-white bg-opacity-90 rounded-full shadow-lg hover:scale-105 transition-transform inline-block text-sm md:text-base text-black"
+              style="text-decoration: none;"
             >
               🔗 Voir le projet en ligne
             </a>
@@ -197,8 +196,8 @@ const galerieImages = projet?.gallerie_images || [];
 
         <!-- Tag du projet -->
         {projet.tag && (
-          <div class="mb-8">
-            <span class="px-6 py-2 bg-purple-200 rounded-full" style="font-size: 0.9rem; color: #666;">
+          <div class="mb-8 px-4">
+            <span class="px-4 md:px-6 py-2 bg-purple-200 rounded-full text-xs md:text-sm" style="color: #666;">
               #{projet.tag}
             </span>
           </div>

@@ -9,38 +9,38 @@ import '../styles/global.css';
     <title>404 — Page non trouvée</title>
   </head>
   <body>
-    <main class="min-h-screen w-full relative overflow-hidden flex items-center justify-center" style="background: linear-gradient(180deg, #e8d4ff 0%, #f0e8ff 50%, #e8f4ff 100%);">
+    <main class="min-h-screen w-full relative overflow-hidden flex items-center justify-center px-4" style="background: linear-gradient(180deg, #e8d4ff 0%, #f0e8ff 50%, #e8f4ff 100%);">
       
       <!-- Contenu principal centré -->
-      <div class="relative z-10 flex flex-col items-center gap-4 px-8">
+      <div class="relative z-10 flex flex-col items-center gap-4 max-w-2xl w-full">
         
         <!-- Nœud décoratif en haut -->
-        <img src="/noeud.webp" alt="nœud" style="width: 180px; height: auto; opacity: 0.9;" />
+        <img src="/noeud.webp" alt="nœud" class="w-32 md:w-40 lg:w-48 h-auto opacity-90" />
         
         <!-- Titre 404 -->
-        <h1 class="title-font text-center" style="font-size: 5rem; color: #000000; font-style: italic; line-height: 1.2; margin-bottom: 0; margin-top: 0.5rem;">
+        <h1 class="title-font text-center text-6xl md:text-7xl lg:text-8xl text-black italic leading-tight my-2">
           404
         </h1>
         
         <!-- Message -->
-        <p class="title-font text-center" style="font-size: 2rem; color: #000000; font-style: italic; max-width: 700px; line-height: 1.4; margin-top: 0.5rem;">
+        <p class="title-font text-center text-xl md:text-2xl lg:text-3xl text-black italic leading-relaxed mt-2 px-4">
           Cette page n'existe que dans votre imagination
         </p>
         
         <!-- Logo -->
-        <img src="/logo.webp" alt="Maelie Addario logo" style="width: 180px; height: auto; margin-top: 2rem; margin-bottom: 1rem;" />
+        <img src="/logo.webp" alt="Maelie Addario logo" class="w-32 md:w-40 lg:w-48 h-auto mt-8 mb-4" />
         
         <!-- Texte Portfolio -->
-        <p style="font-size: 1rem; color: #000000;">
+        <p class="text-sm md:text-base text-black">
           Portfolio-Maëlie ADDARIO-2025
         </p>
         
         <!-- Bouton retour Home avec flèche -->
         <a href="/" class="mt-6 flex items-center gap-2 hover:opacity-70 transition-opacity">
-          <svg width="30" height="30" viewBox="0 0 30 30" style="transform: rotate(180deg);">
+          <svg width="24" height="24" viewBox="0 0 30 30" class="md:w-8 md:h-8" style="transform: rotate(180deg);">
             <path d="M10 7.5 L20 15 L10 22.5" stroke="#000000" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="title-font" style="font-style: italic; font-size: 2rem; color: #000000;">Retour à l'accueil</span>
+          <span class="title-font italic text-xl md:text-2xl lg:text-3xl text-black">Retour à l'accueil</span>
         </a>
       </div>
     </main>

@@ -34,61 +34,59 @@ function getImageUrl(record: any, filename: string) {
     <main class="min-h-screen w-full relative overflow-hidden" style="background: linear-gradient(180deg, #f4bebe 0%, #f4d4d4 50%, #e8bebe 100%);">
       
       <!-- Home button top-left -->
-      <a href="/" class="fixed top-6 left-6 z-20 hover:opacity-80 transition-opacity">
+      <a href="/" class="fixed top-4 md:top-6 left-4 md:left-6 z-20 hover:opacity-80 transition-opacity">
         <div class="flex items-center gap-1" style="color: #000000;">
-          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+          <svg width="32" height="32" viewBox="0 0 40 40" class="md:w-10 md:h-10" style="transform: rotate(180deg);">
             <path d="M15 10 L25 20 L15 30" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #000000;">Home</span>
+          <span class="title-font text-2xl md:text-3xl lg:text-4xl" style="margin-left: -10px; color: #000000;">Home</span>
         </div>
       </a>
 
       <!-- Contenu principal -->
-      <div class="relative z-10 flex flex-col items-center py-12 px-8">
+      <div class="relative z-10 flex flex-col items-center py-12 px-4 md:px-8">
         
         <!-- Section 1: Hero avec fenêtre navigateur "Design Graphique" -->
-        <div class="relative w-full mb-7" style="width:80vw; max-width:80vw; margin-left: calc(50% - 60.5vw); margin-right: calc(50% - 47.5vw); margin-top: -5rem;">
-          <img src="/design-hero.webp" alt="Design Graphique" style="width: 100%; height: auto; display: block;" />
+        <div class="relative w-full mb-7 max-w-7xl">
+          <img src="/design-hero.webp" alt="Design Graphique" class="w-full h-auto" />
         </div>
 
         <!-- Section 2: Design Graphique (texte + description avec fenêtre Eco Denim) -->
-        <div class="w-full max-w-6xl mb-12 flex gap-12 items-start">
+       <div class="w-full max-w-6xl mb-12 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           <!-- Colonne gauche: texte -->
-          <div style="flex: 1;">
-            <h2 class="title-font mb-6" style="font-size: 2.8rem; color: #000000; font-style: italic;">
-              Design Graphique
-            </h2>
-            
-            <div style="font-size: 0.9rem; color: #000000; line-height: 1.8; max-width: 600px;">
-              <p class="mb-4">
+          <div class="flex-1">
+            <h2 class="title-font mb-6 text-3xl md:text-4xl text-black italic">
+        Design Graphique
+          </h2>
+          
+          <div class="text-sm md:text-base text-black leading-relaxed max-w-2xl space-y-4">
+            <p>
                 Design graphique regroupe mes projets liés au graphisme, affiches, direction artistique, identité visuelle, création de logos, affichess, flyers et maquettes.
-              </p>
-              <p class="mb-4">
-                J'aime jouer sur les formes, les couleurs et les typographies pour donner vie à des idées et à l'équipe visellement un.
-              </p>
-              <p class="mb-4">
-                Je créer ou mettre en avant leurs projets coup de cœur, que je présenterai ent un graphique dans les réalisons suivantes.
-              </p>
-              <p class="mb-4">
-                À chaque projet, j'apporte une approche créative et à l'art caractère et personnalité, pour donner aux visuels caractère et l'identité, je cherche aussi à aller au-delà du simple aspect esthétique et sens.
-              </p>
-            </div>
+            </p>
+            <p>
+              J'aime jouer sur les formes, les couleurs et les typographies pour donner vie à des idées et à l'équipe visellement un.
+            </p>
+            <p>
+              Je créer ou mettre en avant leurs projets coup de cœur, que je présenterai ent un graphique dans les réalisons suivantes.
+            </p>
+            <p>
+             À chaque projet, j'apporte une approche créative et à l'art caractère et personnalité, pour donner aux visuels caractère et l'identité, je cherche aussi à aller au-delà du simple aspect esthétique et sens.
+            </p>
+          </div>
           </div>
 
           <!-- Colonne droite: fenêtre avec Eco Denim -->
-          <div style="flex: 0 0 450px;">
-            <img src="/logogif.gif" alt="Eco Denim" style="width: 100%; height: auto; display: block; box-shadow: 0 8px 20px rgba(0,0,0,0.15);" />
+          <div class="w-full lg:w-auto lg:flex-shrink-0 max-w-md mx-auto lg:mx-0">
+            <img src="/logogif.gif" alt="Eco Denim" class="w-full h-auto shadow-lg" />
           </div>
-        </div>
-
-        <!-- Section 3: Explorez les projets en cliquant sur les pochettes -->
-        <div class="w-full max-w-5xl mb-12">
-          <h3 class="title-font text-center mb-8" style="font-size: 2rem; color: #000000; font-style: italic;">
+        </div>        <!-- Section 3: Explorez les projets en cliquant sur les pochettes -->
+        <div class="w-full max-w-5xl mb-12 px-4">
+          <h3 class="title-font text-center mb-8 text-2xl md:text-3xl text-black italic">
             Explorez les projets en cliquant sur les pochettes.
           </h3>
 
           <!-- Bande de pochettes CD horizontale -->
-          <div class="flex gap-8 justify-center mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
+          <div class="flex gap-6 md:gap-8 justify-center md:justify-start mb-12 overflow-x-auto pb-4" style="scroll-behavior: smooth;">
             {projets.length > 0 ? (
               projets.map((projet) => (
                 <ProjetCard
@@ -121,12 +119,12 @@ function getImageUrl(record: any, filename: string) {
         </div>
 
         <!-- Section 4: Projet bonus (affiches inclinées) -->
-        <div class="w-full max-w-5xl mb-12">
-          <h3 class="title-font text-center mb-8" style="font-size: 2.5rem; color: #000000; font-style: italic;">
+        <div class="w-full max-w-5xl mb-12 px-4">
+          <h3 class="title-font text-center mb-8 text-3xl md:text-4xl text-black italic">
             Projet bonus...
           </h3>
           <div class="flex justify-center">
-            <img src="/design.gif" alt="Affiches projet bonus" style="width: 100%; max-width: 600px; height: auto; display: block;" />
+            <img src="/design.gif" alt="Affiches projet bonus" class="w-full max-w-2xl h-auto" />
           </div>
         </div>
 

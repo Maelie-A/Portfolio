@@ -17,12 +17,12 @@ import '../styles/global.css';
       <div class="absolute inset-0" style="background: linear-gradient(180deg, #e8d4ff 0%, #f0e8ff 50%, #e8f4ff 100%);"></div>
       
       <!-- Home button top-left -->
-      <a href="/" class="fixed top-8 left-8 z-20 hover:opacity-80 transition-opacity">
+      <a href="/" class="fixed top-4 md:top-8 left-4 md:left-8 z-20 hover:opacity-80 transition-opacity">
         <div class="flex items-center gap-1" style="color: #556b2f;">
-          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+          <svg width="32" height="32" viewBox="0 0 40 40" class="md:w-10 md:h-10" style="transform: rotate(180deg);">
             <path d="M15 10 L25 20 L15 30" stroke="#556b2f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #556b2f;">Home</span>
+          <span class="title-font text-2xl md:text-3xl lg:text-4xl" style="margin-left: -10px; color: #556b2f;">Home</span>
         </div>
       </a>
 
@@ -30,10 +30,10 @@ import '../styles/global.css';
     <div class="relative z-10 flex flex-col items-center py-16 px-8" style="gap: 6rem;">
       
       <!-- Section 1: Carte de visite avec enveloppe et fleurs -->
-      <div class="relative" style="width: 100%; max-width: 900px;">
+      <div class="relative w-full max-w-4xl px-4">
         <!-- Carte de visite -->
-        <div class="relative" style="transform: rotate(-2deg);">
-            <img src="/aboutme.webp" alt="Carte de visite Maelie d'Addario" style="width:150%; max-width:none; display:block; margin-left:-25%; height:auto;" />
+        <div class="relative md:rotate-[-2deg]">
+            <img src="/aboutme.webp" alt="Carte de visite Maelie d'Addario" class="w-full md:w-[150%] md:max-w-none md:ml-[-25%] h-auto" />
         </div>
         
 
@@ -82,13 +82,13 @@ import '../styles/global.css';
         </div>
 
         <!-- Section 3: Formations et Expériences (Carnet) -->
-        <div class="relative w-full" style="max-width: 1000px;">
+        <div class="relative w-full max-w-6xl px-4">
           <div class="relative">
             <!-- Image du carnet -->
-            <img src="/carnet-about.webp" alt="carnet" style="width: 100%; height: auto; display: block;" />
+            <img src="/carnet-about.webp" alt="carnet" class="w-full h-auto hidden md:block" />
             
-            <!-- Contenu superposé sur le carnet -->
-            <div class="absolute inset-0 flex gap-12" style="padding: 6.5rem 5rem 4rem 7rem;">
+            <!-- Contenu superposé sur le carnet pour desktop -->
+            <div class="hidden md:flex absolute inset-0 gap-4 lg:gap-12 px-4 lg:px-20 py-8 lg:py-24">
               <!-- Colonne Formations -->
               <div style="flex: 1;">
                 <h2 class="title-font mb-4" style="font-size: 2rem; color: #556b2f;">
@@ -153,6 +153,72 @@ import '../styles/global.css';
               </div>
             </div>
 
+            <!-- Version mobile du contenu (sans image de fond) -->
+            <div class="md:hidden bg-white bg-opacity-90 rounded-lg p-6 space-y-8">
+              <!-- Colonne Formations -->
+              <div>
+                <h2 class="title-font mb-4 text-2xl" style="color: #556b2f;">
+                  Formations
+                </h2>
+                <div class="space-y-3 text-sm">
+                  <div>
+                    <p class="font-bold">BUT MMI - 3e Année</p>
+                    <p class="text-xs italic">2025 - Aujourd'hui</p>
+                    <p class="text-xs">Parcours Création Numérique et UX/UI Design</p>
+                  </div>
+                  <div>
+                    <p class="font-bold">BUT MMI - 1re Année</p>
+                    <p class="text-xs italic">2024 - 2025</p>
+                    <p class="text-xs">Métiers du Multimédia et de l'Internet</p>
+                  </div>
+                  <div>
+                    <p class="font-bold">Baccalauréat Général</p>
+                    <p class="text-xs italic">2024</p>
+                    <p class="text-xs">3 spécialités en ART, numérique et sciences informatique</p>
+                  </div>
+                </div>
+
+                <h2 class="title-font mb-4 mt-6 text-2xl" style="color: #556b2f;">
+                  Expériences
+                </h2>
+                <div class="space-y-2 text-xs">
+                  <p>• Regional références graphistes, sport d'épaules, organisations Visual et créatif</p>
+                  <p>• Éditer, Adobe Suite (Photoshop, Illustrator, Canva)</p>
+                  <p>• Tournage, Vidéo, Montages (FCPX/DaVinci)</p>
+                  <p>• Dev web, HTML, CSS, JavaScript, React, Astro</p>
+                  <p>• graphique, Photo de Page, Communication Visuelle</p>
+                </div>
+              </div>
+
+              <!-- Colonne Expérience Professionnelle -->
+              <div>
+                <h2 class="title-font mb-4 text-2xl" style="color: #556b2f;">
+                  Expérience<br/>Professionnelle
+                </h2>
+                <div class="space-y-3 text-sm">
+                  <div>
+                    <p class="font-bold">Cameraman</p>
+                    <p class="text-xs">→ Tournage CSG</p>
+                    <p class="text-xs italic">2024</p>
+                    <p class="text-xs">Projet de tournage CSG Bref, à la JSc</p>
+                    <p class="text-xs">du groupe INPOLI</p>
+                  </div>
+                  <div>
+                    <p class="font-bold">Stage en Mac</p>
+                    <p class="text-xs">→ (Maison des Jeunes et de la Culture)</p>
+                    <p class="text-xs italic">2020</p>
+                  </div>
+                  <div>
+                    <p class="font-bold">Animation et montage</p>
+                    <p class="text-xs">→ Radio RCV 99.5 FM</p>
+                    <p class="text-xs italic">2017-2020</p>
+                    <p class="text-xs">Émission "Les babines en l'air" à la radio</p>
+                    <p class="text-xs">RCV (Radio Carnoules)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Trèfle décoratif -->
             <img src="/carte-visite.webp" alt="trèfle" class="absolute" style="bottom: -50px; right: 20px; width: 400px;" />
             
@@ -161,20 +227,20 @@ import '../styles/global.css';
           </div>
 
           <!-- Section 4: Mes outils et Bouton Contact côte à côte -->
-          <div class="flex items-center gap-20 w-full" style="max-width: 1200px; margin-top: 3rem; margin-left: -8rem;">
+          <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-20 w-full max-w-6xl px-4 mt-12">
             <!-- Mes outils (plateaux avec icônes) -->
-            <div style="flex: 0 0 750px;">
-              <img src="/boite-aboutme.webp" alt="boîte" style="width:100%; height:auto; display:block; border-radius:1px;" />
+            <div class="w-full lg:flex-1">
+              <img src="/boite-aboutme.webp" alt="boîte" class="w-full h-auto" />
             </div>
 
             <!-- Bouton Contacter-Moi avec avion -->
-            <a href="/contact" class="group relative" style="flex-shrink: 0; margin-right: 2rem;">
-              <div class="bg-purple-200 rounded-full px-12 py-6 shadow-lg hover:scale-105 transition-transform" style="border: 2px solid #9b7fb5;">
-                <span class="title-font" style="font-size: 2rem; color: #556b2f;">
+            <a href="/contact" class="group relative flex-shrink-0">
+              <div class="bg-purple-200 rounded-full px-8 md:px-12 py-4 md:py-6 shadow-lg hover:scale-105 transition-transform" style="border: 2px solid #9b7fb5;">
+                <span class="title-font text-xl md:text-3xl" style="color: #556b2f;">
                   Contacter-Moi
                 </span>
               </div>
-              <img src="/avionpapier.webp" alt="avion" class="absolute" style="top: -25px; right: -70px; width: 120px; transform: rotate(-15deg);" />
+              <img src="/avionpapier.webp" alt="avion" class="absolute top-[-15px] right-[-50px] md:top-[-25px] md:right-[-70px] w-16 md:w-32 rotate-[-15deg]" />
             </a>
           </div>
         </div>

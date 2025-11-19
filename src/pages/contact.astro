@@ -17,84 +17,83 @@ import '../styles/global.css';
       <div class="absolute inset-0" style="background: linear-gradient(135deg, #C39FE5 0%, #ffffff 100%);"></div>
       
       <!-- Home button top-left avec la flèche et Home exactement comme la maquette -->
-      <a href="/" class="fixed top-8 left-8 z-30 hover:opacity-80 transition-opacity">
+      <a href="/" class="fixed top-4 md:top-8 left-4 md:left-8 z-30 hover:opacity-80 transition-opacity">
         <div class="flex items-center gap-1" style="color: #556b2f;">
-          <svg width="40" height="40" viewBox="0 0 40 40" style="transform: rotate(180deg);">
+          <svg width="32" height="32" viewBox="0 0 40 40" class="md:w-10 md:h-10" style="transform: rotate(180deg);">
             <path d="M15 10 L25 20 L15 30" stroke="#556b2f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="title-font" style="font-size: 2.5rem; margin-left: -10px; color: #556b2f;">Home</span>
+          <span class="title-font text-2xl md:text-3xl lg:text-4xl" style="margin-left: -10px; color: #556b2f;">Home</span>
         </div>
       </a>
      
 
       <!-- Container principal -->
-      <div class="absolute inset-0 flex items-center justify-between" style="padding: 0 8% 0 10%;">
+      <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 lg:gap-0 px-6 lg:px-[8%] py-12 lg:py-0 min-h-screen">
         
           <!-- PARTIE GAUCHE : Titre, icônes, email et texte -->
-          <div class="relative flex flex-col" style="gap: 1rem; max-width: 380px;">
-            <!-- Cercle flou jaune en arrière-plan -->
-            <div class="absolute" style="background: #FBCD0E; border-radius: 50%; filter: blur(70px); opacity: 0.6; width: 480px; height: 480px; top: 45%; left: 12%; transform: translate(-50%, -50%); z-index: 0;"></div>
+          <div class="relative flex flex-col gap-4 w-full lg:max-w-sm z-10">
+            <div class="absolute hidden lg:block" style="background: #FBCD0E; border-radius: 50%; filter: blur(70px); opacity: 0.6; width: 480px; height: 480px; top: 45%; left: 12%; transform: translate(-50%, -50%); z-index: -1;"></div>
             
             <!-- Titre Contacter-Moi -->
-            <h1 class="title-font relative z-10" style="font-size: 4.2rem; color: #000000; line-height: 0.85; font-style: italic; margin-bottom: 0.5rem;">
+            <h1 class="title-font relative z-10 text-5xl md:text-6xl lg:text-7xl text-black leading-tight italic mb-2">
               Contacter-Moi
             </h1>
             
             <!-- Icônes sociales -->
-            <div class="relative z-10 flex" style="gap: 0.7rem;">
+            <div class="relative z-10 flex gap-3">
               <a href="https://www.behance.net/MaelieAddarioMa_d" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/behance.svg" alt="behance" style="width: 2.5rem; height: 2.5rem;" />
+                <img src="/behance.svg" alt="behance" class="w-10 h-10" />
               </a>
               <a href="https://www.linkedin.com/in/maëlie-addario-b66790336" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/linkedin.svg" alt="linkedin" style="width: 2.5rem; height: 2.5rem;" />
+                <img src="/linkedin.svg" alt="linkedin" class="w-10 h-10" />
               </a>
               <a href="https://www.instagram.com/ma_dart8" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/instagram.svg" alt="instagram" style="width: 2.5rem; height: 2.5rem;" />
+                <img src="/instagram.svg" alt="instagram" class="w-10 h-10" />
               </a>
               <a href="https://fr.pinterest.com/Mamaeliea_d/" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/pinterest.svg" alt="pinterest" style="width: 2.5rem; height: 2.5rem;" />
+                <img src="/pinterest.svg" alt="pinterest" class="w-10 h-10" />
               </a>
               <a href="https://linktr.ee/mamaeleea_d" target="_blank" class="hover:scale-110 transition-transform">
-                <img src="/linktree.svg" alt="linktree" style="width: 2.5rem; height: 2.5rem;" />
+                <img src="/linktree.svg" alt="linktree" class="w-10 h-10" />
               </a>
             </div>
 
             <!-- Email souligné -->
-            <a href="mailto:maelie@addario.fr" class="relative z-10 underline hover:opacity-70 transition-opacity" style="font-size: 0.95rem; color: #000000; font-family: 'Courier New', monospace; text-decoration-thickness: 2px; margin-top: 0.3rem;">
+            <a href="mailto:maelie@addario.fr" class="relative z-10 underline hover:opacity-70 transition-opacity text-sm md:text-base text-black" style="font-family: 'Courier New', monospace; text-decoration-thickness: 2px; margin-top: 0.3rem;">
               maelie@addario.fr
             </a>
 
             <!-- Texte -->
-            <div class="relative z-10" style="margin-top: 0.5rem;">
-              <p style="color: #000000; font-size: 0.88rem; line-height: 1.5; max-width: 340px;">
+            <div class="relative z-10 mt-2">
+              <p class="text-black text-sm md:text-base leading-relaxed max-w-sm">
                 Je suis pratiquement partout. Alors, n'hésitez pas à choisir le mode de communication qui vous convient.
               </p>
             </div>
           </div>
 
           <!-- PARTIE DROITE : Formulaire -->
-          <div class="relative" style="transform: rotate(-2.5deg);">
+          <div class="relative w-full lg:w-auto">
             
             <!-- Papier avec formulaire -->
-            <div class="relative" style="width: 1000px; z-index: 2;">
-              <img src="/formulaire-contact.webp" alt="papier formulaire" style="width: 100%; height: auto; display: block; transform: translateX(80px);" />
+            <div class="relative w-full max-w-2xl mx-auto lg:mx-0 z-10">
+              <img src="/formulaire-contact.webp" alt="papier formulaire" class="w-full h-auto hidden md:block" />
               
-              <div class="absolute" style="top: 40%; left: 50%; transform: translate(-50%, -50%); width: 82%; max-width: 450px;">
+              <div class="md:absolute static md:top-[40%] md:left-1/2 md:transform md:translate-x-[-50%] md:translate-y-[-50%] w-full md:w-[82%] max-w-md p-6 md:p-0">
                 <!-- Titre du formulaire -->
-                <h2 class="text-center title-font" style="font-size: 1.7rem; color: #000000; font-style: italic; margin-bottom: 1.5rem;">
+                <h2 class="text-center title-font text-2xl md:text-3xl text-black italic mb-6">
                   Laissez un message rapide
                 </h2>
 
                 <!-- Formulaire -->
-                <form id="contactForm" class="flex flex-col" style="gap: 1.2rem;">
+                <form id="contactForm" class="flex flex-col gap-5">
                   <!-- Input Email -->
                   <input 
                     type="email" 
                     name="mail"
                     id="emailInput"
                     placeholder="Votre email" 
-                    class="px-4 py-2.5 rounded-lg focus:outline-none"
-                    style="border: 2px solid #c8a2e0; background: #f3e8ff; font-size: 0.95rem;"
+                    class="px-4 py-2.5 rounded-lg focus:outline-none text-sm md:text-base"
+                    style="border: 2px solid #c8a2e0; background: #f3e8ff;"
                     required
                   />
                   
@@ -104,17 +103,17 @@ import '../styles/global.css';
                     id="messageInput"
                     placeholder="Message" 
                     rows="4"
-                    class="px-4 py-2.5 rounded-lg focus:outline-none resize-none"
-                    style="border: 2px solid #c8a2e0; background: #f3e8ff; font-size: 0.95rem;"
+                    class="px-4 py-2.5 rounded-lg focus:outline-none resize-none text-sm md:text-base"
+                    style="border: 2px solid #c8a2e0; background: #f3e8ff;"
                     required
                   ></textarea>
 
                   <!-- Message de confirmation -->
-                  <div id="statusMessage" class="hidden text-center px-4 py-2 rounded-lg"></div>
+                  <div id="statusMessage" class="hidden text-center px-4 py-2 rounded-lg text-sm"></div>
 
                   <!-- Texte et bouton avion -->
-                  <div class="flex flex-col items-end" style="gap: 0.4rem; margin-top: 0.5rem;">
-                    <p class="text-right title-font" style="font-size: 0.9rem; color: #000000; line-height: 1.2; font-style: italic;">
+                  <div class="flex flex-col items-end gap-2 mt-2">
+                    <p class="text-right title-font text-sm md:text-base text-black leading-tight italic">
                       Pour envoyer votre message<br/>cliquer ici :
                     </p>
                     <button 
@@ -122,7 +121,7 @@ import '../styles/global.css';
                       id="submitBtn"
                       class="hover:scale-110 transition-transform"
                     >
-                      <img src="/avionpapier.webp" alt="send" style="width: 110px;" />
+                      <img src="/avionpapier.webp" alt="send" class="w-20 md:w-28" />
                     </button>
                   </div>
                 </form>
